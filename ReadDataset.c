@@ -14,7 +14,6 @@ int main(int argc, char const *argv[])
 	FILE *dataset;
 	float test;
 	char* pend;
-	char *eos = "\0";
 
 	if ( (dataset = fopen("problem_book2.csv", "r") ) == NULL){
 		perror("fopen failed at opening the dataset");
@@ -28,14 +27,21 @@ int main(int argc, char const *argv[])
 	fgets(str, 200, dataset);
 
 	fgets(str, 200, dataset);
-	strcat(str, eos);
+	char *p = strchr (str, '\n');
 
-	printf("Frase: %s\n\n", str);
+	*p = '\0';
+	printf("Puntero: %p", p);
+	printf("Puntero Valor: %c", *p);
+
+
+	printf("Frase: %s", str);
+
+	printf("dsnfkjdshfkjdsnkfjndskjfn\n");
 
 	token = strtok(str, delim);
 	arr[0] = strtold(token, &pend);
 
-	int i = 1;
+	int i = 2;
 	while (token != NULL) {
 		//if (i == 11)
 		//	break;
@@ -43,7 +49,7 @@ int main(int argc, char const *argv[])
 
 		token = strtok(NULL, delim);
 
-		arr[i] = strtold(token, &pend);
+		arr[i-1] = strtold(token, &pend);
 		i++;
 	}
 
