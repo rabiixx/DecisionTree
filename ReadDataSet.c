@@ -1,24 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define NUM_TRAIN 500
 
-
-int main(int argc, char const *argv[])
+int readDataSet(int argc, char const *argv[])
 {
 
 	FILE *dataset;
 
-
 	long double dataMatrix[NUM_TRAIN][11];
-
 
 	if ( (dataset = fopen("problem_book.csv", "r") ) == NULL){
 		perror("fopen failed at opening the dataset");
 		return EXIT_FAILURE;
 	}
-	
 
 	char *str = (char*)malloc(200*sizeof(char));
 

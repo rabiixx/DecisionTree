@@ -2,14 +2,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct _nodo{
-	int atributo;
-	int clase;
+typedef struct _nodo {
+	unsigned int atributo;
+	unsigned int sigAtributo;
+	unsigned int clase;
 	bool hoja;
 	struct _nodo *arrHijos[];
-
-}nodo;
-
+} nodo;
 
 
 typedef struct _infoAtributo {
