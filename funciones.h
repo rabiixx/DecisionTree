@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+typedef struct _nodo{
+	int atributo;
+	int clase;
+	bool hoja;
+	struct _nodo *arrHijos[];
+
+}nodo;
+
+
+
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;

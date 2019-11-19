@@ -43,3 +43,11 @@ int main(int argc, char const *argv[]) {
 
 	return 0;
 }
+
+
+/**
+  * Para evitar ramas infinitas pordemos fijar una constante alfa;
+  * cuando la heuristica sea menor que alfa dejamos de expandir dicha rama
+  */
+
+
