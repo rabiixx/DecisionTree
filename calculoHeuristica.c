@@ -149,47 +149,119 @@ double discretizacion(unsigned int N ,arr[][N])
 	quickSort(arr, 0, N);
 
  	/* 2. Calcular la entropía para cada pareja de valores en los que la clase cambie */
-	arrElegidos[N];			/*Almacena el indice de que cada pareja de valores en los que la clase cambia */
-	unsigned int index = 0;		/* Indice del array de elgidos */
-
+	indexElegidos[2][N];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
+	unsigned int index = 0;		/* Indice del array de indices de los elegidos */
 
 	unsigned int clase = arr[1][0];
 
 	for (int i = 0; i < N; ++i) {
 		if ( arr[1][i] != clase ){
-			arrElegidos[index] = i;
-			clase = arr[1][i];
+			indexElegidos[0][index] = i;
 			++index;
 		}
 	}
 
 	/* 3. Elegir como umbral la media del par de valores que minimice la entropía */
-	index = 0;
-	unsigned int arrEntropias[];
 	unsigned int numAtributosMenores;
 	unsigned int numAtributosMayores;
-
-	numAtributosMenores = arrElegidos[index];
-	numAtributosMayores = N - arrElegidos[index];
 
 	unsigned int numSiMenores;
 	unsigned int numNoMenores; 
 	unsigned int numSiMayores;
 	unsigned int numNoMayores;
 
-	for (int i = 0; i < numAtributosMenores; ++i){
-		if (arr[1][i] == 1)
-			++numSiMenores;
+	for (int i = 0; i < index; ++i)
+	{
+
+		numAtributosMenores = indexElegidos[0][i];
+		numAtributosMayores = N - indexElegidos[0][i];
+
+		for (int j = 0; j < numAtributosMenores; ++j){
+			if (arr[1][j] == 1)
+				++numSiMenores;
+		}
+
+		numNoMenores = numAtributosMenores - numSiMenores;
+
+		for (int j = numAtributosMenores + 1; j < N; ++j){
+			if (arr[1][j] == 1)
+				++numSiMayores;
+		}
+
+		numNoMayores = numAtributosMayores - numSiMayores;
+
+		
+		double entropiaMenorSi;
+		double entropiaMenorNo;
+		double entropiaMayorSi;
+		double entropiaMayorNo;
+		double entropia1;
+		double entropia2;
+
+
+		entropiaMenorSi = ( (numSiMenores / numAtributosMenores) * (- log(numSiMenores / numAtributosMenores) / log(2)) ) 
+		entropiaMenorNo = ( (numNoMenores / numAtributosMenores) * (- log(numNoMenores / numAtributosMenores) / log(2)) )
+
+		entropia1 = ( (numSiMenores / N) * entropiaMenorSi) + (numNoMenores / N) * entropiaMenorNo;
+
+
+		entropiaMayorSi = ( (numSiMayores / numAtributosMayores) * (- log(numSiMayores / numAtributosMayores) / log(2)) ) 
+		entropiaMayorNo = ( (numNoMenores / numAtributosMayores) * (- log(numNoMenores / numAtributosMayores) / log(2)) )
+
+		entropia2 = ( (numSiMayores / N) * entropiaMayorSi) + (numNoMayores / N) * entropiaMayorNo;
+
+		indexElegidos[1][i] = entropia1 + entropia2;
+
 	}
 
-	numNoMenores = numAtributosMenores - numSiMenores;
 
-	for (int i = numAtributosMenores + 1; i < N; ++i){
-		if (arr[1][i] == 1)
-			++numSiMayores;
+
+	/* Buscamos el atributo con menor entropia */
+	unsigned int indexMinEntropia;
+	unsigned int minEntropiaValue;
+	int minEntropia = 1;
+
+	for (int i = 0; i < index; ++i) {
+		if ( indexElegidos[1][i] < minEntropia ) {
+			minEntropia = indexElegidos[1][i];
+			indexMinEntropia = i;
+		}
 	}
 
-	numNoMayores = numAtributosMayores - numSiMayores;
+	minEntropiaValue = arr[0][ indexElegidos[0][indexMinEntropia] ];
+	double umbral1 = minEntropiaValue; /* Esto esta puesto por comprension */
 
+	/* Buscamos atributo de otra clase por la izquierda */	
+
+	double umbral2;
+
+	clase = arr[1][ indexElegidos[0][indexMinEntropia] ];
+	for (int i = indexElegidos[0][indexMinEntropia]; i < 0 ; --i) {
+		if (arr[1][i] != clase)
+			num = arr[0][i];
+	}
+
+	/* Calculamos el humbral */
+	double umbral = (umbral1 + umbral2) / 2;
+
+	return humbral;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
