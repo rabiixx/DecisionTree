@@ -5,14 +5,10 @@
 #include "funciones.h"
 
 
-
-
-
 /**
   * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
   * con una clase binaria
   */ 
-
 infoAtribute calculoEntropiaCat()
 {
 
@@ -249,12 +245,12 @@ double discretizacion(unsigned int N ,arr[][N])
 }
 
 
+/** Contsruye un arbol binario de decision */
 
 
-
-nodo* construirArbolDecision(vvs &tabla, node* ptrNodo, vvs &arrAtributos)
+nodo* construirArbolDecision(float tabla[][], nodo* ptrNodo)
 {
-	if (tableVacia(tabla)) {
+	if (tablaVacia(tabla)) {
 		return NULL;
 	}
 
@@ -267,7 +263,6 @@ nodo* construirArbolDecision(vvs &tabla, node* ptrNodo, vvs &arrAtributos)
 		unsigned int atributoExp = elegirAtributoExp(tabla);
 
 		ptrNodo->atributo = atributoExp;
-		//int colIndex = returnColumnIndex(splittingCol, tableInfo);
 
 		/** Para la cantidad de valores que puede tomar el atributo, 
 		  * en nuestro caso todos los atrbutos pueden tomar solo dos
@@ -282,9 +277,9 @@ nodo* construirArbolDecision(vvs &tabla, node* ptrNodo, vvs &arrAtributos)
 			
 			auxTabla = pruneTable(tabla, atributoExp, i);
 			if ( i == 0) {
-				nuevoNodo->izq = construirArbolDecision(auxTabla, nuevoNodo, arrAtributos);
+				nuevoNodo->izq = construirArbolDecision(auxTabla, nuevoNodo);
 			} else {
-				nuevoNodo->der = construirArbolDecision(auxTabla, nuevoNodo, arrAtributos);
+				nuevoNodo->der = construirArbolDecision(auxTabla, nuevoNodo);
 			}
 		}
 		
@@ -293,5 +288,34 @@ nodo* construirArbolDecision(vvs &tabla, node* ptrNodo, vvs &arrAtributos)
 }
 
 
+/** Funcion filtrarTabla: 
+  * Esta funcion creara una nueva tabla auxiliar donde se eliminaran todas aquellas filas
+  * que contenga el valor que se le pase a la funcion en el atribute que se le pase */
+
+
+matrix** filtrarTabla(int numAtributos, tabla[][numAtributos], indexAtributo, valorAtributo) {
+
+
+	float tablaFiltrada[][numAtributos - 1];	/* Nueva tabla ya filtrada */
+	unsigned int indexFil = 0;					/* Indice de filas para recorrer la nueva tabla filtrada */ 
+	unsigned int indexCol = 0;					/* Indice de columnas para recorrer la nueva tabla filtrada */ 
+
+	for (int i = 0; i < numFilas; ++i) {
+
+		/* Hemos encontrado una fila que coincide con el valor del atributo */
+		if (tabla[i][indexAtributo] == valorAtributo){
+			indexFil = 0;
+			for (int j = 0; j < numAtributos -1; ++j){
+				if (j != indexAtributo) {
+					tablaFiltrada[indexFil][indexCol] = tabla[i][j];
+				}
+				++indexCol;
+			}
+			++indexFil;
+		}
+	}
+
+	return tablaFiltrada;
+}
 
 

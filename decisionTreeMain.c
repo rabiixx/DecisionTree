@@ -3,21 +3,22 @@
 #include <string.h>
 
 
-#define NUM_FILAS 100
-#define NUM_ATRIBUTOS 10
-#define NUM_CLASES 2
+#define NUM_ENTRENAMIENTO 1000    /* Numero de filas del dataset de entrenamiento */
+#define NUM_TEST                  /* Numero de filas del dataset de testeo */ 
+
+
+#define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
+#define NUM_CLASES 2              /* Numero de clases */
 
 int main(int argc, char const *argv[]) {
-
-	/*size_t size = 20 * sizeof(char);
-
-
-	char *str_atributos = (char*)malloc(10 * size);*/
 
 	char *str_atributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
 
 	char *arrClases[2] = {"Vivo", "Muerto"};
 
+
+  FILE *entrenamiento;
+  FILE *aJugar;
 
 
 	nodo *raiz = NULL;
