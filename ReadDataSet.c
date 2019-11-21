@@ -3,7 +3,7 @@
 
 #define NUM_TRAIN 500
 
-int readDataSet(int argc, char const *argv[])
+int readDataSet()
 {
 
 	FILE *dataset;
@@ -21,11 +21,18 @@ int readDataSet(int argc, char const *argv[])
 	fgets(str, 200, dataset);
 
 
-	for (int i = 0; i < NUM_TRAIN; ++i){
-		fscanf(dataset, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f ", &arr[i][0], &arr[i][1], &arr[i][2], &arr[i][3], &arr[i][4], &arr[i][5], &arr[i][6], &arr[i][7], &arr[i][8], &arr[i][9], &arr[i][10]);
+	unsigned int i = 0;
+	while ( (fscanf(dataset, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f ", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10])) != 0)
+		++i;
+
+
+	for (int i = 0; i < 50; ++i) {
+		printf("%f %f %f %f %f %f %f %f %f %f %f\n", arrMatrix[i][0], arrMatrix[i][1], arrMatrix[i][2], arrMatrix[i][3], arrMatrix[i][4], arrMatrix[i][5], arrMatrix[i][6], arrMatrix[i][7], arrMatrix[i][8], arrMatrix[i][9], arrMatrix[i][10]);
 	}
 
-	return EXIT_SUCCESS;
+
+	return arrMatrix;
+
 }
 
 
