@@ -41,6 +41,13 @@ int main(int argc, char const *argv[]) {
 	printf("\n");
 
 
+	nodo *raiz = NULL;
+	raiz = construirArbol(tabla, raiz, arrAtributos);
+
+
+
+
+
 	return 0;
 }
 
@@ -76,29 +83,8 @@ So we split the table on the column which gives us the most information gain (le
 
 
  */
-node* buildDecisionTree(vvs &table, node* nodePtr, vvs &tableInfo)
-{
-	if (tableIsEmpty(table)) {
-		return NULL;
-	}
-	if (isHomogeneous(table)) {
-		nodePtr->isLeaf = true;
-		nodePtr->label = table[1][table[1].size()-1];
-		return nodePtr;
-	} else {
-		string splittingCol = decideSplittingColumn(table);
-		nodePtr->splitOn = splittingCol;
-		int colIndex = returnColumnIndex(splittingCol, tableInfo);
-		int iii;
-		for (iii = 1; iii < tableInfo[colIndex].size(); iii++) {
-			node* newNode = (node*) new node;
-			newNode->label = tableInfo[colIndex][iii];
-			nodePtr->childrenValues.push_back(tableInfo[colIndex][iii]);
-			newNode->isLeaf = false;
-			newNode->splitOn = splittingCol;
-			vvs auxTable = pruneTable(table, splittingCol, tableInfo[colIndex][iii]);
-			nodePtr->children.push_back(buildDecisionTree(auxTable, newNode, tableInfo));
-		}
-	}
-	return nodePtr;
-}
+
+
+
+
+

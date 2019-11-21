@@ -252,15 +252,45 @@ double discretizacion(unsigned int N ,arr[][N])
 
 
 
+nodo* construirArbolDecision(vvs &tabla, node* ptrNodo, vvs &arrAtributos)
+{
+	if (tableVacia(tabla)) {
+		return NULL;
+	}
 
+	if (esHomojenea(table) || calcHeuristica(tabla) < UMBRAL_H ) {
+		ptrNodo->hoja = true;
+		nodePtr->clase = table[1][NUM_ATRIBUTOS];
+		return ptrNodo;
+	} else {
 
+		unsigned int atributoExp = elegirAtributoExp(tabla);
 
+		ptrNodo->atributo = atributoExp;
+		//int colIndex = returnColumnIndex(splittingCol, tableInfo);
 
-
-
-
-
-
+		/** Para la cantidad de valores que puede tomar el atributo, 
+		  * en nuestro caso todos los atrbutos pueden tomar solo dos
+		  * valores: SI/NO */
+		for (int i = 0; i < 2; ++i){
+			
+			nodo *nuevoNodo = (nodo*)malloc(sizeof(nodo)); 
+			nuevoNodo->clase = i;
+			nuevoNodo->arrHijos[i] = i;
+			nuevoNodo->hoja = false;
+			nuevoNodo->atributo = atributoExp;
+			
+			auxTabla = pruneTable(tabla, atributoExp, i);
+			if ( i == 0) {
+				nuevoNodo->izq = construirArbolDecision(auxTabla, nuevoNodo, arrAtributos);
+			} else {
+				nuevoNodo->der = construirArbolDecision(auxTabla, nuevoNodo, arrAtributos);
+			}
+		}
+		
+	}
+	return nodo;
+}
 
 
 
