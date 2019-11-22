@@ -9,24 +9,51 @@
   * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
   * con una clase binaria
   */ 
-infoAtribute calculoEntropiaCat()
+infoAtribute calculoEntropiaCat(int numFilas, int numAtributos, float tabla[][numAtributos], int indexAtributo)
 {
 
-	infoAtribute heuristica;
+	/* DECLARACION DE VARIABLES */
 
-	unsigned int atributo;
-	unsigned int numFilas;
-	unsigned int numAtributoSi;
-	unsigned int numAtributoNo;
-	unsigned int numAtributoSiVivos;
-	unsigned int numAtributoSiMuertos;
-	unsigned int numVivos;
-	unsigned int numMuertos;
+	infoAtribute heuristica;					/* Estructura para almacenar los parametros de la heuristica */
+
+	unsigned int numAtributoSi = 0;				/* Numero de filas que tiene un SI en el atributo */
+	unsigned int numAtributoNo = 0;				/* Numero de filas que tiene un NO en el atributo */
+	unsigned int numAtributoSiVivos = 0;		/* Numero de personajes que tiene un si en el atributo y estan vivos */
+	unsigned int numAtributoSiMuertos = 0;		/* Numero de personajes que tiene un si en el atributo y estan muertos */
+	unsigned int numAtributoNoVivos = 0;		/* Numero de personajes que tiene un no en el atributo y estan vivos */
+	unsigned int numAtributoNoMuertos = 0;		/* Numero de personajes que tiene un no en el atributo y estan muertos */	
+	unsigned int numVivos;						/* Numero de peresonajes vivos */
+	unsigned int numMuertos;					/* Numero de peresonajes muertos */
 
 	double entropiaSi; 
 	double entropiaSiVivos;
 	double entropiaSiMuertos;
-	
+
+	/* OBTENCION DATOS */
+
+	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
+	for (int i = 0; i < numFilas; ++i) {
+		if (tabla[i][indexAtributo] == 1) {
+			++numAtributoSi;
+			if (tabla[i][numAtributos - 1] == 1)
+				++numAtributoSiVivos;
+			else
+				++numAtributoSiMuertos;
+		} else {
+			++numAtributoNo;
+			if (tabla[i][numAtributos - 1] == 0)
+				++numAtributoNoVivos;
+			else 
+				++numAtributoNoMuertos;
+		}
+		++i;
+	}
+
+	numVivos = numAtributoSiVivos + numAtributoNoVivos;
+	numMuertos = numAtributoSiMuertos + numAtributoNoMuertos;
+
+	/* CALCULO HEURISTICA */
+
 	/* Se calcula la entropia de SI  -  E_Atributo(SI) */
 	entropiaSiVivos = (numAtributoSiVivos / numAtributoSi) * ( log(numAtributoSiVivos / numAtributoSi) / log(2));
 
@@ -79,6 +106,20 @@ infoAtribute calculoEntropiaCat()
 
 	return heuristica;
 }
+
+
+/** Se encarga de elegir el mejor atributo (mejor heuristica) y devuelve su indice */
+int elegirAtributo(int numFilas, int numAtributos, float tabla[][numAtributos], int indexAtributo) {
+
+
+	for (int i = 0; i < numAtributos; ++i) {
+		calculoEntropiaCat(numFilas, numAtributos, tabla[][numAtributos], indexAtributo);	
+
+
+
+}
+
+
 
 
 /* Implementacion QuickSort en C */
@@ -293,7 +334,7 @@ nodo* construirArbolDecision(float tabla[][], nodo* ptrNodo)
   * que contenga el valor que se le pase a la funcion en el atribute que se le pase */
 
 
-matrix** filtrarTabla(int numAtributos, tabla[][numAtributos], indexAtributo, valorAtributo) {
+matrix** filtrarTabla(int numFilas, int numAtributos, tabla[][numAtributos], indexAtributo, valorAtributo) {
 
 
 	float tablaFiltrada[][numAtributos - 1];	/* Nueva tabla ya filtrada */
