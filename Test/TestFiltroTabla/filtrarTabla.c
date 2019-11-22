@@ -15,8 +15,8 @@ void filtrarTabla(int numFilas, int numAtributos, float tabla[][numAtributos], i
 
 
 	float tablaFiltrada[numFilas][numAtributos - 1];	/* Nueva tabla ya filtrada */
-	unsigned int indexFil = 0;					/* Indice de filas para recorrer la nueva tabla filtrada */ 
-	unsigned int indexCol = 0;					/* Indice de columnas para recorrer la nueva tabla filtrada */ 
+	unsigned int indexFil = 0;							/* Indice de filas para recorrer la nueva tabla filtrada */ 
+	unsigned int indexCol = 0;							/* Indice de columnas para recorrer la nueva tabla filtrada */ 
 
 	for (int i = 0; i < numFilas; ++i) {
 
@@ -46,6 +46,8 @@ int main(int argc, char const *argv[]) {
 
 	float arrMatrix[10][11];
 
+	float tempMatrix[10][11];
+
 	FILE *dataset;
 	if ( (dataset = fopen("problem_book.csv", "r")) == NULL){
 		perror("Fallo al abrir fichero");
@@ -64,18 +66,11 @@ int main(int argc, char const *argv[]) {
 		printf("Fila %d: %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f\n", i, arrMatrix[i][0], arrMatrix[i][1], arrMatrix[i][2], arrMatrix[i][3], arrMatrix[i][4], arrMatrix[i][5], arrMatrix[i][6], arrMatrix[i][7], arrMatrix[i][8], arrMatrix[i][9], arrMatrix[i][10]);
 	}
 
-	/*for (int i = 0; i < 10 ; ++i) {
-		printf("Fila %d: %d %d %d %d %d %d %d %d %d %d %d\n", i, arrMatrix[i][0], arrMatrix[i][1], arrMatrix[i][2], arrMatrix[i][3], arrMatrix[i][4], arrMatrix[i][5], arrMatrix[i][6], arrMatrix[i][7], arrMatrix[i][8], arrMatrix[i][9], arrMatrix[i][10]);
-	}*/
-
 	float x = 1.000;
-
-	if (1 == x)
-		printf("hoala\n");
 
 	fclose(dataset);
 
-	filtrarTabla(10, NUM_ATRIBUTOS, arrMatrix, 4, 1.0);
+	tempMatrix = filtrarTabla(10, NUM_ATRIBUTOS, arrMatrix, 4, 1.0);
 
 	return 0;
 }
