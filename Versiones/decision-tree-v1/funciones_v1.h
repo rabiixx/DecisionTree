@@ -66,6 +66,13 @@ typedef struct _nodo {
 } nodo;
 
 
+/* Contiene el numero de filas que contiene la tabla filtrada asi como la tabla filtrada */
+typedef struct _filtroInfo {
+	int numFil;
+	float **tabla;
+}
+
+
 infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo);
 
 int elegirAtributo(int numFilas, int numAtributos, float **tabla);
@@ -75,3 +82,7 @@ float **readData(unsigned int numFil, unsigned int numAtributos);
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo);
 
 float **filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo);
+
+bool esTablaVacia(float **tabla);
+
+bool esHomojenea(int numFil, int numAtributos, float **tabla);

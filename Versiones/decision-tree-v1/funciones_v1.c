@@ -196,7 +196,7 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, tabla[0][i]);	
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
-			indexMaxEnt = i;
+			indexMaxEnt = tabla[0][i];
 		}	
 		printf("Atributo %d: \n", i);
 		printf("Entropia: %f\n", arrHeuristica[i].entropia);
@@ -292,11 +292,11 @@ float **filtrarTabla(int numFilas, int numAtributos, float **tabla, int atributo
 
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo)
 {
-	if (tablaVacia(tabla)) {
+	if (esTablaVacia(tabla)) {
 		return NULL;
 	}
 
-	if (esHomojenea(tabla) || calcHeuristica(tabla) < UMBRAL_H ) {
+	if (esHomojenea(numFil, numAtributos, tabla) || calcHeuristica(tabla) < UMBRAL_H ) {
 		ptrNodo->hoja = true;
 		nodePtr->clase = table[1][NUM_ATRIBUTOS];
 		return ptrNodo;
@@ -335,4 +335,26 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	}
 	return nodo;
 }
+
+bool esTablaVacia(float **tabla){
+
+}
+
+bool esHomojenea(int numFil, int numAtributos, float **tabla) {
+
+	int clase = tabla[1][numAtributos];
+	for (int i = 1; i < numFil; ++i)
+	{
+		if (tabla[i][numAtributos] != clase)
+			return false;
+	}
+
+	return true;
+
+}
+
+
+
+
+
 
