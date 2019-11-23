@@ -295,7 +295,7 @@ nodo* construirArbolDecision(float tabla[][], nodo* ptrNodo)
 		return NULL;
 	}
 
-	if (esHomojenea(table) || calcHeuristica(tabla) < UMBRAL_H ) {
+	if (esHomojenea(tabla) || calcHeuristica(tabla) < UMBRAL_H ) {
 		ptrNodo->hoja = true;
 		nodePtr->clase = table[1][NUM_ATRIBUTOS];
 		return ptrNodo;
