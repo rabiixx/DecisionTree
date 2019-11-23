@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 // The MIT License (MIT)
 
 // Copyright (c) 2019 Ruben Cherif Narvaez
@@ -23,33 +21,39 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 //  DEALINGS IN THE SOFTWARE.
 
-/* code */
 
-#define NUM_ENTRENAMIENTO 100    /* Numero de filas del dataset de entrenamiento */
-#define NUM_TEST                  /* Numero de filas del dataset de testeo */ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones_v1.h"
 
+#define NUM_FILAS 20    /* Numero de filas del dataset de entrenamiento */
 
-#define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
+#define NUM_ATRIBUTOS 8          /* Numero de atributos del problema */
 #define NUM_CLASES 2              /* Numero de clases */
 
 int main(int argc, char const *argv[]) {
 
-	char *str_atributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
+	/*char *str_atributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
 
-	char *arrClases[2] = {"Vivo", "Muerto"};
+	char *arrClases[2] = {"Vivo", "Muerto"};*/
 
 
-	float **tabla = (float**)malloc(NUM_FILAS * sizeof(float*));
+	float **tabla = (float**)malloc( (NUM_FILAS + 1) * sizeof(float*));
 
-	for (int i = 0; i < NUM_FILAS; ++i) {
-		tabla[i] = (float*)malloc(NUM_ATRIBUTOS * sizeof(float));
+	for (int i = 0; i < NUM_FILAS + 1; ++i) {
+		tabla[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
 	tabla = readData(NUM_FILAS, NUM_ATRIBUTOS);
 
 	nodo *raiz = NULL;
-	raiz = construirArbol(tabla, raiz, arrAtributos);
 
+ 	nodo *temp =  (nodo*)malloc(sizeof(nodo)); 
+
+ 	raiz = temp;
+
+	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz);
 
 	return 0;
 }

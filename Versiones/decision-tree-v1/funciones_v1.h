@@ -49,6 +49,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define VIVO -1
+#define MUERTO -2
+
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;
@@ -57,12 +60,12 @@ typedef struct _infoAtributo {
 
 /* Define la estructura de una nodo del arbol de decisiones */
 typedef struct _nodo {
-	unsigned int atributo;			/* Indica que atributo usar para dividir */
-	unsigned int clase;				/* Si es una hoja, indica la clase a la pertenece */
-	bool hoja;						/* Indica si el nodo es una hoja */
-	int *arrHijos[];				/* Contiene el valor de los atributos de sus hijos */
-	struct _nodo *izq;				/* Direccion de memoria del hijo izquierdo */
-	struct _nodo *der;				/* Direccion de memoria del hijo derecho */
+	unsigned int atributo;       /* Indica que atributo usar para dividir */
+	unsigned int clase;          /* Si es una hoja, indica la clase a la pertenece */
+	bool hoja;						       /* Indica si el nodo es una hoja */
+	int arrHijos[2];             /* Contiene el valor de los atributos de sus hijos */
+	struct _nodo *izq;           /* Direccion de memoria del hijo izquierdo */
+	struct _nodo *der;           /* Direccion de memoria del hijo derecho */
 } nodo;
 
 
@@ -70,7 +73,7 @@ typedef struct _nodo {
 typedef struct _filtroInfo {
 	int numFil;
 	float **tabla;
-}
+} filtroInfo;
 
 
 infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo);
@@ -81,8 +84,6 @@ float **readData(unsigned int numFil, unsigned int numAtributos);
 
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo);
 
-float **filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo);
-
-bool esTablaVacia(float **tabla);
+filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo);
 
 bool esHomojenea(int numFil, int numAtributos, float **tabla);
