@@ -11,6 +11,8 @@
 #define NUM_CLASES 2              /* Numero de clases */
 
 
+FILE *output;
+
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;
@@ -46,14 +48,12 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
 	for (int i = 0; i < numFilas; ++i) {
 		if (tabla[i][indexAtributo] == 1) {
-			printf("hola\n");
 			++numAtributoSi;
 			if (tabla[i][numAtributos - 1] == 1)
 				++numAtributoSiVivos;
 			else
 				++numAtributoSiMuertos;
 		} else {
-			printf("adiso\n");
 			++numAtributoNo;
 			if (tabla[i][numAtributos - 1] == 0)
 				++numAtributoNoVivos;
@@ -65,43 +65,50 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	numVivos = numAtributoSiVivos + numAtributoNoVivos;
 	numMuertos = numAtributoSiMuertos + numAtributoNoMuertos;
 
-	printf("Informacion: \n");
-	printf("Numero AtributosSI: %d\n", numAtributoSi);
-	printf("Numero AtributosNO: %d\n", numAtributoNo);
-	printf("Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
-	printf("Numero AtributosSIMuertos: %d\n", numAtributoSiMuertos);
-	printf("Numero AtributosNOVivos: %d\n", numAtributoNoVivos);
-	printf("Numero AtributosNOMuertos: %d\n", numAtributoNoMuertos);
-	printf("Numero VIvos; %d\n", numVivos);
-	printf("Numero Muertos; %d\n", numMuertos);
-
-
-
+	fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
+	fprintf(output, "Numero AtributosSI: %d\n", numAtributoSi);
+	fprintf(output, "Numero AtributosNO: %d\n", numAtributoNo);
+	fprintf(output, "Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
+	fprintf(output, "Numero AtributosSIMuertos: %d\n", numAtributoSiMuertos);
+	fprintf(output, "Numero AtributosNOVivos: %d\n", numAtributoNoVivos);
+	fprintf(output, "Numero AtributosNOMuertos: %d\n", numAtributoNoMuertos);
+	fprintf(output,"Numero VIvos; %d\n", numVivos);
+	fprintf(output, "Numero Muertos; %d\n\n", numMuertos);
 
 	/* CALCULO HEURISTICA */
 
 	/* Se calcula la entropia de SI  -  E_Atributo(SI) */
-	entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiVivos) ) / log(2));
+	if ( ( (double)numAtributoSiVivos / (double)numAtributoSi ) != 0 ) {
+		entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiVivos) ) / log(2));
+	} else {
+		entropiaSiVivos = (double) 0;
+	}
 
-
-	printf("Entropia Si Vivos: %f\n", entropiaSiVivos);
-
-	entropiaSiMuertos = ( (double)numAtributoSiMuertos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiMuertos) ) / log(2));
-
-	printf("Entropia Si Muertos: %f\n", entropiaSiMuertos);
+	if ( ( (double)numAtributoSiMuertos / (double)numAtributoSi ) != 0 ){
+		entropiaSiMuertos = ( (double)numAtributoSiMuertos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiMuertos) ) / log(2));
+	} else {
+		entropiaSiMuertos = (double) 0;
+	}
 
 	entropiaSi = (double) (entropiaSiVivos + entropiaSiMuertos);
-
-	printf("Entropia SI: %f\n", entropiaSi);
 
 	double entropiaNo; 
 	double entropiaNoVivos;
 	double entropiaNoMuertos;
 
 	/* Se calcula la entropia de NO  -  E_Atributo(NO) */
-	entropiaNoVivos = ( (double)numAtributoNoVivos / (double)numAtributoNo) * ( log( ( (double)numAtributoNo / (double) numAtributoNoVivos) ) / log(2));
 
-	entropiaNoMuertos = ( (double)numAtributoNoMuertos / (double)numAtributoNo) * ( log( ( (double) numAtributoNo / (double)numAtributoNoMuertos) ) / log(2));
+	if (( (double)numAtributoNoVivos / (double)numAtributoNo) != 0) {
+		entropiaNoVivos = ( (double)numAtributoNoVivos / (double)numAtributoNo) * ( log( ( (double)numAtributoNo / (double) numAtributoNoVivos) ) / log(2));
+	} else {
+		entropiaNoVivos = (double) 0;
+	}
+
+	if ( ( (double)numAtributoNoMuertos / (double)numAtributoNo) != 0) {
+		entropiaNoMuertos = ( (double)numAtributoNoMuertos / (double)numAtributoNo) * ( log( ( (double) numAtributoNo / (double)numAtributoNoMuertos) ) / log(2));
+	} else {
+		entropiaNoMuertos = (double) 0;
+	}
 
 	entropiaNo = (double) (entropiaNoVivos + entropiaNoMuertos);
 
@@ -113,13 +120,23 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	double entropiaMuertos;
 	double entropiaC;
 
-	entropiaVivos = ( (double)numVivos / (double)numFilas ) * ( log( ( (double)numFilas / (double)numVivos)) / log(2));
-	entropiaMuertos = (numMuertos / numFilas) * ( log( ( (double)numFilas / (double)numMuertos)) / log(2));
-	entropiaC = entropiaMuertos + entropiaMuertos;
+	if ( ( (double)numVivos / (double)numFilas ) != 0){
+		entropiaVivos = ( (double)numVivos / (double)numFilas ) * ( log( ( (double)numFilas / (double)numVivos) ) / log(2));
+	} else {
+		entropiaVivos = (double) 0;
+	}	
+
+	if ( ( (double)numMuertos / (double)numFilas) != 0) {
+		entropiaMuertos = ( (double)numMuertos / (double)numFilas) * ( log( ( (double)numFilas / (double)numMuertos)) / log(2));
+	} else {
+		entropiaMuertos = (double) 0;
+	}
+
+	entropiaC = (double) (entropiaVivos + entropiaMuertos);
 
 
 	/* Calcula la Ganancia de Informacion - Gain(Atributo) */
-	double gain = entropiaC - entropiaAtributo;
+	double gain = (double) (entropiaC - entropiaAtributo);
 
 
 	/* Ratio de Ganancia  -  GainRatio(A) = Gain(A) / SplitInfo(A) */
@@ -127,11 +144,23 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	double splitInfo1;
 	double splitInfo2;
 
-	splitInfo1 = (numAtributoSi / numFilas) * ( log(numAtributoSi / numFilas) / log(2) );
-	splitInfo2 = (numAtributoNo / numFilas) * ( log(numAtributoNo / numFilas) / log(2) );
-	splitInfoTotal = splitInfo1 + splitInfo2;
+	if (( (double)numAtributoSi / (double)numFilas) != 0) {
+		splitInfo1 = ( (double)numAtributoSi / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoSi ) ) / log(2) );	
+	} else {
+		splitInfo1 = (double) 0;
+	}
 
-	double gainRatioA = (gain / splitInfoTotal);
+	if ( ( (double)numAtributoNo / (double)numFilas) != 0) {
+		splitInfo2 = ( (double)numAtributoNo / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoNo ) ) / log(2) );	
+	} else {
+
+		splitInfo2 = (double) 0;
+	}
+
+	
+	splitInfoTotal = (double) (splitInfo1 + splitInfo2); 
+
+	double gainRatioA = (double) (gain / splitInfoTotal);
 
 	heuristica.entropia = entropiaAtributo;
 	heuristica.gainInfo = gain;
@@ -146,9 +175,12 @@ void elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 
 	infoAtributo arrHeuristica[numAtributos];
 
+	double maxEnt = 0;
+	unsigned int indexMaxEnt = 0;
 
 	for (int i = 0; i < numAtributos; ++i) {
 		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i);	
+		//if (arrHeuristica[i].ga)	
 		printf("Atributo %d: \n", i);
 		printf("Entropia: %f\n", arrHeuristica[i].entropia);
 		printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
@@ -159,6 +191,8 @@ void elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 
 int main(int argc, char const *argv[])
 {
+
+	system("clear");
 
 	float **arrMatrix = (float**)malloc(NUM_ENTRENAMIENTO * sizeof(float*));
 
@@ -172,6 +206,11 @@ int main(int argc, char const *argv[])
 		exit(342);
 	}
 
+	if( (output = fopen("output.txt", "a")) == NULL) {
+		perror("Error abriendo fichero output");
+		exit(EXIT_FAILURE);
+	} 
+
 	char *str = (char*)malloc(500*sizeof(char));
 
 	/* Leer primera linea */
@@ -183,14 +222,16 @@ int main(int argc, char const *argv[])
 	for (int i = 0; i < NUM_ENTRENAMIENTO; ++i){
 		fgets(str, 500, dataset);
 		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
-		printf("Fila %d: %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f\n", i, arrMatrix[i][0], arrMatrix[i][1], arrMatrix[i][2], arrMatrix[i][3], arrMatrix[i][4], arrMatrix[i][5], arrMatrix[i][6], arrMatrix[i][7], arrMatrix[i][8], arrMatrix[i][9], arrMatrix[i][10]);
+		fprintf(output, "Fila %d: %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f %3f\n", i, arrMatrix[i][0], arrMatrix[i][1], arrMatrix[i][2], arrMatrix[i][3], arrMatrix[i][4], arrMatrix[i][5], arrMatrix[i][6], arrMatrix[i][7], arrMatrix[i][8], arrMatrix[i][9], arrMatrix[i][10]);
 	}
-	printf("\n\n");
+	fprintf(output, "\n\n");
 
 
 	elegirAtributo(NUM_ENTRENAMIENTO, NUM_ATRIBUTOS, arrMatrix);
 
 
+	fclose(output);
+	fclose(dataset);
 
 	return 0;
 }
