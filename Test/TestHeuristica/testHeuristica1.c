@@ -81,24 +81,16 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	/* CALCULO HEURISTICA */
 
 	/* Se calcula la entropia de SI  -  E_Atributo(SI) */
-	entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( (numAtributoSi / numAtributoSiVivos) ) / log(2));
+	entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiVivos) ) / log(2));
 
-	double x, y, z;
-	x = log( (numAtributoSi / numAtributoSiVivos) ) / log(2);
-	y = (double)numAtributoSiVivos / (double)numAtributoSi;
-	z = x * y;
-
-	printf("RESultado 1: %f\n", x);
-	printf("RESultado 2: %f\n", y);
-	printf("RESultado 3: %f\n", z);
 
 	printf("Entropia Si Vivos: %f\n", entropiaSiVivos);
 
-	entropiaSiMuertos = (numAtributoSiMuertos / numAtributoSi) * ( log(numAtributoSiMuertos / numAtributoSi) / log(2));
+	entropiaSiMuertos = ( (double)numAtributoSiMuertos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiMuertos) ) / log(2));
 
 	printf("Entropia Si Muertos: %f\n", entropiaSiMuertos);
 
-	entropiaSi = entropiaSiVivos + entropiaSiMuertos;
+	entropiaSi = (double) (entropiaSiVivos + entropiaSiMuertos);
 
 	printf("Entropia SI: %f\n", entropiaSi);
 
@@ -107,22 +99,22 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	double entropiaNoMuertos;
 
 	/* Se calcula la entropia de NO  -  E_Atributo(NO) */
-	entropiaNoVivos = (numAtributoNoVivos / numAtributoNo) * ( log(numAtributoNoVivos / numAtributoNo) / log(2));
+	entropiaNoVivos = ( (double)numAtributoNoVivos / (double)numAtributoNo) * ( log( ( (double)numAtributoNo / (double) numAtributoNoVivos) ) / log(2));
 
-	entropiaNoMuertos = (numAtributoNoMuertos / numAtributoNo) * ( log(numAtributoNoMuertos / numAtributoNo) / log(2));
+	entropiaNoMuertos = ( (double)numAtributoNoMuertos / (double)numAtributoNo) * ( log( ( (double) numAtributoNo / (double)numAtributoNoMuertos) ) / log(2));
 
-	entropiaNo = entropiaNoVivos + entropiaNoMuertos;
+	entropiaNo = (double) (entropiaNoVivos + entropiaNoMuertos);
 
 	/* Calcula la entropia del atributo  -  E(Atributo) */
-	double entropiaAtributo = ( (numAtributoSi / numFilas) * entropiaSi ) + ( (numAtributoNo / numFilas) * entropiaNo );
+	double entropiaAtributo = ( ( (double)numAtributoSi / (double)numFilas) * entropiaSi ) + ( ( (double)numAtributoNo / (double)numFilas) * entropiaNo );
 
 	/* Calcula E(C) */
 	double entropiaVivos;
 	double entropiaMuertos;
 	double entropiaC;
 
-	entropiaVivos = (numVivos / numFilas) * ( log(numVivos / numFilas) / log(2));
-	entropiaMuertos = (numMuertos / numFilas) * ( log(numMuertos / numFilas) / log(2));
+	entropiaVivos = ( (double)numVivos / (double)numFilas ) * ( log( ( (double)numFilas / (double)numVivos)) / log(2));
+	entropiaMuertos = (numMuertos / numFilas) * ( log( ( (double)numFilas / (double)numMuertos)) / log(2));
 	entropiaC = entropiaMuertos + entropiaMuertos;
 
 
