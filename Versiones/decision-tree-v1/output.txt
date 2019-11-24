@@ -18,154 +18,154 @@
 Informacion Atributo 0: 
 Numero AtributosSI: 11
 Numero AtributosNO: 4
-Numero AtributosSIVivos: 5
-Numero AtributosSIMuertos: 6
-Numero AtributosNOVivos: 2
-Numero AtributosNOMuertos: 2
+Numero AtributosSIVivos: 6
+Numero AtributosSIMuertos: 5
+Numero AtributosNOVivos: 1
+Numero AtributosNOMuertos: 3
 Numero VIvos; 7
 Numero Muertos; 8
 EntropiaSI: 0.994030
-EntropiaSIVivos: 0.517047
-EntropiaSIMuertos: 0.476983
-EntropiaNO: 1.000000
+EntropiaSIVivos: 0.476983
+EntropiaSIMuertos: 0.517047
+EntropiaNO: 0.811278
 EntropiaNOVivos: 0.500000
-EntropiaNOMuertos: 0.500000
-Entropia Atributo: 0.995622
+EntropiaNOMuertos: 0.311278
+Entropia Atributo: 0.945296
 Entropia Clase: 0.996792
-Gananacia Informacion: 0.001169
+Gananacia Informacion: 0.051495
 
 Informacion Atributo 1: 
 Numero AtributosSI: 2
 Numero AtributosNO: 13
 Numero AtributosSIVivos: 1
 Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 6
-Numero VIvos; 8
-Numero Muertos; 7
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 8
+Numero VIvos; 6
+Numero Muertos; 9
 EntropiaSI: 1.000000
 EntropiaSIVivos: 0.500000
 EntropiaSIMuertos: 0.500000
-EntropiaNO: 0.995727
-EntropiaNOVivos: 0.480892
-EntropiaNOMuertos: 0.514836
-Entropia Atributo: 0.996297
-Entropia Clase: 0.996792
-Gananacia Informacion: 0.000495
+EntropiaNO: 0.961237
+EntropiaNOVivos: 0.530197
+EntropiaNOMuertos: 0.431040
+Entropia Atributo: 0.966405
+Entropia Clase: 0.970951
+Gananacia Informacion: 0.004546
 
 Informacion Atributo 2: 
 Numero AtributosSI: 2
 Numero AtributosNO: 13
 Numero AtributosSIVivos: 1
 Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 6
-Numero VIvos; 8
-Numero Muertos; 7
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 8
+Numero VIvos; 6
+Numero Muertos; 9
 EntropiaSI: 1.000000
 EntropiaSIVivos: 0.500000
 EntropiaSIMuertos: 0.500000
-EntropiaNO: 0.995727
-EntropiaNOVivos: 0.480892
-EntropiaNOMuertos: 0.514836
-Entropia Atributo: 0.996297
-Entropia Clase: 0.996792
-Gananacia Informacion: 0.000495
+EntropiaNO: 0.961237
+EntropiaNOVivos: 0.530197
+EntropiaNOMuertos: 0.431040
+Entropia Atributo: 0.966405
+Entropia Clase: 0.970951
+Gananacia Informacion: 0.004546
 
 Informacion Atributo 3: 
 Numero AtributosSI: 2
 Numero AtributosNO: 13
-Numero AtributosSIVivos: 2
+Numero AtributosSIVivos: 1
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 8
+Numero VIvos; 6
+Numero Muertos; 9
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
+EntropiaNO: 0.961237
+EntropiaNOVivos: 0.530197
+EntropiaNOMuertos: 0.431040
+Entropia Atributo: 0.966405
+Entropia Clase: 0.970951
+Gananacia Informacion: 0.004546
+
+Informacion Atributo 4: 
+Numero AtributosSI: 4
+Numero AtributosNO: 11
+Numero AtributosSIVivos: 4
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
+Numero AtributosNOVivos: 6
 Numero AtributosNOMuertos: 5
 Numero VIvos; 10
 Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.961237
-EntropiaNOVivos: 0.431040
-EntropiaNOMuertos: 0.530197
-Entropia Atributo: 0.833072
+EntropiaNO: 0.994030
+EntropiaNOVivos: 0.476983
+EntropiaNOMuertos: 0.517047
+Entropia Atributo: 0.728955
 Entropia Clase: 0.918296
-Gananacia Informacion: 0.085224
-
-Informacion Atributo 4: 
-Numero AtributosSI: 4
-Numero AtributosNO: 11
-Numero AtributosSIVivos: 3
-Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 4
-Numero VIvos; 10
-Numero Muertos; 5
-EntropiaSI: 0.811278
-EntropiaSIVivos: 0.311278
-EntropiaSIMuertos: 0.500000
-EntropiaNO: 0.945660
-EntropiaNOVivos: 0.414958
-EntropiaNOMuertos: 0.530702
-Entropia Atributo: 0.909825
-Entropia Clase: 0.918296
-Gananacia Informacion: 0.008471
+Gananacia Informacion: 0.189340
 
 Informacion Atributo 5: 
 Numero AtributosSI: 1
 Numero AtributosNO: 14
 Numero AtributosSIVivos: 1
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 6
-Numero VIvos; 9
-Numero Muertos; 6
+Numero AtributosNOVivos: 6
+Numero AtributosNOMuertos: 8
+Numero VIvos; 7
+Numero Muertos; 8
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
 EntropiaNO: 0.985228
-EntropiaNOVivos: 0.461346
-EntropiaNOMuertos: 0.523882
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
 Entropia Atributo: 0.919546
-Entropia Clase: 0.970951
-Gananacia Informacion: 0.051404
+Entropia Clase: 0.996792
+Gananacia Informacion: 0.077245
 
 Informacion Atributo 6: 
 Numero AtributosSI: 4
 Numero AtributosNO: 11
-Numero AtributosSIVivos: 4
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 3
-Numero VIvos; 12
-Numero Muertos; 3
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.845351
-EntropiaNOVivos: 0.334132
-EntropiaNOMuertos: 0.511219
-Entropia Atributo: 0.619924
-Entropia Clase: 0.721928
-Gananacia Informacion: 0.102004
+Numero AtributosSIVivos: 2
+Numero AtributosSIMuertos: 2
+Numero AtributosNOVivos: 4
+Numero AtributosNOMuertos: 7
+Numero VIvos; 6
+Numero Muertos; 9
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
+EntropiaNO: 0.945660
+EntropiaNOVivos: 0.530702
+EntropiaNOMuertos: 0.414958
+Entropia Atributo: 0.960151
+Entropia Clase: 0.970951
+Gananacia Informacion: 0.010800
 
 Informacion Atributo 7: 
 Numero AtributosSI: 7
 Numero AtributosNO: 8
-Numero AtributosSIVivos: 7
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 0
-Numero VIvos; 15
-Numero Muertos; 0
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
+Numero AtributosSIVivos: 4
+Numero AtributosSIMuertos: 3
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 5
+Numero VIvos; 7
+Numero Muertos; 8
+EntropiaSI: 0.985228
+EntropiaSIVivos: 0.461346
+EntropiaSIMuertos: 0.523882
+EntropiaNO: 0.954434
+EntropiaNOVivos: 0.530639
+EntropiaNOMuertos: 0.423795
+Entropia Atributo: 0.968805
+Entropia Clase: 0.996792
+Gananacia Informacion: 0.027987
 
 
 Estado Tabla Principal: 
@@ -186,18 +186,18 @@ Estado Tabla Principal:
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 6
+Mejor Atributo: 4
 
 AUX SUB-TABLA: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 6.000000, 7.000000, 99.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
 1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
@@ -206,446 +206,443 @@ Izquierda
 Informacion Atributo 0: 
 Numero AtributosSI: 9
 Numero AtributosNO: 2
-Numero AtributosSIVivos: 3
-Numero AtributosSIMuertos: 6
-Numero AtributosNOVivos: 2
-Numero AtributosNOMuertos: 0
+Numero AtributosSIVivos: 4
+Numero AtributosSIMuertos: 5
+Numero AtributosNOVivos: 1
+Numero AtributosNOMuertos: 1
 Numero VIvos; 5
 Numero Muertos; 6
-EntropiaSI: 0.918296
-EntropiaSIVivos: 0.528321
-EntropiaSIMuertos: 0.389975
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.751333
+EntropiaSI: 0.991076
+EntropiaSIVivos: 0.519967
+EntropiaSIMuertos: 0.471109
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 0.992699
 Entropia Clase: 0.994030
-Gananacia Informacion: 0.242697
+Gananacia Informacion: 0.001332
 
 Informacion Atributo 1: 
 Numero AtributosSI: 1
 Numero AtributosNO: 10
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 3
-Numero VIvos; 7
-Numero Muertos; 4
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 5
+Numero VIvos; 5
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.881291
-EntropiaNOVivos: 0.360201
-EntropiaNOMuertos: 0.521090
-Entropia Atributo: 0.801174
-Entropia Clase: 0.945660
-Gananacia Informacion: 0.144487
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 0.909091
+Entropia Clase: 0.994030
+Gananacia Informacion: 0.084939
 
 Informacion Atributo 2: 
 Numero AtributosSI: 1
 Numero AtributosNO: 10
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 3
-Numero VIvos; 7
-Numero Muertos; 4
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 5
+Numero VIvos; 5
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.881291
-EntropiaNOVivos: 0.360201
-EntropiaNOMuertos: 0.521090
-Entropia Atributo: 0.801174
-Entropia Clase: 0.945660
-Gananacia Informacion: 0.144487
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 0.909091
+Entropia Clase: 0.994030
+Gananacia Informacion: 0.084939
 
 Informacion Atributo 3: 
 Numero AtributosSI: 1
 Numero AtributosNO: 10
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 2
-Numero VIvos; 9
-Numero Muertos; 2
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 5
+Numero AtributosNOMuertos: 5
+Numero VIvos; 5
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.721928
-EntropiaNOVivos: 0.257542
-EntropiaNOMuertos: 0.464386
-Entropia Atributo: 0.656298
-Entropia Clase: 0.684038
-Gananacia Informacion: 0.027740
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 0.909091
+Entropia Clase: 0.994030
+Gananacia Informacion: 0.084939
 
 Informacion Atributo 4: 
-Numero AtributosSI: 2
-Numero AtributosNO: 9
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 7
-Numero AtributosNOMuertos: 2
-Numero VIvos; 8
-Numero Muertos; 3
-EntropiaSI: 1.000000
-EntropiaSIVivos: 0.500000
-EntropiaSIMuertos: 0.500000
-EntropiaNO: 0.764205
-EntropiaNOVivos: 0.281999
-EntropiaNOMuertos: 0.482206
-Entropia Atributo: 0.807076
-Entropia Clase: 0.845351
-Gananacia Informacion: 0.038275
-
-Informacion Atributo 5: 
 Numero AtributosSI: 0
 Numero AtributosNO: 11
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 3
-Numero VIvos; 8
-Numero Muertos; 3
+Numero AtributosNOVivos: 6
+Numero AtributosNOMuertos: 5
+Numero VIvos; 6
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.845351
-EntropiaNOVivos: 0.334132
-EntropiaNOMuertos: 0.511219
-Entropia Atributo: 0.845351
-Entropia Clase: 0.845351
+EntropiaNO: 0.994030
+EntropiaNOVivos: 0.476983
+EntropiaNOMuertos: 0.517047
+Entropia Atributo: 0.994030
+Entropia Clase: 0.994030
 Gananacia Informacion: 0.000000
 
-Informacion Atributo 6: 
-Numero AtributosSI: 3
-Numero AtributosNO: 8
-Numero AtributosSIVivos: 3
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 8
-Numero AtributosNOMuertos: 0
-Numero VIvos; 11
-Numero Muertos; 0
+Informacion Atributo 5: 
+Numero AtributosSI: 2
+Numero AtributosNO: 9
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 2
+Numero AtributosNOVivos: 4
+Numero AtributosNOMuertos: 5
+Numero VIvos; 4
+Numero Muertos; 7
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
+EntropiaNO: 0.991076
+EntropiaNOVivos: 0.519967
+EntropiaNOMuertos: 0.471109
+Entropia Atributo: 0.810880
+Entropia Clase: 0.945660
+Gananacia Informacion: 0.134780
+
+Informacion Atributo 6: 
+Numero AtributosSI: 4
+Numero AtributosNO: 7
+Numero AtributosSIVivos: 1
+Numero AtributosSIMuertos: 3
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 4
+Numero Muertos; 7
+EntropiaSI: 0.811278
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.311278
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.921974
+Entropia Clase: 0.945660
+Gananacia Informacion: 0.023687
+
+
+Estado Tabla Principal: 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 6.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+
+Mejor Atributo: 6
+
+AUX SUB-TABLA: 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+
+Izquierda
+Informacion Atributo 0: 
+Numero AtributosSI: 8
+Numero AtributosNO: 1
+Numero AtributosSIVivos: 4
+Numero AtributosSIMuertos: 4
+Numero AtributosNOVivos: 0
+Numero AtributosNOMuertos: 1
+Numero VIvos; 4
+Numero Muertos; 5
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
 EntropiaNO: 0.000000
 EntropiaNOVivos: 0.000000
 EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
-
-
-Estado Tabla Principal: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-
-Mejor Atributo: 0
-
-AUX SUB-TABLA: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-
-Izquierda
-Hoja: 1
-
-Estado Tabla Principal: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-
-Mejor Atributo: 0
-
-AUX SUB-TABLA: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-
-derecha
-Informacion Atributo 0: 
-Numero AtributosSI: 1
-Numero AtributosNO: 8
-Numero AtributosSIVivos: 0
-Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 3
-Numero VIvos; 5
-Numero Muertos; 4
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.954434
-EntropiaNOVivos: 0.423795
-EntropiaNOMuertos: 0.530639
-Entropia Atributo: 0.848386
+Entropia Atributo: 0.888889
 Entropia Clase: 0.991076
-Gananacia Informacion: 0.142690
+Gananacia Informacion: 0.102187
 
 Informacion Atributo 1: 
 Numero AtributosSI: 1
 Numero AtributosNO: 8
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 1
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 3
-Numero VIvos; 5
-Numero Muertos; 4
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 5
+Numero VIvos; 3
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
 EntropiaNO: 0.954434
-EntropiaNOVivos: 0.423795
-EntropiaNOMuertos: 0.530639
+EntropiaNOVivos: 0.530639
+EntropiaNOMuertos: 0.423795
 Entropia Atributo: 0.848386
-Entropia Clase: 0.991076
-Gananacia Informacion: 0.142690
+Entropia Clase: 0.918296
+Gananacia Informacion: 0.069910
 
 Informacion Atributo 2: 
 Numero AtributosSI: 1
 Numero AtributosNO: 8
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 6
-Numero AtributosNOMuertos: 2
-Numero VIvos; 7
-Numero Muertos; 2
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 5
+Numero VIvos; 3
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.811278
-EntropiaNOVivos: 0.311278
-EntropiaNOMuertos: 0.500000
-Entropia Atributo: 0.721136
-Entropia Clase: 0.764205
-Gananacia Informacion: 0.043068
+EntropiaNO: 0.954434
+EntropiaNOVivos: 0.530639
+EntropiaNOMuertos: 0.423795
+Entropia Atributo: 0.848386
+Entropia Clase: 0.918296
+Gananacia Informacion: 0.069910
 
 Informacion Atributo 3: 
 Numero AtributosSI: 1
 Numero AtributosNO: 8
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 6
-Numero AtributosNOMuertos: 2
-Numero VIvos; 7
-Numero Muertos; 2
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 5
+Numero VIvos; 3
+Numero Muertos; 6
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.811278
-EntropiaNOVivos: 0.311278
-EntropiaNOMuertos: 0.500000
-Entropia Atributo: 0.721136
-Entropia Clase: 0.764205
-Gananacia Informacion: 0.043068
+EntropiaNO: 0.954434
+EntropiaNOVivos: 0.530639
+EntropiaNOMuertos: 0.423795
+Entropia Atributo: 0.848386
+Entropia Clase: 0.918296
+Gananacia Informacion: 0.069910
 
 Informacion Atributo 4: 
 Numero AtributosSI: 0
 Numero AtributosNO: 9
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 6
-Numero AtributosNOMuertos: 3
-Numero VIvos; 6
-Numero Muertos; 3
+Numero AtributosNOVivos: 4
+Numero AtributosNOMuertos: 5
+Numero VIvos; 4
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.918296
-EntropiaNOVivos: 0.389975
-EntropiaNOMuertos: 0.528321
-Entropia Atributo: 0.918296
-Entropia Clase: 0.918296
+EntropiaNO: 0.991076
+EntropiaNOVivos: 0.519967
+EntropiaNOMuertos: 0.471109
+Entropia Atributo: 0.991076
+Entropia Clase: 0.991076
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 5: 
-Numero AtributosSI: 3
-Numero AtributosNO: 6
-Numero AtributosSIVivos: 3
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 6
-Numero AtributosNOMuertos: 0
-Numero VIvos; 9
-Numero Muertos; 0
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
+Numero AtributosSI: 2
+Numero AtributosNO: 7
+Numero AtributosSIVivos: 1
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 4
+Numero Muertos; 5
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.988511
+Entropia Clase: 0.991076
+Gananacia Informacion: 0.002565
 
 
 Estado Tabla Principal: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 1
+Mejor Atributo: 0
 
 AUX SUB-TABLA: 
-2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
 Izquierda
+Hoja: 1
+
+Estado Tabla Principal: 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+
+Mejor Atributo: 0
+
+AUX SUB-TABLA: 
+1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+
+derecha
 Informacion Atributo 0: 
-Numero AtributosSI: 0
-Numero AtributosNO: 8
+Numero AtributosSI: 1
+Numero AtributosNO: 7
 Numero AtributosSIVivos: 0
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 3
-Numero VIvos; 5
-Numero Muertos; 3
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 3
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.954434
-EntropiaNOVivos: 0.423795
-EntropiaNOMuertos: 0.530639
-Entropia Atributo: 0.954434
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.862075
 Entropia Clase: 0.954434
-Gananacia Informacion: 0.000000
+Gananacia Informacion: 0.092359
 
 Informacion Atributo 1: 
 Numero AtributosSI: 1
 Numero AtributosNO: 7
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 2
-Numero VIvos; 6
-Numero Muertos; 2
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 3
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.863121
-EntropiaNOVivos: 0.346733
-EntropiaNOMuertos: 0.516387
-Entropia Atributo: 0.755230
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.056048
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.862075
+Entropia Clase: 0.954434
+Gananacia Informacion: 0.092359
 
 Informacion Atributo 2: 
 Numero AtributosSI: 1
 Numero AtributosNO: 7
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 2
-Numero VIvos; 6
-Numero Muertos; 2
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 3
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.863121
-EntropiaNOVivos: 0.346733
-EntropiaNOMuertos: 0.516387
-Entropia Atributo: 0.755230
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.056048
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.862075
+Entropia Clase: 0.954434
+Gananacia Informacion: 0.092359
 
 Informacion Atributo 3: 
 Numero AtributosSI: 0
 Numero AtributosNO: 8
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 3
-Numero VIvos; 5
-Numero Muertos; 3
+Numero AtributosNOVivos: 4
+Numero AtributosNOMuertos: 4
+Numero VIvos; 4
+Numero Muertos; 4
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.954434
-EntropiaNOVivos: 0.423795
-EntropiaNOMuertos: 0.530639
-Entropia Atributo: 0.954434
-Entropia Clase: 0.954434
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 1.000000
+Entropia Clase: 1.000000
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 4: 
-Numero AtributosSI: 3
-Numero AtributosNO: 5
-Numero AtributosSIVivos: 3
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 0
-Numero VIvos; 8
-Numero Muertos; 0
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
+Numero AtributosSI: 2
+Numero AtributosNO: 6
+Numero AtributosSIVivos: 1
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 3
+Numero VIvos; 4
+Numero Muertos; 4
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
+EntropiaNO: 1.000000
+EntropiaNOVivos: 0.500000
+EntropiaNOMuertos: 0.500000
+Entropia Atributo: 1.000000
+Entropia Clase: 1.000000
 Gananacia Informacion: 0.000000
 
 
 Estado Tabla Principal: 
-2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 3
+Mejor Atributo: 1
 
 AUX SUB-TABLA: 
-2.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
@@ -656,89 +653,89 @@ Numero AtributosSI: 0
 Numero AtributosNO: 7
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 2
-Numero VIvos; 5
-Numero Muertos; 2
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 3
+Numero Muertos; 4
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.863121
-EntropiaNOVivos: 0.346733
-EntropiaNOMuertos: 0.516387
-Entropia Atributo: 0.863121
-Entropia Clase: 0.863121
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.985228
+Entropia Clase: 0.985228
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 1: 
 Numero AtributosSI: 1
 Numero AtributosNO: 6
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 1
-Numero VIvos; 6
-Numero Muertos; 1
+Numero AtributosSIVivos: 0
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 4
+Numero VIvos; 2
+Numero Muertos; 5
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.650022
-EntropiaNOVivos: 0.219195
-EntropiaNOMuertos: 0.430827
-Entropia Atributo: 0.557162
-Entropia Clase: 0.591673
-Gananacia Informacion: 0.034511
+EntropiaNO: 0.918296
+EntropiaNOVivos: 0.528321
+EntropiaNOMuertos: 0.389975
+Entropia Atributo: 0.787111
+Entropia Clase: 0.863121
+Gananacia Informacion: 0.076010
 
 Informacion Atributo 2: 
 Numero AtributosSI: 0
 Numero AtributosNO: 7
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 2
-Numero VIvos; 5
-Numero Muertos; 2
+Numero AtributosNOVivos: 3
+Numero AtributosNOMuertos: 4
+Numero VIvos; 3
+Numero Muertos; 4
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.863121
-EntropiaNOVivos: 0.346733
-EntropiaNOMuertos: 0.516387
-Entropia Atributo: 0.863121
-Entropia Clase: 0.863121
+EntropiaNO: 0.985228
+EntropiaNOVivos: 0.523882
+EntropiaNOMuertos: 0.461346
+Entropia Atributo: 0.985228
+Entropia Clase: 0.985228
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 3: 
 Numero AtributosSI: 2
 Numero AtributosNO: 5
-Numero AtributosSIVivos: 2
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 0
-Numero VIvos; 7
-Numero Muertos; 0
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
+Numero AtributosSIVivos: 1
+Numero AtributosSIMuertos: 1
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 3
+Numero VIvos; 3
+Numero Muertos; 4
+EntropiaSI: 1.000000
+EntropiaSIVivos: 0.500000
+EntropiaSIMuertos: 0.500000
+EntropiaNO: 0.970951
+EntropiaNOVivos: 0.528771
+EntropiaNOMuertos: 0.442179
+Entropia Atributo: 0.979250
+Entropia Clase: 0.985228
+Gananacia Informacion: 0.005978
 
 
 Estado Tabla Principal: 
-2.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 4
+Mejor Atributo: 3
 
 AUX SUB-TABLA: 
 2.000000, 5.000000, 7.000000, 99.000000, 
@@ -755,18 +752,18 @@ Numero AtributosSI: 0
 Numero AtributosNO: 6
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 1
-Numero VIvos; 5
-Numero Muertos; 1
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 4
+Numero VIvos; 2
+Numero Muertos; 4
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.650022
-EntropiaNOVivos: 0.219195
-EntropiaNOMuertos: 0.430827
-Entropia Atributo: 0.650022
-Entropia Clase: 0.650022
+EntropiaNO: 0.918296
+EntropiaNOVivos: 0.528321
+EntropiaNOMuertos: 0.389975
+Entropia Atributo: 0.918296
+Entropia Clase: 0.918296
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 1: 
@@ -774,18 +771,18 @@ Numero AtributosSI: 0
 Numero AtributosNO: 6
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 1
-Numero VIvos; 5
-Numero Muertos; 1
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 4
+Numero VIvos; 2
+Numero Muertos; 4
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.650022
-EntropiaNOVivos: 0.219195
-EntropiaNOMuertos: 0.430827
-Entropia Atributo: 0.650022
-Entropia Clase: 0.650022
+EntropiaNO: 0.918296
+EntropiaNOVivos: 0.528321
+EntropiaNOMuertos: 0.389975
+Entropia Atributo: 0.918296
+Entropia Clase: 0.918296
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 2: 
@@ -793,19 +790,19 @@ Numero AtributosSI: 1
 Numero AtributosNO: 5
 Numero AtributosSIVivos: 1
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 0
-Numero VIvos; 6
-Numero Muertos; 0
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 3
+Numero VIvos; 3
+Numero Muertos; 3
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
+EntropiaNO: 0.970951
+EntropiaNOVivos: 0.528771
+EntropiaNOMuertos: 0.442179
+Entropia Atributo: 0.809125
+Entropia Clase: 1.000000
+Gananacia Informacion: 0.190875
 
 
 Estado Tabla Principal: 
@@ -817,111 +814,107 @@ Estado Tabla Principal:
 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: -1
+Mejor Atributo: 7
 
 AUX SUB-TABLA: 
-2.000000, 5.000000, 7.000000, 
+2.000000, 5.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 
 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 1.000000, 
 
 Izquierda
 Informacion Atributo 0: 
 Numero AtributosSI: 0
-Numero AtributosNO: 6
+Numero AtributosNO: 5
 Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 1
-Numero VIvos; 5
-Numero Muertos; 1
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 3
+Numero VIvos; 2
+Numero Muertos; 3
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.650022
-EntropiaNOVivos: 0.219195
-EntropiaNOMuertos: 0.430827
-Entropia Atributo: 0.650022
-Entropia Clase: 0.650022
+EntropiaNO: 0.970951
+EntropiaNOVivos: 0.528771
+EntropiaNOMuertos: 0.442179
+Entropia Atributo: 0.970951
+Entropia Clase: 0.970951
 Gananacia Informacion: 0.000000
 
 Informacion Atributo 1: 
-Numero AtributosSI: 1
+Numero AtributosSI: 0
 Numero AtributosNO: 5
-Numero AtributosSIVivos: 1
+Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 0
-Numero VIvos; 6
-Numero Muertos; 0
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 3
+Numero VIvos; 2
+Numero Muertos; 3
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
+EntropiaNO: 0.970951
+EntropiaNOVivos: 0.528771
+EntropiaNOMuertos: 0.442179
+Entropia Atributo: 0.970951
+Entropia Clase: 0.970951
 Gananacia Informacion: 0.000000
 
 
 Estado Tabla Principal: 
-2.000000, 5.000000, 7.000000, 
+2.000000, 5.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 
 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: -1
+Mejor Atributo: 2
 
 AUX SUB-TABLA: 
-2.000000, 5.000000, 
+5.000000, 99.000000, 
 0.000000, 0.000000, 
 0.000000, 1.000000, 
 0.000000, 0.000000, 
-1.000000, 1.000000, 
 0.000000, 1.000000, 
 0.000000, 1.000000, 
 
 Izquierda
 Informacion Atributo 0: 
-Numero AtributosSI: 1
+Numero AtributosSI: 0
 Numero AtributosNO: 5
-Numero AtributosSIVivos: 1
+Numero AtributosSIVivos: 0
 Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 5
-Numero AtributosNOMuertos: 0
-Numero VIvos; 6
-Numero Muertos; 0
+Numero AtributosNOVivos: 2
+Numero AtributosNOMuertos: 3
+Numero VIvos; 2
+Numero Muertos; 3
 EntropiaSI: 0.000000
 EntropiaSIVivos: 0.000000
 EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
+EntropiaNO: 0.970951
+EntropiaNOVivos: 0.528771
+EntropiaNOMuertos: 0.442179
+Entropia Atributo: 0.970951
+Entropia Clase: 0.970951
 Gananacia Informacion: 0.000000
 
 
 Estado Tabla Principal: 
-2.000000, 5.000000, 
+5.000000, 99.000000, 
 0.000000, 0.000000, 
 0.000000, 1.000000, 
 0.000000, 0.000000, 
-1.000000, 1.000000, 
 0.000000, 1.000000, 
 0.000000, 1.000000, 
 
-Mejor Atributo: -1
+Mejor Atributo: 5
 
 AUX SUB-TABLA: 
-2.000000, 
+99.000000, 
 0.000000, 
 1.000000, 
 0.000000, 
@@ -929,77 +922,39 @@ AUX SUB-TABLA:
 1.000000, 
 
 Izquierda
-
-Estado Tabla Principal: 
-2.000000, 
-0.000000, 
-1.000000, 
-0.000000, 
-1.000000, 
-1.000000, 
-
-Mejor Atributo: -1
-
-AUX SUB-TABLA: 
-
-
-
-
-Izquierda
-Hoja: 0
-
-Estado Tabla Principal: 
-2.000000, 
-0.000000, 
-1.000000, 
-0.000000, 
-1.000000, 
-1.000000, 
-
-Mejor Atributo: -1
-
-AUX SUB-TABLA: 
-
-
-
-
-
-derecha
-Hoja: 0
-
-Estado Tabla Principal: 
-2.000000, 5.000000, 
-0.000000, 0.000000, 
-0.000000, 1.000000, 
-0.000000, 0.000000, 
-1.000000, 1.000000, 
-0.000000, 1.000000, 
-0.000000, 1.000000, 
-
-Mejor Atributo: -1
-
-AUX SUB-TABLA: 
-2.000000, 
-1.000000, 
-
-derecha
 Hoja: 1
 
 Estado Tabla Principal: 
-2.000000, 5.000000, 7.000000, 
-0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 1.000000, 
+5.000000, 99.000000, 
+0.000000, 0.000000, 
+0.000000, 1.000000, 
+0.000000, 0.000000, 
+0.000000, 1.000000, 
+0.000000, 1.000000, 
 
-Mejor Atributo: -1
+Mejor Atributo: 5
 
 AUX SUB-TABLA: 
-2.000000, 5.000000, 
+99.000000, 
 
 derecha
+Hoja: 0
+
+Estado Tabla Principal: 
+2.000000, 5.000000, 99.000000, 
+0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 1.000000, 
+
+Mejor Atributo: 2
+
+AUX SUB-TABLA: 
+5.000000, 99.000000, 
+
+derecha
+Hoja: 0
 
 Estado Tabla Principal: 
 2.000000, 5.000000, 7.000000, 99.000000, 
@@ -1010,69 +965,74 @@ Estado Tabla Principal:
 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: -1
+Mejor Atributo: 7
 
 AUX SUB-TABLA: 
-2.000000, 5.000000, 7.000000, 
+2.000000, 5.000000, 99.000000, 
+0.000000, 0.000000, 1.000000, 
 
 derecha
+Hoja: 1
 
 Estado Tabla Principal: 
-2.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 4
-
-AUX SUB-TABLA: 
-2.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 1.000000, 1.000000, 
-
-derecha
-Hoja: 1
-
-Estado Tabla Principal: 
-2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-
 Mejor Atributo: 3
 
 AUX SUB-TABLA: 
-2.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+2.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 0.000000, 1.000000, 0.000000, 
 
 derecha
 Hoja: 0
 
 Estado Tabla Principal: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
 Mejor Atributo: 1
 
 AUX SUB-TABLA: 
-2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+
+derecha
+Hoja: 0
+
+Estado Tabla Principal: 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 6.000000, 7.000000, 99.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
+
+Mejor Atributo: 6
+
+AUX SUB-TABLA: 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
 
 derecha
 Hoja: 0
@@ -1095,256 +1055,14 @@ Estado Tabla Principal:
 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
-Mejor Atributo: 6
+Mejor Atributo: 4
 
 AUX SUB-TABLA: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
+0.000000, 1.000000, 2.000000, 3.000000, 5.000000, 6.000000, 7.000000, 99.000000, 
 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-
-derecha
-Informacion Atributo 0: 
-Numero AtributosSI: 2
-Numero AtributosNO: 2
-Numero AtributosSIVivos: 2
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 2
-Numero VIvos; 2
-Numero Muertos; 2
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 1.000000
-Gananacia Informacion: 1.000000
-
-Informacion Atributo 1: 
-Numero AtributosSI: 1
-Numero AtributosNO: 3
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 3
-Numero VIvos; 1
-Numero Muertos; 3
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.811278
-
-Informacion Atributo 2: 
-Numero AtributosSI: 1
-Numero AtributosNO: 3
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 3
-Numero VIvos; 1
-Numero Muertos; 3
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.811278
-
-Informacion Atributo 3: 
-Numero AtributosSI: 1
-Numero AtributosNO: 3
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 3
-Numero VIvos; 1
-Numero Muertos; 3
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.811278
-
-Informacion Atributo 4: 
-Numero AtributosSI: 2
-Numero AtributosNO: 2
-Numero AtributosSIVivos: 2
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 2
-Numero VIvos; 2
-Numero Muertos; 2
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 1.000000
-Gananacia Informacion: 1.000000
-
-Informacion Atributo 5: 
-Numero AtributosSI: 1
-Numero AtributosNO: 3
-Numero AtributosSIVivos: 1
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 3
-Numero VIvos; 1
-Numero Muertos; 3
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.811278
-Gananacia Informacion: 0.811278
-
-Informacion Atributo 6: 
-Numero AtributosSI: 4
-Numero AtributosNO: 0
-Numero AtributosSIVivos: 4
-Numero AtributosSIMuertos: 0
-Numero AtributosNOVivos: 0
-Numero AtributosNOMuertos: 0
-Numero VIvos; 4
-Numero Muertos; 0
-EntropiaSI: 0.000000
-EntropiaSIVivos: 0.000000
-EntropiaSIMuertos: 0.000000
-EntropiaNO: 0.000000
-EntropiaNOVivos: 0.000000
-EntropiaNOMuertos: 0.000000
-Entropia Atributo: 0.000000
-Entropia Clase: 0.000000
-Gananacia Informacion: 0.000000
-
-
-Estado Tabla Principal: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-
-Mejor Atributo: 0
-
-AUX SUB-TABLA: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-
-Izquierda
-Hoja: 0
-
-Estado Tabla Principal: 
-0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 1.000000, 
-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
-
-Mejor Atributo: 0
-
-AUX SUB-TABLA: 
-1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 7.000000, 99.000000, 
-1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 
-0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 
+1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000, 
+0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 
 
 derecha
 Hoja: 1
-Atributo: 6
-Clase: 0
-Es Hoja: 0
-
-Atributo: 0
-Clase: 0
-Es Hoja: 0
-
-Atributo: 0
-Clase: 1
-Es Hoja: 1
-
-Atributo: 1
-Clase: 1
-Es Hoja: 0
-
-Atributo: 3
-Clase: 0
-Es Hoja: 0
-
-Atributo: 4
-Clase: 0
-Es Hoja: 0
-
-Atributo: -1
-Clase: 0
-Es Hoja: 0
-
-Atributo: -1
-Clase: 0
-Es Hoja: 0
-
-Atributo: -1
-Clase: 0
-Es Hoja: 0
-
-Atributo: -1
-Clase: 0
-Es Hoja: 0
-
-Atributo: -1
-Clase: 0
-Es Hoja: 1
-
-Atributo: -1
-Clase: 0
-Es Hoja: 1
-
-Atributo: -1
-Clase: 1
-Es Hoja: 1
-
-Atributo: 4
-Clase: 1
-Es Hoja: 1
-
-Atributo: 3
-Clase: 0
-Es Hoja: 1
-
-Atributo: 1
-Clase: 0
-Es Hoja: 1
-
-Atributo: 0
-Clase: 1
-Es Hoja: 0
-
-Atributo: 0
-Clase: 0
-Es Hoja: 1
-
-Atributo: 0
-Clase: 1
-Es Hoja: 1
-

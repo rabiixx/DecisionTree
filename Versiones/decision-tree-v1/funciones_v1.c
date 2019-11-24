@@ -56,13 +56,13 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	for (int i = 1; i < numFilas + 1; ++i) {
 		if (tabla[i][indexAtributo] == 1) {
 			++numAtributoSi;
-			if (tabla[i][numAtributos - 1] == 1)
+			if (tabla[i][numAtributos] == 1)
 				++numAtributoSiVivos;
 			else
 				++numAtributoSiMuertos;
 		} else {
 			++numAtributoNo;
-			if (tabla[i][numAtributos - 1] == 0)
+			if (tabla[i][numAtributos] == 0)
 				++numAtributoNoVivos;
 			else 
 				++numAtributoNoMuertos;
@@ -191,13 +191,13 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *output) 
 
 	infoAtributo arrHeuristica[numAtributos];
 
-	double maxEnt = 0;
+	double maxEnt = -1;
 	unsigned int a_best = -1;
 
 	for (int i = 0; i < numAtributos; ++i) {
 		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, output);	
-		printf("entropia: %f\n", arrHeuristica[i].entropia);
-		printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
+		//printf("entropia: %f\n", arrHeuristica[i].entropia);
+		//printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
 			a_best = tabla[0][i];
@@ -325,8 +325,8 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output)
 {
 
-	/* No hay datos en la sub-tabla */
-	if (numFil == 0) {
+	/* La sub-tabla esta vacia */
+	if ( (numFil == 1) && (numAtributos == 0) ) {
 		return NULL;
 	}
 
@@ -334,6 +334,11 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	if ( esHomojenea(numFil, numAtributos, tabla) ) {/* || calcHeuristica(tabla) < UMBRAL_H )*/
 		ptrNodo->hoja = true;
 		ptrNodo->clase = tabla[1][numAtributos];
+		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
+		return ptrNodo;
+	} else if (numAtributos == 0) {
+		ptrNodo->hoja = true;
+		ptrNodo->clase = claseMasFrecuente(numFil, tabla);
 		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
 		return ptrNodo;
 	} else {
@@ -436,5 +441,74 @@ void mostrarPreorden(nodo *raiz, FILE *output) {
     }
 }
 
+
+
+/** Se ejecuta cuando el numero de atributos es igual a cero y por tanto se debe tomar
+ * elegir una clase, en este caso elegiremos la clase mas frecuente */
+int claseMasFrecuente(int numFil, float **tabla) {
+
+	const int claseVivo = 1;
+	const int claseMuerto = 0;
+
+	int contClaseVivo = 0;
+	int contClaseMuerto = 0;
+
+	for (int i = 1; i < numFil + 1; ++i) {
+		if (tabla[i][0] == claseVivo)
+			++contClaseVivo;
+		else
+			++contClaseMuerto;
+	}
+
+	return (contClaseVivo >= contClaseMuerto) ? claseVivo : claseMuerto;
+
+}
+
+
+/* Function to print level 
+order traversal a tree*/
+void printLevelOrder(nodo* root) 
+{ 
+	int h = height(root); 
+	int i; 
+	for (i = 1; i <= h; i++) 
+		printGivenLevel(root, i); 
+} 
+
+/* Print nodes at a given level */
+void printGivenLevel(nodo* root, int level) 
+{ 
+	if (root == NULL) 
+		return; 
+	if (level == 1) {
+		printf("Atributo: %d\n", root->atributo);
+        printf("Clase: %d\n", root->clase);
+        printf("Es Hoja: %d\n", root->hoja);
+        printf("\n");
+	} else if (level > 1) { 
+		printGivenLevel(root->izq, level-1); 
+		printGivenLevel(root->der, level-1); 
+	} 
+} 
+
+/* Compute the "height" of a tree -- the number of 
+	nodes along the longest path from the root node 
+	down to the farthest leaf node.*/
+int height(nodo* node) 
+{ 
+	if (node == NULL) 
+		return 0; 
+	else
+	{ 
+		/* compute the height of each subtree */
+		int lheight = height(node->izq); 
+		int rheight = height(node->der); 
+
+		/* use the larger one */
+		if (lheight > rheight) 
+			return(lheight + 1); 
+		else return(rheight + 1); 
+	} 
+} 
 
 

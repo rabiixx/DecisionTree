@@ -58,7 +58,9 @@ int main(int argc, char const *argv[]) {
 
 	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz, output);
 
-	mostrarPreorden(raiz, output);
+	//mostrarPreorden(raiz, output);
+
+    printLevelOrder(raiz);  
 
 	fclose(output);
 

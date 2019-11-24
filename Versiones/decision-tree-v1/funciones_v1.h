@@ -89,3 +89,12 @@ filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int index
 bool esHomojenea(int numFil, int numAtributos, float **tabla);
 
 void mostrarPreorden(nodo *raiz, FILE *output);
+
+int claseMasFrecuente(int numFil, float **tabla);
+
+void printGivenLevel(nodo* root, int level); 
+
+int height(nodo* node); 
+
+void printLevelOrder(nodo* root);
+
