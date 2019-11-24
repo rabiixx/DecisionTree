@@ -30,7 +30,7 @@
   * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
   * con una clase binaria
   */ 
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo)
+infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *output)
 {
 
 	/* DECLARACION DE VARIABLES */
@@ -72,26 +72,16 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	numVivos = numAtributoSiVivos + numAtributoNoVivos;
 	numMuertos = numAtributoSiMuertos + numAtributoNoMuertos;
 
-	/*fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
-	fprintf(output, "Numero AtributosSI: %d\n", numAtributoSi);
-	fprintf(output, "Numero AtributosNO: %d\n", numAtributoNo);
-	fprintf(output, "Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
-	fprintf(output, "Numero AtributosSIMuertos: %d\n", numAtributoSiMuertos);
-	fprintf(output, "Numero AtributosNOVivos: %d\n", numAtributoNoVivos);
-	fprintf(output, "Numero AtributosNOMuertos: %d\n", numAtributoNoMuertos);
-	fprintf(output,"Numero VIvos; %d\n", numVivos);
-	fprintf(output, "Numero Muertos; %d\n\n", numMuertos);*/
-
 	/* CALCULO HEURISTICA */
 
 	/* Se calcula la entropia de SI  -  E_Atributo(SI) */
-	if ( ( (double)numAtributoSiVivos / (double)numAtributoSi ) != 0 ) {
+	if ( numAtributoSiVivos != 0 ) {
 		entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiVivos) ) / log(2));
 	} else {
 		entropiaSiVivos = (double) 0;
 	}
 
-	if ( ( (double)numAtributoSiMuertos / (double)numAtributoSi ) != 0 ){
+	if ( numAtributoSiMuertos != 0 ){
 		entropiaSiMuertos = ( (double)numAtributoSiMuertos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiMuertos) ) / log(2));
 	} else {
 		entropiaSiMuertos = (double) 0;
@@ -105,13 +95,13 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 	/* Se calcula la entropia de NO  -  E_Atributo(NO) */
 
-	if (( (double)numAtributoNoVivos / (double)numAtributoNo) != 0) {
+	if ( numAtributoNoVivos != 0 ) {
 		entropiaNoVivos = ( (double)numAtributoNoVivos / (double)numAtributoNo) * ( log( ( (double)numAtributoNo / (double) numAtributoNoVivos) ) / log(2));
 	} else {
 		entropiaNoVivos = (double) 0;
 	}
 
-	if ( ( (double)numAtributoNoMuertos / (double)numAtributoNo) != 0) {
+	if ( numAtributoNoMuertos != 0 ) {
 		entropiaNoMuertos = ( (double)numAtributoNoMuertos / (double)numAtributoNo) * ( log( ( (double) numAtributoNo / (double)numAtributoNoMuertos) ) / log(2));
 	} else {
 		entropiaNoMuertos = (double) 0;
@@ -169,6 +159,25 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 	double gainRatioA = (double) (gain / splitInfoTotal);
 
+	fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
+	fprintf(output, "Numero AtributosSI: %d\n", numAtributoSi);
+	fprintf(output, "Numero AtributosNO: %d\n", numAtributoNo);
+	fprintf(output, "Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
+	fprintf(output, "Numero AtributosSIMuertos: %d\n", numAtributoSiMuertos);
+	fprintf(output, "Numero AtributosNOVivos: %d\n", numAtributoNoVivos);
+	fprintf(output, "Numero AtributosNOMuertos: %d\n", numAtributoNoMuertos);
+	fprintf(output, "Numero VIvos; %d\n", numVivos);
+	fprintf(output, "Numero Muertos; %d\n", numMuertos);
+	fprintf(output, "EntropiaSI: %f\n", entropiaSi);
+	fprintf(output, "EntropiaSIVivos: %f\n", entropiaSiVivos);
+	fprintf(output, "EntropiaSIMuertos: %f\n", entropiaSiMuertos);
+	fprintf(output, "EntropiaNO: %f\n", entropiaNo);
+	fprintf(output, "EntropiaNOVivos: %f\n", entropiaNoVivos);
+	fprintf(output, "EntropiaNOMuertos: %f\n", entropiaNoMuertos);
+	fprintf(output, "Entropia Atributo: %f\n", entropiaAtributo);
+	fprintf(output, "Entropia Clase: %f\n", entropiaC);
+	fprintf(output, "Gananacia Informacion: %f\n\n", gain);
+
 	heuristica.entropia = entropiaAtributo;
 	heuristica.gainInfo = gain;
 	heuristica.gainRatio = gainRatioA;
@@ -178,7 +187,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 
 /** Busca el atributo con mayor ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla) {
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *output) {
 
 	infoAtributo arrHeuristica[numAtributos];
 
@@ -186,7 +195,7 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 	unsigned int a_best = -1;
 
 	for (int i = 0; i < numAtributos; ++i) {
-		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i);	
+		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, output);	
 		printf("entropia: %f\n", arrHeuristica[i].entropia);
 		printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
 		if (arrHeuristica[i].gainInfo > maxEnt) {
@@ -329,7 +338,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		return ptrNodo;
 	} else {
 
-		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla);
+		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, output);
 
 		ptrNodo->atributo = atributoExp;
 

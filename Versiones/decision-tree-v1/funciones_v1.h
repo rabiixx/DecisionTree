@@ -76,9 +76,9 @@ typedef struct _filtroInfo {
 } filtroInfo;
 
 
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo);
+infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *);
 
-int elegirAtributo(int numFilas, int numAtributos, float **tabla);
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *);
 
 float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output);
 
