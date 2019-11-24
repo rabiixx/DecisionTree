@@ -80,10 +80,12 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 int elegirAtributo(int numFilas, int numAtributos, float **tabla);
 
-float **readData(unsigned int numFil, unsigned int numAtributos);
+float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output);
 
-nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo);
+nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output);
 
-filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo);
+filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo, FILE *output);
 
 bool esHomojenea(int numFil, int numAtributos, float **tabla);
+
+void mostrarPreorden(nodo *raiz, FILE *output);

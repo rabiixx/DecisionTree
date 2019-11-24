@@ -27,7 +27,7 @@
 #include <string.h>
 #include "funciones_v1.h"
 
-#define NUM_FILAS 20    /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
 
 #define NUM_ATRIBUTOS 8          /* Numero de atributos del problema */
 #define NUM_CLASES 2              /* Numero de clases */
@@ -39,13 +39,16 @@ int main(int argc, char const *argv[]) {
 	char *arrClases[2] = {"Vivo", "Muerto"};*/
 
 
+	FILE *output = fopen("output.txt", "w");
+
+
 	float **tabla = (float**)malloc( (NUM_FILAS + 1) * sizeof(float*));
 
 	for (int i = 0; i < NUM_FILAS + 1; ++i) {
 		tabla[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
-	tabla = readData(NUM_FILAS, NUM_ATRIBUTOS);
+	tabla = readData(NUM_FILAS, NUM_ATRIBUTOS, output);
 
 	nodo *raiz = NULL;
 
@@ -53,7 +56,11 @@ int main(int argc, char const *argv[]) {
 
  	raiz = temp;
 
-	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz);
+	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz, output);
+
+	mostrarPreorden(raiz, output);
+
+	fclose(output);
 
 	return 0;
 }

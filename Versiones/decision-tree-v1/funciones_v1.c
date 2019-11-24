@@ -53,7 +53,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	/* OBTENCION DATOS */
 
 	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
-	for (int i = 1; i < numFilas; ++i) {
+	for (int i = 1; i < numFilas + 1; ++i) {
 		if (tabla[i][indexAtributo] == 1) {
 			++numAtributoSi;
 			if (tabla[i][numAtributos - 1] == 1)
@@ -183,10 +183,12 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 	infoAtributo arrHeuristica[numAtributos];
 
 	double maxEnt = 0;
-	unsigned int a_best = 0;
+	unsigned int a_best = -1;
 
 	for (int i = 0; i < numAtributos; ++i) {
 		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i);	
+		printf("entropia: %f\n", arrHeuristica[i].entropia);
+		printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
 			a_best = tabla[0][i];
@@ -200,11 +202,11 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla) {
 
 /** Lee los datos del dataset y los almacena en una 
   * matriz de NUM_FILAS x NUM_ATRUBITOS + 1 y devuelve dicha matriz */ 
-float **readData(unsigned int numFil, unsigned int numAtributos) {
+float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output) {
 
 	float **arrMatrix = (float**)malloc( (numFil + 1) * sizeof(float*));
 
-	for (int i = 0; i < numFil; ++i) {
+	for (int i = 0; i < numFil + 1; ++i) {
 		arrMatrix[i] = (float*)malloc( (numAtributos + 1) * sizeof(float));
 	}
 
@@ -212,6 +214,8 @@ float **readData(unsigned int numFil, unsigned int numAtributos) {
 	for (int i = 0; i < numAtributos; ++i) {
 		arrMatrix[0][i] = i;
 	}
+
+	arrMatrix[0][numAtributos] = 99;
 
 	FILE *dataset;
 	if ( (dataset = fopen("datasetTest.csv", "r")) == NULL){
@@ -224,32 +228,43 @@ float **readData(unsigned int numFil, unsigned int numAtributos) {
 	/* Leer primera linea */
 	fgets(str, 500, dataset);
 
-	for (int i = 1; i < numFil; ++i) {
+	for (int i = 1; i < numFil + 1; ++i) {
 		fgets(str, 500, dataset);
 		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
 	}
 
 	fclose(dataset);
 
+	for (int i = 0; i < numFil + 1; ++i)
+	{
+		for (int j = 0; j < numAtributos + 1; ++j)
+		{
+			fprintf(output, "%f, ", arrMatrix[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");
+
+
 	return arrMatrix;
 }
 
 
-filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo) {
+filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, FILE *output) {
 
 
-	float **tablaFiltrada = (float**)malloc(numFil * sizeof(float*));
+	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
-	for (int i = 0; i < numFil; ++i) {
-		tablaFiltrada[i] = (float*)malloc(numAtributos * sizeof(float));
+	for (int i = 0; i < numFil + 1; ++i) {
+		tablaFiltrada[i] = (float*)malloc( numAtributos * sizeof(float));
 	}
 
 	/* Buscamos el indice del atributo */
 	unsigned int indexAtributo;
-	int indexFil = 0; 
+	int indexFil = 1; 
 	int indexCol = 0;
 
-	for (int i = 0; i < numAtributos; ++i) {
+	for (int i = 0; i < numAtributos + 1; ++i) {
 		if (tabla[0][i] == atributo) {
 			indexAtributo = i;
 		} else { 
@@ -258,9 +273,12 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 		}
 	}
 
+	/*fprintf(output, "Index aTRIBUTO: %d \n", indexAtributo );
+	fprintf(output, "VAlor: %f\n", valorAtributo);*/
+
 	indexCol = 0;
 
-	for (int i = 1; i < numFil; ++i) {
+	for (int i = 1; i < numFil + 1; ++i) {
 
 		/* Hemos encontrado una fila que coincide con el valor del atributo */
 		if (tabla[i][indexAtributo] == valorAtributo){
@@ -275,15 +293,27 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 		}
 	}
 
+
+	/*fprintf(output, "IndexFil: %d\n", indexFil);
+	fprintf(output, "\n filtro SUB-TABLA: \n");
+	for (int i = 0; i < indexFil; ++i) {
+		for (int j = 0; j < numAtributos; ++j)
+		{
+			fprintf(output, "%f, ", tablaFiltrada[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");*/
+
 	filtroInfo tableInfo;
 
 	tableInfo.tabla = tablaFiltrada;
-	tableInfo.numFil = indexFil;
+	tableInfo.numFil = indexFil - 1;
 
 	return tableInfo;
 }
 
-nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo)
+nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output)
 {
 
 	/* No hay datos en la sub-tabla */
@@ -295,45 +325,69 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	if ( esHomojenea(numFil, numAtributos, tabla) ) {/* || calcHeuristica(tabla) < UMBRAL_H )*/
 		ptrNodo->hoja = true;
 		ptrNodo->clase = tabla[1][numAtributos];
+		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
 		return ptrNodo;
 	} else {
 
-		printf("1\n");
-
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla);
 
-		printf("Atributo: %d\n", atributoExp);
-
 		ptrNodo->atributo = atributoExp;
-
-		printf("3\n");
 
 		/** Para la cantidad de valores que puede tomar el atributo, 
 		  * en nuestro caso todos los atrbutos pueden tomar solo dos
 		  * valores: SI/NO */
 		for (int i = 0; i < 2; ++i){
 
+			int auxNumFil;
+
 			nodo *nuevoNodo = (nodo*)malloc(sizeof(nodo)); 
 			nuevoNodo->clase = i;
 			ptrNodo->arrHijos[i] = i;
 			nuevoNodo->hoja = false;
 			nuevoNodo->atributo = atributoExp;
+			nuevoNodo->izq = nuevoNodo->der = NULL;
 
 			float **auxTabla = (float**)malloc(numFil * sizeof(float*));
 
-			for (int i = 0; i < numFil; ++i) {
-				auxTabla[i] = (float*)malloc( (numAtributos) * sizeof(float));
+			for (int j = 0; j < numFil; ++j) {
+				auxTabla[j] = (float*)malloc( (numAtributos) * sizeof(float));
 			}
-			
-			filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i);
+
+			fprintf(output, "\nEstado Tabla Principal: \n");
+			for (int j = 0; j < numFil + 1; ++j) {
+				for (int z = 0; z < numAtributos + 1; ++z)
+				{
+					fprintf(output, "%f, ", tabla[j][z]);
+				}
+				fprintf(output, "\n");
+			}
+			fprintf(output, "\n");
+
+
+			fprintf(output, "Mejor Atributo: %d\n", atributoExp);
+
+			filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i, output);
 			
 			auxTabla = tableInfo.tabla;
-			numFil = tableInfo.numFil;
+			auxNumFil = tableInfo.numFil;
 
-			if ( i == 0) {
-				nuevoNodo->izq = construirArbolDecision(numFil, numAtributos - 1, auxTabla, nuevoNodo);
+
+			fprintf(output, "\nAUX SUB-TABLA: \n");
+			for (int j = 0; j < auxNumFil + 1; ++j) {
+				for (int z = 0; z < numAtributos; ++z)
+				{
+					fprintf(output, "%f, ", auxTabla[j][z]);
+				}
+				fprintf(output, "\n");
+			}
+			fprintf(output, "\n");
+
+			if ( i == 0  ) {
+				fprintf(output, "Izquierda\n");
+				ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 			} else {
-				nuevoNodo->der = construirArbolDecision(numFil, numAtributos - 1, auxTabla, nuevoNodo);
+				fprintf(output, "derecha\n");
+				ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 			}
 		}
 		
@@ -360,7 +414,18 @@ bool esHomojenea(int numFil, int numAtributos, float **tabla) {
 }
 
 
-
+void mostrarPreorden(nodo *raiz, FILE *output) {
+	if (raiz) {
+        fprintf(output, "Atributo: %d\n", raiz->atributo);
+        fprintf(output, "Clase: %d\n", raiz->clase);
+        fprintf(output, "Es Hoja: %d\n", raiz->hoja);
+        fprintf(output, "\n");
+        mostrarPreorden(raiz->izq, output);
+        mostrarPreorden(raiz->der, output);
+    } else {
+        return;
+    }
+}
 
 
 
