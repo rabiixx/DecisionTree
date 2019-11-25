@@ -75,26 +75,48 @@ typedef struct _filtroInfo {
 	float **tabla;
 } filtroInfo;
 
-
+/* Calcula y devuelve la entropia, ganancia de informacion y ratio de ganancia */
 infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *);
 
+/* Elige el mejor atributo en base a la ganancia de informacion normalizada */
 int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *);
 
+/* Lee y almacena los datos en una matriz de [numFil+1] x [numAtributos + 1] */
 float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output);
 
+/* Contruye el arbol con los datos de entrenamiento */
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output);
 
+/** Devulve un nueva tabla en la cual se han eliminado 
+  * las filas con valor valorAtributo y la columna del atributo. 
+  * Devuelve una matriz de M x numAtributos */
 filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo, FILE *output);
 
+/* Comprueba si todas las filas de una tabla pertenecen a la misma clase */
 bool esHomojenea(int numFil, int numAtributos, float **tabla);
 
+/* Muestra el arbol en preorden */
 void mostrarPreorden(nodo *raiz, FILE *output);
 
+/* Si nos quedamos sin atributos pero con datos(filas), calcula el atributo mas frecuente de los datos */
 int claseMasFrecuente(int numFil, float **tabla);
 
+/* Imprime el arbol en anchura */
 void printGivenLevel(nodo* root, int level); 
 
 int height(nodo* node); 
 
 void printLevelOrder(nodo* root);
 
+/* Recorre la tabla almacenando y ordenando los valores del atritubo continuo */
+int elegirUmbral(int numFil, int numAtributos, float **tabla, int atributo);
+
+/* Quicksort utilizado para ordenar los valores de los atributos continuos */
+void swap(float *a, float *b);
+
+int partition (int numCol, float arr[][numCol], int low, int high);
+
+void quickSort(int numCol, float arr[][numCol], int low, int high);
+
+/* Funcion de discretizacion que devulve un umbral del atributo coninuo */
+double discretizacion(int numCol, float arr[][numCol], FILE *output);

@@ -68,7 +68,7 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 	float indexElegidos[2][numCol];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
 	unsigned int index = 0;		/* Indice del array de indices de los elegidos */
 
-	unsigned int clase = arr[1][0];
+	float clase = arr[1][0];
 
 	for (int i = 0; i < numCol; ++i) {
 		if ( arr[1][i] != clase ){
@@ -86,13 +86,7 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 	fprintf(output, "\n");
 
 	/* 3. Elegir como umbral la media del par de valores que minimice la entropía */
-	unsigned int numAtributosMenores;
-	unsigned int numAtributosMayores;
 
-	unsigned int numSiMenores = 0;
-	unsigned int numNoMenores = 0; 
-	unsigned int numSiMayores = 0;
-	unsigned int numNoMayores = 0;
 
 	fprintf(output, "\nArr: \n");
 	for (int i = 0; i < 2; ++i)
@@ -108,6 +102,14 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 	for (int i = 0; i < index; ++i)
 	{
 
+		unsigned int numAtributosMenores;
+		unsigned int numAtributosMayores;
+
+		unsigned int numSiMenores = 0;
+		unsigned int numNoMenores = 0; 
+		unsigned int numSiMayores = 0;
+		unsigned int numNoMayores = 0;
+
 		numAtributosMenores = indexElegidos[0][i];
 		numAtributosMayores = numCol - indexElegidos[0][i];
 
@@ -117,10 +119,8 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 		}
 
 		numNoMenores = numAtributosMenores - numSiMenores;
-		fprintf(output, "numSiMenores: %d\n", numSiMenores);
-		fprintf(output, "numNoMenores: %d\n", numNoMenores);
 
-		for (int j = numAtributosMenores + 1; j < numCol; ++j){
+		for (int j = numAtributosMenores; j < numCol; ++j){
 			if (arr[1][j] == 1)
 				++numSiMayores;
 		}
@@ -134,26 +134,40 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 		fprintf(output, "numSiMayores: %d\n", numSiMayores);
 		fprintf(output, "numNoMayores: %d\n\n", numNoMayores);
 
-		double entropiaMenorSi;
-		double entropiaMenorNo;
-		double entropiaMayorSi;
-		double entropiaMayorNo;
-		double entropia1;
-		double entropia2;
+		double entropiaMenorSi = 0;
+		double entropiaMenorNo = 0;
+		double entropiaMayorSi = 0;
+		double entropiaMayorNo = 0;
+		double entropia1 = 0;
+		double entropia2 = 0;
 
 
-		entropiaMenorSi = ( (numSiMenores / numAtributosMenores) * (- log(numSiMenores / numAtributosMenores) / log(2)) );
-		entropiaMenorNo = ( (numNoMenores / numAtributosMenores) * (- log(numNoMenores / numAtributosMenores) / log(2)) );
+		if (numSiMenores != 0)
+			entropiaMenorSi = ( ( (double)numSiMenores / (double)numAtributosMenores ) * (- log( (double)numSiMenores / (double)numAtributosMenores) / log(2)) );
 
-		entropia1 = ( (numSiMenores / numCol) * entropiaMenorSi) + (numNoMenores / numCol) * entropiaMenorNo;
+		if (numNoMenores != 0)
+			entropiaMenorNo = ( ( (double)numNoMenores / (double)numAtributosMenores) * (- log( (double)numNoMenores / (double)numAtributosMenores) / log(2) ) );
 
+		entropia1 = ( (double)numAtributosMenores / (double)numCol) * (entropiaMenorSi + entropiaMenorNo);
 
-		entropiaMayorSi = ( (numSiMayores / numAtributosMayores) * (- log(numSiMayores / numAtributosMayores) / log(2)) );
-		entropiaMayorNo = ( (numNoMenores / numAtributosMayores) * (- log(numNoMenores / numAtributosMayores) / log(2)) );
+		if (numSiMayores != 0)
+			entropiaMayorSi = ( ( (double)numSiMayores / (double)numAtributosMayores) * (- log( (double)numSiMayores / (double)numAtributosMayores) / log(2)) );
+		
+		if (numNoMayores != 0)
+			entropiaMayorNo = ( ( (double)numNoMayores / (double)numAtributosMayores) * (- log( (double)numNoMayores / (double)numAtributosMayores) / log(2)) );
 
-		entropia2 = ( (numSiMayores / numCol) * entropiaMayorSi) + (numNoMayores / numCol) * entropiaMayorNo;
+		entropia2 = ( (double)numAtributosMayores / (double)numCol) * (entropiaMayorSi + entropiaMayorNo); 
 
 		indexElegidos[1][i] = entropia1 + entropia2;
+
+		fprintf(output, "entropiaMenorSi: %f\n", entropiaMenorSi);
+		fprintf(output, "entropiaMenorNo: %f\n", entropiaMenorNo);
+		fprintf(output, "entropiaMayorSi: %f\n", entropiaMayorSi);
+		fprintf(output, "entropiaMayorNo: %f\n", entropiaMayorNo);
+		fprintf(output, "entropia1: %f\n", entropia1);
+		fprintf(output, "entropia2: %f\n", entropia2);
+		fprintf(output, "Entropia Total: %f\n\n", indexElegidos[1][i]);
+
 
 	}
 
@@ -163,40 +177,44 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 
 	/* Buscamos el atributo con menor entropia */
-	/*unsigned int indexMinEntropia;
+	unsigned int indexMinEntropia;
 	unsigned int minEntropiaValue;
-	int minEntropia = 1;
+	float minEntropia = 1;
 
 	for (int i = 0; i < index; ++i) {
 		if ( indexElegidos[1][i] < minEntropia ) {
 			minEntropia = indexElegidos[1][i];
 			indexMinEntropia = i;
 		}
-	}*/
+	}
 
-	/*minEntropiaValue = arr[0][ indexElegidos[0][indexMinEntropia] ];
-	double umbral1 = minEntropiaValue; /* Esto esta puesto por comprension */
+	minEntropiaValue = arr[0][ (int) indexElegidos[0][indexMinEntropia] ];
+	float umbral1 = minEntropiaValue; /* Esto esta puesto por comprension */
 
 	/* Buscamos atributo de otra clase por la izquierda */	
 
-	/*double umbral2;
+	float umbral2;
 
-	clase = arr[1][ indexElegidos[0][indexMinEntropia] ];
-	for (int i = indexElegidos[0][indexMinEntropia]; i < 0 ; --i) {
-		if (arr[1][i] != clase)
-			num = arr[0][i];
-	}*/
+	clase = arr[1][ (int)indexElegidos[0][indexMinEntropia] ];
+
+	for (int i = indexElegidos[0][indexMinEntropia]; i > 0 ; --i) {
+		if (arr[1][i] != clase){
+			umbral2 = arr[0][i];
+			break;
+		}
+	}
 
 	/* Calculamos el humbral */
-	/*double umbral = (umbral1 + umbral2) / 2;
+	float umbral = (umbral1 + umbral2) / 2;
 
-	return umbral;*/
+	printf("Umbral Final: %f\n", umbral);
+
+	return umbral;
 
 }
 
 int main(int argc, char const *argv[])
 {
-
 
 	FILE *output = fopen("output.txt", "w");
 

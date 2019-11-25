@@ -5,30 +5,48 @@ Arr:
 20.000000, 23.000000, 23.000000, 27.000000, 30.000000, 40.000000, 52.000000, 63.000000, 65.000000, 70.000000, 
 0.000000, 1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000, 1.000000, 
 
-numSiMenores: 0
-numNoMenores: 1
 numAtributosMenores: 1
 numAtributosMayores: 9
 numSiMenores: 0
 numNoMenores: 1
-numSiMayores: 6
-numNoMayores: 3
+numSiMayores: 7
+numNoMayores: 2
 
-numSiMenores: 3
-numNoMenores: 1
+entropiaMenorSi: 0.000000
+entropiaMenorNo: -0.000000
+entropiaMayorSi: 0.281999
+entropiaMayorNo: 0.482206
+entropia1: 0.000000
+entropia2: 0.687784
+Entropia Total: 0.687784
+
 numAtributosMenores: 4
 numAtributosMayores: 6
 numSiMenores: 3
 numNoMenores: 1
-numSiMayores: 10
-numNoMayores: -4
+numSiMayores: 4
+numNoMayores: 2
 
-numSiMenores: 6
-numNoMenores: 0
+entropiaMenorSi: 0.311278
+entropiaMenorNo: 0.500000
+entropiaMayorSi: 0.389975
+entropiaMayorNo: 0.528321
+entropia1: 0.324511
+entropia2: 0.550978
+Entropia Total: 0.875489
+
 numAtributosMenores: 6
 numAtributosMayores: 4
-numSiMenores: 6
-numNoMenores: 0
-numSiMayores: 13
-numNoMayores: -9
+numSiMenores: 3
+numNoMenores: 3
+numSiMayores: 4
+numNoMayores: 0
+
+entropiaMenorSi: 0.500000
+entropiaMenorNo: 0.500000
+entropiaMayorSi: -0.000000
+entropiaMayorNo: 0.000000
+entropia1: 0.600000
+entropia2: 0.000000
+Entropia Total: 0.600000
 
