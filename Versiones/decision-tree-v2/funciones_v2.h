@@ -109,7 +109,7 @@ int height(nodo* node);
 void printLevelOrder(nodo* root);
 
 /* Recorre la tabla almacenando y ordenando los valores del atritubo continuo */
-int elegirUmbral(int numFil, int numAtributos, float **tabla, int atributo);
+int elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *);
 
 /* Quicksort utilizado para ordenar los valores de los atributos continuos */
 void swap(float *a, float *b);

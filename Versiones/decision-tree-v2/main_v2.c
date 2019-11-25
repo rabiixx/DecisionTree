@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "funciones_v1.h"
+#include "funciones_v2.h"
 
 #define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
 

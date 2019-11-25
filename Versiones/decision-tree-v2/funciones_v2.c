@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include "funciones_v1.h"
+#include "funciones_v2.h"
 
 /**
   * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
@@ -196,8 +196,6 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *output) 
 
 	for (int i = 0; i < numAtributos; ++i) {
 		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, output);	
-		//printf("entropia: %f\n", arrHeuristica[i].entropia);
-		//printf("Gain Info: %f\n", arrHeuristica[i].gainInfo);
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
 			a_best = tabla[0][i];
@@ -343,6 +341,13 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		return ptrNodo;
 	} else {
 
+		/* Buscamos umbral del atributo Muertes y Popularidad */
+		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
+		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
+
+		printf("Umbral1: %f\n", umbral1);
+		printf("Umbral2: %f\n", umbral2);
+		
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, output);
 
 		ptrNodo->atributo = atributoExp;
@@ -513,7 +518,7 @@ int height(nodo* node)
 
 
 
-int elegirUmbral(int numFil, int numAtributos, float **tabla, int atributo) {
+int elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *output) {
 
 
 	float arr[2][numFil];		/* 1.Fila: valor atributo, 2.Fila: Clase */
@@ -536,13 +541,10 @@ int elegirUmbral(int numFil, int numAtributos, float **tabla, int atributo) {
 	/* Ordenamos el arr y llamamos a la funcion de discretizacion */
 	quickSort(numFil, arr, 0, numFil - 1);
 	
-	discretizacion(numFil, arr);
+	discretizacion(numFil, arr, output);
 
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
 void swap(float *a, float *b)  
 {  
@@ -731,37 +733,4 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 	return umbral;
 
-}
-
-int main(int argc, char const *argv[])
-{
-
-	FILE *output = fopen("output.txt", "w");
-
-
-	int numFil = 10;
-	float arr[2][10] = {{20, 23, 23, 27, 30, 40, 52, 63, 65, 70}, 
-							{0, 1, 1, 1, 0, 0, 1, 1, 1, 1}};
-
-	printf("Array Desordenado: ");
-	for (int i = 0; i < numFil; ++i)
-	 {
-	 	printf("%f:%f ", arr[0][i], arr[1][i]);
-	 } 
-	 printf("\n\n");
-	quickSort(numFil, arr, 0, numFil - 1);
-
-	printf("Array Ordenado: ");
-	for (int i = 0; i < numFil; ++i)
-	 {
-	 	printf("%f:%f ", arr[0][i], arr[1][i]);
-	 
-	 }
-	 printf("\n\n"); 
-
- 	discretizacion(numFil, arr, output);
-
-
-
-	return 0;
 }
