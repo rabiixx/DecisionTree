@@ -524,21 +524,24 @@ the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)  
 to left of pivot and all greater elements to right  
 of pivot */
-int partition (int arr[], int low, int high)  
+int partition (int numCol, int arr[][numCol], int low, int high)  
 {  
-    int pivot = arr[high]; // pivot  
+    int pivot = arr[0][high]; // pivot  
     int i = (low - 1); // Index of smaller element  
   
     for (int j = low; j <= high - 1; j++)  
     {  
         // If current element is smaller than the pivot  
-        if (arr[j] < pivot)  
+        if (arr[0][j] < pivot)  
         {  
             i++; // increment index of smaller element  
-            swap(&arr[i], &arr[j]);  
+            swap(&arr[0][i], &arr[0][j]);
+            swap(&arr[1][i], &arr[1][j]);  
+  
         }  
     }  
-    swap(&arr[i + 1], &arr[high]);  
+    swap(&arr[0][i + 1], &arr[0][high]);
+    swap(&arr[1][i + 1], &arr[1][high]);  
     return (i + 1);  
 }  
   
@@ -546,34 +549,34 @@ int partition (int arr[], int low, int high)
 arr[] --> Array to be sorted,  
 low --> Starting index,  
 high --> Ending index */
-void quickSort(int arr[], int low, int high)  
+void quickSort(int numCol, int arr[][numCol], int low, int high)  
 {  
     if (low < high)  
     {  
         /* pi is partitioning index, arr[p] is now  
         at right place */
-        int pi = partition(arr, low, high);  
+        int pi = partition(numCol, arr, low, high);  
   
         // Separately sort elements before  
         // partition and after partition  
-        quickSort(arr, low, pi - 1);  
-        quickSort(arr, pi + 1, high);  
+        quickSort(numCol, arr, low, pi - 1);  
+        quickSort(numCol, arr, pi + 1, high);  
     }  
-}  
+} 
 
 
 /* Calculo humbral atributo continuo */
 /**
   * input: array[2][N] que contiene en la priemra fila los valores del atributo
   * y en la segunda fila la clase a la que pertence: Vivo / Muerto */
-double discretizacion(arr[]) 
+double discretizacion(int numCol, float arr[][numCol]) 
 {
 
-
-	int N = (int) ( sizeof(arr) / sizeof(arr[0]) );
+	/* Numero de columnas de la matriz */
+	// size_t N = ( sizeof(arr[0]) / sizeof(arr[0][0]) );
 
  	/* 2. Calcular la entropía para cada pareja de valores en los que la clase cambie */
-	indexElegidos[2][N];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
+	indexElegidos[2][numCol];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
 	unsigned int index = 0;		/* Indice del array de indices de los elegidos */
 
 	unsigned int clase = arr[1][0];
@@ -677,26 +680,26 @@ double discretizacion(arr[])
 int elegirUmbral(int numFil, int numAtributos, float **tabla, int atributo) {
 
 
-	float arr[numFil];
+	float arr[2][numFil];		/* 1.Fila: valor atributo, 2.Fila: Clase */
 	unsigned int indexAtributo;
 
 	/* Buscamos el indice del atributo */
 	for (int i = 0; i < numAtributos; ++i) {
 		if (tabla[0][i] == atributo) {
 			indexAtributo = i;
-			break
+			break;
 		}
 	}
 
 	/* Recorremos la tabla y almacenamos los valores del atributo en una nueva tabla*/
 	for (int i = 1; i < numFil + 1; ++i) {
-		arr[i - 1] = tabla[i][indexAtributo];
+		arr[0][i - 1] = tabla[i][indexAtributo];
+		arr[1][i - 1] = tabla[i][numAtributos];
 	}
 
 	/* Ordenamos el arr y llamamos a la funcion de discretizacion */
-	quickSort(arr, 0, numFil - 1);
-	discretizacion(arr);
-
-
+	quickSort(numFil, arr, 0, numFil - 1);
+	
+	discretizacion(numFil, arr);
 
 }
