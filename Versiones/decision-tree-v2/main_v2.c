@@ -29,7 +29,7 @@
 
 #define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
 
-#define NUM_ATRIBUTOS 8          /* Numero de atributos del problema */
+#define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
 #define NUM_CLASES 2              /* Numero de clases */
 
 int main(int argc, char const *argv[]) {

@@ -225,7 +225,7 @@ float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output) {
 	arrMatrix[0][numAtributos] = 99;
 
 	FILE *dataset;
-	if ( (dataset = fopen("datasetTest.csv", "r")) == NULL){
+	if ( (dataset = fopen("problem_book.csv", "r")) == NULL){
 		perror("Fallo al abrir fichero");
 		exit(342);
 	}
@@ -342,11 +342,13 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	} else {
 
 		/* Buscamos umbral del atributo Muertes y Popularidad */
+		fprintf(output, "elegirUmbral1\n");
 		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
+		fprintf(output, "elegirUmbral2\n");
 		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
 
-		printf("Umbral1: %f\n", umbral1);
-		printf("Umbral2: %f\n", umbral2);
+		//printf("Umbral1: %f\n", umbral1);
+		//printf("Umbral2: %f\n", umbral2);
 		
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, output);
 
@@ -532,14 +534,42 @@ int elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FI
 		}
 	}
 
+	fprintf(output, "IndexAtributo: %d\n", indexAtributo);
+
 	/* Recorremos la tabla y almacenamos los valores del atributo en una nueva tabla*/
 	for (int i = 1; i < numFil + 1; ++i) {
 		arr[0][i - 1] = tabla[i][indexAtributo];
 		arr[1][i - 1] = tabla[i][numAtributos];
 	}
 
+
+	fprintf(output, "discretizacion 1: \n");
+	for (int i = 0; i < numFil; ++i)
+	{
+		fprintf(output, "%f, ", arr[0][i]);
+	}
+	fprintf(output, "\n\ndiscretizacion 2: \n");
+	for (int i = 0; i < numFil; ++i)
+	{
+		fprintf(output, "%f, ", arr[1][i]);
+	}
+	fprintf(output, "\n\n");
+
 	/* Ordenamos el arr y llamamos a la funcion de discretizacion */
 	quickSort(numFil, arr, 0, numFil - 1);
+
+	fprintf(output, "discretizacion 1: \n");
+	for (int i = 0; i < numFil; ++i)
+	{
+		fprintf(output, "%f, ", arr[0][i]);
+	}
+	fprintf(output, "\n\ndiscretizacion 2: \n");
+	for (int i = 0; i < numFil; ++i)
+	{
+		fprintf(output, "%f, ", arr[1][i]);
+	}
+	fprintf(output, "\n\n");
+
 	
 	discretizacion(numFil, arr, output);
 
@@ -548,7 +578,7 @@ int elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FI
 
 void swap(float *a, float *b)  
 {  
-    int t = *a;  
+    float t = *a;  
     *a = *b;  
     *b = t;  
 }  
@@ -560,7 +590,7 @@ to left of pivot and all greater elements to right
 of pivot */
 int partition (int numCol, float arr[][numCol], int low, int high)  
 {  
-    int pivot = arr[0][high]; // pivot  
+    float pivot = arr[0][high]; // pivot  
     int i = (low - 1); // Index of smaller element  
   
     for (int j = low; j <= high - 1; j++)  
@@ -605,6 +635,20 @@ void quickSort(int numCol, float arr[][numCol], int low, int high)
 double discretizacion(int numCol, float arr[][numCol], FILE *output) 
 {
 
+
+	fprintf(output, "discretizacion 1: \n");
+	for (int i = 0; i < numCol; ++i)
+	{
+		fprintf(output, "%f, ", arr[0][i]);
+	}
+	fprintf(output, "\n\ndiscretizacion 2: \n");
+	for (int i = 0; i < numCol; ++i)
+	{
+		fprintf(output, "%f, ", arr[1][i]);
+	}
+	fprintf(output, "\n\n");
+
+
 	/* Numero de columnas de la matriz */
 	// size_t N = ( sizeof(arr[0]) / sizeof(arr[0][0]) );
 
@@ -621,6 +665,13 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 			++index;
 		}
 	}
+
+	fprintf(output, "indexElegidos: \n");
+	for (int i = 0; i < index; ++i)
+	{
+		fprintf(output, "%f\n",indexElegidos[0][i] );
+	}
+	fprintf(output, "\n\n");
 
 	/* 3. Elegir como umbral la media del par de valores que minimice la entropía */
 
@@ -652,12 +703,12 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 		numNoMayores = numAtributosMayores - numSiMayores;
 
-		fprintf(output, "numAtributosMenores: %d\n", numAtributosMenores);
+		/*fprintf(output, "numAtributosMenores: %d\n", numAtributosMenores);
 		fprintf(output, "numAtributosMayores: %d\n", numAtributosMayores);
 		fprintf(output, "numSiMenores: %d\n", numSiMenores);
 		fprintf(output, "numNoMenores: %d\n", numNoMenores);
 		fprintf(output, "numSiMayores: %d\n", numSiMayores);
-		fprintf(output, "numNoMayores: %d\n\n", numNoMayores);
+		fprintf(output, "numNoMayores: %d\n\n", numNoMayores);*/
 
 		double entropiaMenorSi = 0;
 		double entropiaMenorNo = 0;
@@ -667,31 +718,31 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 		double entropia2 = 0;
 
 
-		if (numSiMenores != 0)
+		if ( (numSiMenores != 0) && (numSiMenores != numAtributosMenores) )
 			entropiaMenorSi = ( ( (double)numSiMenores / (double)numAtributosMenores ) * (- log( (double)numSiMenores / (double)numAtributosMenores) / log(2)) );
 
-		if (numNoMenores != 0)
+		if ( (numNoMenores != 0) && (numNoMenores != numAtributosMenores) )
 			entropiaMenorNo = ( ( (double)numNoMenores / (double)numAtributosMenores) * (- log( (double)numNoMenores / (double)numAtributosMenores) / log(2) ) );
 
 		entropia1 = ( (double)numAtributosMenores / (double)numCol) * (entropiaMenorSi + entropiaMenorNo);
 
-		if (numSiMayores != 0)
+		if ( (numSiMayores != 0) && (numSiMayores != numAtributosMayores) )
 			entropiaMayorSi = ( ( (double)numSiMayores / (double)numAtributosMayores) * (- log( (double)numSiMayores / (double)numAtributosMayores) / log(2)) );
 		
-		if (numNoMayores != 0)
+		if ( (numNoMayores != 0) && (numNoMayores != numAtributosMayores) )
 			entropiaMayorNo = ( ( (double)numNoMayores / (double)numAtributosMayores) * (- log( (double)numNoMayores / (double)numAtributosMayores) / log(2)) );
 
 		entropia2 = ( (double)numAtributosMayores / (double)numCol) * (entropiaMayorSi + entropiaMayorNo); 
 
 		indexElegidos[1][i] = entropia1 + entropia2;
 
-		fprintf(output, "entropiaMenorSi: %f\n", entropiaMenorSi);
+		/*fprintf(output, "entropiaMenorSi: %f\n", entropiaMenorSi);
 		fprintf(output, "entropiaMenorNo: %f\n", entropiaMenorNo);
 		fprintf(output, "entropiaMayorSi: %f\n", entropiaMayorSi);
 		fprintf(output, "entropiaMayorNo: %f\n", entropiaMayorNo);
 		fprintf(output, "entropia1: %f\n", entropia1);
 		fprintf(output, "entropia2: %f\n", entropia2);
-		fprintf(output, "Entropia Total: %f\n\n", indexElegidos[1][i]);
+		fprintf(output, "Entropia Total: %f\n\n", indexElegidos[1][i]);*/
 
 
 	}
@@ -700,26 +751,33 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 	/* Buscamos el atributo con menor entropia */
 	unsigned int indexMinEntropia;
-	unsigned int minEntropiaValue;
+	float minEntropiaValue;
 	float minEntropia = 1;
 
+	fprintf(output, "Entropias Elegidos: \n");
 	for (int i = 0; i < index; ++i) {
+		fprintf(output, "%f ", indexElegidos[1][i]);
 		if ( indexElegidos[1][i] < minEntropia ) {
 			minEntropia = indexElegidos[1][i];
-			indexMinEntropia = i;
+			indexMinEntropia = indexElegidos[0][i];
 		}
 	}
+	printf("Min Entropia: %f\n", minEntropia);
 
-	minEntropiaValue = arr[0][ (int) indexElegidos[0][indexMinEntropia] ];
+	minEntropiaValue = arr[0][indexMinEntropia];
+		printf("min Entropia value: %f\n", minEntropiaValue);
+
 	float umbral1 = minEntropiaValue; /* Esto esta puesto por comprension */
 
 	/* Buscamos atributo de otra clase por la izquierda */	
 
 	float umbral2;
 
-	clase = arr[1][ (int)indexElegidos[0][indexMinEntropia] ];
+	clase = arr[1][indexMinEntropia];
 
-	for (int i = indexElegidos[0][indexMinEntropia]; i > 0 ; --i) {
+	printf("Clase: %f\n", clase);
+
+	for (int i = indexMinEntropia; i > 0 ; --i) {
 		if (arr[1][i] != clase){
 			umbral2 = arr[0][i];
 			break;
@@ -728,8 +786,9 @@ double discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 	/* Calculamos el humbral */
 	float umbral = (umbral1 + umbral2) / 2;
-
-	printf("Umbral Final: %f\n", umbral);
+	printf("Umbral1: %f\n", umbral1);
+	printf("Umbral2: %f\n", umbral2);
+	printf("Umbral Final\n\n: %f\n", umbral);
 
 	return umbral;
 
