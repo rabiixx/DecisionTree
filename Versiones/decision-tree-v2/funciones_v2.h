@@ -52,6 +52,9 @@
 #define VIVO -5
 #define MUERTO -10
 
+#define SI 213
+#define NO 564
+
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;

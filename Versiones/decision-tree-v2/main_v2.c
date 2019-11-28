@@ -31,7 +31,7 @@
 #define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
 
 #define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
-#define NUM_CLASesrfES 2              /* Numero de clases */
+#define NUM_CLASES 2              /* Numero de clases */
 
 
 string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
@@ -79,37 +79,53 @@ int main(int argc, char const *argv[]) {
 
 	system("clear");
 
-	FILE *inputData, *outputData;
-	//FILE *output = fopen("output.txt", "w");
-
-	if ( (inputData = fopen("problem_book1.csv", "r")) == NULL ) {
-		printf("Error al abrir fichero: %s\n", strerror(errno));
-		return EXIT_FAILURE;
-	}
-
+	/* Declaracion de una matriz mediante punteros */
 	float **tabla = (float**)malloc( (NUM_FILAS + 1) * sizeof(float*));
 
 	for (int i = 0; i < NUM_FILAS + 1; ++i) {
 		tabla[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
-	tabla = readData(NUM_FILAS, NUM_ATRIBUTOS, output);
+	FILE *inputData, *outputData;
+	FILE *output = fopen("output.txt", "w");
 
-	nodo *raiz = NULL;
+	if ( (inputData = fopen("problem_book1.csv", "r")) == NULL ) {
+		printf("Error al abrir fichero: %s\n", strerror(errno));
+		return EXIT_FAILURE;
+	}
 
- 	nodo *temp =  (nodo*)malloc(sizeof(nodo)); 
+	/* Se leen los datos de entrenamieto */
+	tabla = readData(inputData, NUM_FILAS, NUM_ATRIBUTOS, output);
+	fclose(inputData);
 
- 	raiz = temp;
+	/* Nodo raiz del arbol de deciciones */
+	nodo *raiz = (nodo*)malloc(sizeof(nodo));
 
+	/* Fase de entrenamiento: construccion del arbol de decisiones */
 	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz, output);
 
 	//mostrarPreorden(raiz, output);
 
-    printLevelOrder(raiz);  
+	//printLevelOrder(raiz);  
+
+	float linea[NUM_ATRIBUTOS];
+	float claseReal;			/* Guarda las clase de los datos de testeo*/
+	float clasePredecida;		/* Guarda las clases predecidas de los datos de testeo */
+
+	for (int i = 0; i < N; ++i)
+	{
+		/* code */
+	}
+
+
 
 	fclose(output);
 
 	return 0;
+}
+
+nodo nuevoNodo() {
+	return (nodo*)malloc(sizeof(nodo));
 }
 
 
