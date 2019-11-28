@@ -76,10 +76,10 @@ typedef struct _filtroInfo {
 } filtroInfo;
 
 /* Calcula y devuelve la entropia, ganancia de informacion y ratio de ganancia */
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *);
+infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
 
 /* Elige el mejor atributo en base a la ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *);
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *);
 
 /* Lee y almacena los datos en una matriz de [numFil+1] x [numAtributos + 1] */
 float **readData(unsigned int numFil, unsigned int numAtributos, FILE *output);
@@ -109,7 +109,7 @@ int height(nodo* node);
 void printLevelOrder(nodo* root);
 
 /* Recorre la tabla almacenando y ordenando los valores del atritubo continuo */
-int elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *);
+float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *);
 
 /* Quicksort utilizado para ordenar los valores de los atributos continuos */
 void swap(float *a, float *b);
@@ -119,4 +119,4 @@ int partition (int numCol, float arr[][numCol], int low, int high);
 void quickSort(int numCol, float arr[][numCol], int low, int high);
 
 /* Funcion de discretizacion que devulve un umbral del atributo coninuo */
-double discretizacion(int numCol, float arr[][numCol], FILE *output);
+float discretizacion(int numCol, float arr[][numCol], FILE *output);

@@ -34,9 +34,7 @@
 
 int main(int argc, char const *argv[]) {
 
-	/*char *str_atributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
-
-	char *arrClases[2] = {"Vivo", "Muerto"};*/
+	system("clear");
 
 
 	FILE *output = fopen("output.txt", "w");
