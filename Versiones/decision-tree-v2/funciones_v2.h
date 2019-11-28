@@ -49,8 +49,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define VIVO -1
-#define MUERTO -2
+#define VIVO -5
+#define MUERTO -10
 
 typedef struct _infoAtributo {
 	double entropia;

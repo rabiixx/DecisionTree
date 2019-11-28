@@ -36,9 +36,13 @@ int main(int argc, char const *argv[]) {
 
 	system("clear");
 
+	FILE *inputData, *outputData;
+	//FILE *output = fopen("output.txt", "w");
 
-	FILE *output = fopen("output.txt", "w");
+	if ( (inputData = fopen("problem_book.csv", "r")) == NULL ) {
+		perror()
 
+	}
 
 	float **tabla = (float**)malloc( (NUM_FILAS + 1) * sizeof(float*));
 
@@ -63,4 +67,47 @@ int main(int argc, char const *argv[]) {
 	fclose(output);
 
 	return 0;
+}
+
+
+
+string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
+{
+	string prediction;
+	while (!nodePtr->isLeaf && !nodePtr->children.empty()) {
+		int index = returnColumnIndex(nodePtr->splitOn, tableInfo);	/*dev atributo */
+		string value = singleLine[index];
+		int childIndex = returnIndexOfVector(nodePtr->childrenValues, value);
+		nodePtr = nodePtr->children[childIndex];
+		if (nodePtr == NULL) {
+			prediction = defaultClass;
+			break;
+		}
+		prediction = nodePtr->label;
+	}
+	return prediction;
+}
+
+/* Fase de testeo */
+int testDatosDT(float **tabla, nodo *ptrNodo, int clasePorDefecto) {
+
+	int prediccion;
+
+	while ( !ptrNodo->esHoja && () ) {
+		int valor = linea[atributo];
+		if (valor = NO) {
+			ptrNodo = ptrNodo->izq;
+		} else if (valor = SI) {
+			ptrNodo = ptrNodo->der;
+		}
+		if (ptrNodo == NULL)
+			prediccion = clasePorDefecto;
+			break;
+		}
+		prediccion = ptrNodo->clase;
+
+	}
+
+	return prediccion;
+
 }
