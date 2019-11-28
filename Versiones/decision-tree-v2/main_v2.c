@@ -25,12 +25,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 #include "funciones_v2.h"
 
 #define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
 
 #define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
-#define NUM_CLASES 2              /* Numero de clases */
+#define NUM_CLASesrfES 2              /* Numero de clases */
+
+
+string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
+{
+	string prediction;
+	while (!nodePtr->isLeaf && !nodePtr->children.empty()) {
+		int index = returnColumnIndex(nodePtr->splitOn, tableInfo);	/*dev atributo */
+		string value = singleLine[index];
+		int childIndex = returnIndexOfVector(nodePtr->childrenValues, value);
+		nodePtr = nodePtr->children[childIndex];
+		if (nodePtr == NULL) {
+			prediction = defaultClass;
+			break;
+		}
+		prediction = nodePtr->label;
+	}
+	return prediction;
+}
+
+/* Fase de testeo */
+int testDatosDT(float **tabla, nodo *ptrNodo, int clasePorDefecto) {
+
+	int prediccion;
+
+	while ( !ptrNodo->esHoja ) {
+		int valor = linea[atributo];
+		if (valor = NO) {
+			ptrNodo = ptrNodo->izq;
+		} else if (valor = SI) {
+			ptrNodo = ptrNodo->der;
+		}
+		if (ptrNodo == NULL) {
+			prediccion = clasePorDefecto;
+			break;
+		}
+		prediccion = ptrNodo->clase;
+
+	}
+
+	return prediccion;
+
+}
 
 int main(int argc, char const *argv[]) {
 
@@ -39,9 +82,9 @@ int main(int argc, char const *argv[]) {
 	FILE *inputData, *outputData;
 	//FILE *output = fopen("output.txt", "w");
 
-	if ( (inputData = fopen("problem_book.csv", "r")) == NULL ) {
-		perror()
-
+	if ( (inputData = fopen("problem_book1.csv", "r")) == NULL ) {
+		printf("Error al abrir fichero: %s\n", strerror(errno));
+		return EXIT_FAILURE;
 	}
 
 	float **tabla = (float**)malloc( (NUM_FILAS + 1) * sizeof(float*));
@@ -71,43 +114,3 @@ int main(int argc, char const *argv[]) {
 
 
 
-string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
-{
-	string prediction;
-	while (!nodePtr->isLeaf && !nodePtr->children.empty()) {
-		int index = returnColumnIndex(nodePtr->splitOn, tableInfo);	/*dev atributo */
-		string value = singleLine[index];
-		int childIndex = returnIndexOfVector(nodePtr->childrenValues, value);
-		nodePtr = nodePtr->children[childIndex];
-		if (nodePtr == NULL) {
-			prediction = defaultClass;
-			break;
-		}
-		prediction = nodePtr->label;
-	}
-	return prediction;
-}
-
-/* Fase de testeo */
-int testDatosDT(float **tabla, nodo *ptrNodo, int clasePorDefecto) {
-
-	int prediccion;
-
-	while ( !ptrNodo->esHoja && () ) {
-		int valor = linea[atributo];
-		if (valor = NO) {
-			ptrNodo = ptrNodo->izq;
-		} else if (valor = SI) {
-			ptrNodo = ptrNodo->der;
-		}
-		if (ptrNodo == NULL)
-			prediccion = clasePorDefecto;
-			break;
-		}
-		prediccion = ptrNodo->clase;
-
-	}
-
-	return prediccion;
-
-}
