@@ -22,16 +22,38 @@
 //  DEALINGS IN THE SOFTWARE.
 
 
+/**
+  * Compilador: GCC 
+  * Version compilador: 7.4.0
+  * Entorno: Ubuntu 18.04.3 LTS
+  * Kernel Version: 4.15.0-64-generic
+  * Autor: Ruben Cherif Narvaez
+  * Email: 99rubenche@gmail.com
+  * github: https://github.com/rabiixx
+  * Fecha: 
+  */
+
+
+
+
+
+
+/* Librerias estandares de C */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include "funciones_v2.h"
 
-#define NUM_FILAS 15    /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TRAIN 15    	/* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TEST 20		/* Numero de filas de los datos de entrenamiento */
 
-#define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
-#define NUM_CLASES 2              /* Numero de clases */
+#define NUM_ATRIBUTOS 10		/* Numero de atributos del problema */
+#define NUM_CLASES 2			/* Numero de clases */
+
+char *arrAtributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
+char *arrClases[2] = {"Vivo", "Muerto"};
 
 
 string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
@@ -86,16 +108,16 @@ int main(int argc, char const *argv[]) {
 		tabla[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
-	FILE *inputData, *outputData;
+	FILE *trainData, *testData;
 	FILE *output = fopen("output.txt", "w");
 
-	if ( (inputData = fopen("problem_book1.csv", "r")) == NULL ) {
+	if ( (trainData = fopen("problem_book1.csv", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
 
 	/* Se leen los datos de entrenamieto */
-	tabla = readData(inputData, NUM_FILAS, NUM_ATRIBUTOS, output);
+	tabla = readData(trainData, NUM_FILAS_TRAIN, output);
 	fclose(inputData);
 
 	/* Nodo raiz del arbol de deciciones */
@@ -104,29 +126,73 @@ int main(int argc, char const *argv[]) {
 	/* Fase de entrenamiento: construccion del arbol de decisiones */
 	raiz = construirArbolDecision(NUM_FILAS, NUM_ATRIBUTOS, tabla, raiz, output);
 
-	//mostrarPreorden(raiz, output);
+	/* FASE DE TESTO */
 
-	//printLevelOrder(raiz);  
+	tabla = readData(testData, NUM_FILAS_TEST, output);
+	fclose(testData);
 
-	float linea[NUM_ATRIBUTOS];
-	float claseReal;			/* Guarda las clase de los datos de testeo*/
-	float clasePredecida;		/* Guarda las clases predecidas de los datos de testeo */
+	float clasesReales;			/* Guarda las clase de los datos de testeo*/
+	float clasesPredichas;		/* Guarda las clases predecidas de los datos de testeo */
 
-	for (int i = 0; i < N; ++i)
-	{
-		/* code */
+	for (int i = 0; i < N; ++i) {
+		clasesReales = tablaDatos[i + 1][NUM_ATRIBUTOS];
 	}
 
+	for (int i = 0; i < ; ++i) {
+		clasesPredichas[i] = testDatosDT(tablaDatos, raiz, clasePorDefecto);
+	}
 
+	free(tabla);
 
-	fclose(output);
-
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 nodo nuevoNodo() {
 	return (nodo*)malloc(sizeof(nodo));
 }
 
+void analizarResultados(int claseReales[], int clasesPredichas){
+
+	FILE *reporte;
+	unsigned int numAciertos = 0;
+	double tasaAciertºos;
+
+	if ( (reporte = fopen("reporte.txt", "w")) == NULL ) {
+		printf("Error al abrir fichero: %s\n", strerror(errno));
+		return EXIT_FAILURE;
+	}
+
+	fprintf(reporte, "| Clase Real -------------------- Clase Predicha |\n", );
+	fprintf(reporte, "| ---------------------------------------------- |\n", );
+	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
+		
+		if (claseReales[i] == 0) {
+			fprintf(reporte, "Muerto");
+		} else {
+			fprintf(reporte, "Vivo");
+		}
+
+		if (claseReales[i] == clasesPredichas[i]) {
+			++numAciertos;
+			fprintf(reporte, "-------------");
+		} else {
+			fprintf(reporte, "xxxxxxxxxxxxx");
+		}
+
+		if (clasesPredichas[i] == 0) {
+			fprintf(reporte, "Muerto");
+		} else {
+			fprintf(reporte, "Vivo");
+		}	
+	}
+
+	tasaAciertos = (double)numAciertos / (double)NUM_FILAS_TEST;
+
+	fprintf(reporte, "Numero de filas: %d\n", NUM_FILAS_TEST);
+	fprintf(reporte, "Numero de Aciertos: %d\n", numAciertos);
+	fprintf(reporte, "Tasa De Acierto: %f", tasaAciertos);
+
+	fclose(reporte);
 
 
+}

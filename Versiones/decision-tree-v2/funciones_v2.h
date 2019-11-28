@@ -55,6 +55,14 @@
 #define SI 213
 #define NO 564
 
+#define NUM_FILAS_TRAIN 15      /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TEST 20       /* Numero de filas de los datos de entrenamiento */
+
+#define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
+#define NUM_CLASES 2            /* Numero de clases */
+
+const int clasePorDefecto = 1;
+
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;
