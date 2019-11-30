@@ -24,13 +24,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include "funciones_v2.h"
+#include "funciones_v1.h"
 
 /**
   * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
   * con una clase binaria
   */ 
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
+infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *output)
 {
 
 	/* DECLARACION DE VARIABLES */
@@ -53,40 +53,19 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	/* OBTENCION DATOS */
 
 	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
-
-
-	/* Varible continua */
-	if (umbral != -1) {
-		for (int i = 1; i < numFilas + 1; ++i) {
-			if (tabla[i][indexAtributo] <= umbral) {
-				++numAtributoSi;
-				if (tabla[i][numAtributos] == 1)
-					++numAtributoSiVivos;
-				else
-					++numAtributoSiMuertos;
-			} else {
-				++numAtributoNo;
-				if (tabla[i][numAtributos] == 0)
-					++numAtributoNoVivos;
-				else 
-					++numAtributoNoMuertos;
-			}
-		}
-	} else {
-		for (int i = 1; i < numFilas + 1; ++i) {
-			if (tabla[i][indexAtributo] == 1) {
-				++numAtributoSi;
-				if (tabla[i][numAtributos] == 1)
-					++numAtributoSiVivos;
-				else
-					++numAtributoSiMuertos;
-			} else {
-				++numAtributoNo;
-				if (tabla[i][numAtributos] == 0)
-					++numAtributoNoVivos;
-				else 
-					++numAtributoNoMuertos;
-			}
+	for (int i = 1; i < numFilas + 1; ++i) {
+		if (tabla[i][indexAtributo] == 1) {
+			++numAtributoSi;
+			if (tabla[i][numAtributos] == 1)
+				++numAtributoSiVivos;
+			else
+				++numAtributoSiMuertos;
+		} else {
+			++numAtributoNo;
+			if (tabla[i][numAtributos] == 0)
+				++numAtributoNoVivos;
+			else 
+				++numAtributoNoMuertos;
 		}
 	}
 
@@ -208,7 +187,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 
 /** Busca el atributo con mayor ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *output) {
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *output) {
 
 	infoAtributo arrHeuristica[numAtributos];
 
@@ -216,16 +195,10 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 	unsigned int a_best = -1;
 
 	for (int i = 0; i < numAtributos; ++i) {
-
-		/* Si es un artibuto continuo, le pasamos el umbral del atributo */
-		if (tabla[0][i] == 8) {
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral1, output);
-		} else if (tabla[0][i] == 9) {
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral2, output);
-		} else {	
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, -1, i, output);	
-		}
-
+		arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, output);	
+		fprintf(output, "Atriubto %d\n", i);
+		fprintf(output, "Entropia: %f\n", arrHeuristica[i].entropia);
+		fprintf(output, "Gain Info: %f\n", arrHeuristica[i].gainInfo);
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
 			a_best = tabla[0][i];
@@ -261,7 +234,7 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 
 	for (int i = 1; i < numFil + 1; ++i) {
 		fgets(str, 500, dataset);
-		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
+		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8]);
 	}
 
 	/*for (int i = 0; i < numFil + 1; ++i)
@@ -354,24 +327,17 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	if ( esHomojenea(numFil, numAtributos, tabla) ) {/* || calcHeuristica(tabla) < UMBRAL_H )*/
 		ptrNodo->hoja = true;
 		ptrNodo->clase = tabla[1][numAtributos];
-		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
+		fprintf(output, "Hoja 1: %d\n", ptrNodo->clase);
 		return ptrNodo;
 	} else if (numAtributos == 0) {
 		ptrNodo->hoja = true;
 		ptrNodo->clase = claseMasFrecuente(numFil, tabla);
-		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
+		fprintf(output, "Hoja 2: %d\n", ptrNodo->clase);
+		fprintf(output, "numero de atributos: %d\n", numAtributos);
 		return ptrNodo;
 	} else {
 
-		/* Buscamos umbral del atributo Muertes y Popularidad */
-		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
-
-		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
-
-		printf("Umbral 1: %f\n", umbral1);
-		printf("Umbral 2: %f\n", umbral2);
-		
-		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
+		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, output);
 
 		ptrNodo->atributo = atributoExp;
 
@@ -387,7 +353,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 			ptrNodo->arrHijos[i] = i;
 			nuevoNodo->hoja = false;
 			nuevoNodo->atributo = atributoExp;
-			//nuevoNodo->izq = nuevoNodo->der = NULL;
+			nuevoNodo->izq = nuevoNodo->der = NULL;
 
 			float **auxTabla = (float**)malloc(numFil * sizeof(float*));
 
@@ -395,7 +361,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 				auxTabla[j] = (float*)malloc( (numAtributos) * sizeof(float));
 			}
 
-			/*fprintf(output, "\nEstado Tabla Principal: \n");
+			fprintf(output, "\nEstado Tabla Principal: \n");
 			for (int j = 0; j < numFil + 1; ++j) {
 				for (int z = 0; z < numAtributos + 1; ++z)
 				{
@@ -403,10 +369,10 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 				}
 				fprintf(output, "\n");
 			}
-			fprintf(output, "\n");*/
+			fprintf(output, "\n");
 
 
-			//fprintf(output, "Mejor Atributo: %d\n", atributoExp);
+			fprintf(output, "Mejor Atributo: %d\n", atributoExp);
 
 			filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i, output);
 			
@@ -414,7 +380,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 			auxNumFil = tableInfo.numFil;
 
 
-			/*fprintf(output, "\nAUX SUB-TABLA: \n");
+			fprintf(output, "\nAUX SUB-TABLA: \n");
 			for (int j = 0; j < auxNumFil + 1; ++j) {
 				for (int z = 0; z < numAtributos; ++z)
 				{
@@ -422,13 +388,13 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 				}
 				fprintf(output, "\n");
 			}
-			fprintf(output, "\n");*/
+			fprintf(output, "\n");
 
 			if ( i == 0  ) {
-				//fprintf(output, "Izquierda\n");
+				fprintf(output, "Izquierda\n");
 				ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 			} else {
-				//fprintf(output, "derecha\n");
+				fprintf(output, "derecha\n");
 				ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 			}
 		}
@@ -540,275 +506,3 @@ int height(nodo* node)
 } 
 
 
-
-float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *output) {
-
-
-	float arr[2][numFil];		/* 1.Fila: valor atributo, 2.Fila: Clase */
-	unsigned int indexAtributo;
-
-	/* Buscamos el indice del atributo */
-	for (int i = 0; i < numAtributos; ++i) {
-		if (tabla[0][i] == atributo) {
-			indexAtributo = i;
-			break;
-		}
-	}
-
-	fprintf(output, "IndexAtributo: %d\n", indexAtributo);
-
-	/* Recorremos la tabla y almacenamos los valores del atributo en una nueva tabla*/
-	for (int i = 1; i < numFil + 1; ++i) {
-		arr[0][i - 1] = tabla[i][indexAtributo];
-		arr[1][i - 1] = tabla[i][numAtributos];
-	}
-
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
-
-	/* Ordenamos el arr y llamamos a la funcion de discretizacion */
-	quickSort(numFil, arr, 0, numFil - 1);
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
-
-	
-	return discretizacion(numFil, arr, output);
-
-}
-
-
-void swap(float *a, float *b)  
-{  
-    float t = *a;  
-    *a = *b;  
-    *b = t;  
-}  
-  
-/* This function takes last element as pivot, places  
-the pivot element at its correct position in sorted  
-array, and places all smaller (smaller than pivot)  
-to left of pivot and all greater elements to right  
-of pivot */
-int partition (int numCol, float arr[][numCol], int low, int high)  
-{  
-    float pivot = arr[0][high]; // pivot  
-    int i = (low - 1); // Index of smaller element  
-  
-    for (int j = low; j <= high - 1; j++)  
-    {  
-        // If current element is smaller than the pivot  
-        if (arr[0][j] < pivot)  
-        {  
-            i++; // increment index of smaller element  
-            swap(&arr[0][i], &arr[0][j]);
-            swap(&arr[1][i], &arr[1][j]);  
-  
-        }  
-    }  
-    swap(&arr[0][i + 1], &arr[0][high]);
-    swap(&arr[1][i + 1], &arr[1][high]);  
-    return (i + 1);  
-}  
-  
-/* The main function that implements QuickSort  
-arr[] --> Array to be sorted,  
-low --> Starting index,  
-high --> Ending index */
-void quickSort(int numCol, float arr[][numCol], int low, int high)  
-{  
-    if (low < high)  
-    {  
-        /* pi is partitioning index, arr[p] is now  
-        at right place */
-        int pi = partition(numCol, arr, low, high);  
-  
-        // Separately sort elements before  
-        // partition and after partition  
-        quickSort(numCol, arr, low, pi - 1);  
-        quickSort(numCol, arr, pi + 1, high);  
-    }  
-}
-
-/* Calculo humbral atributo continuo */
-/**
-  * input: array[2][N] que contiene en la priemra fila los valores del atributo
-  * y en la segunda fila la clase a la que pertence: Vivo / Muerto */
-float discretizacion(int numCol, float arr[][numCol], FILE *output) 
-{
-
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numCol; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numCol; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
-
-
-	/* Numero de columnas de la matriz */
-	// size_t N = ( sizeof(arr[0]) / sizeof(arr[0][0]) );
-
- 	/* 2. Calcular la entropía para cada pareja de valores en los que la clase cambie */
-	float indexElegidos[2][numCol];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
-	unsigned int index = 0;		/* Indice del array de indices de los elegidos */
-
-	float clase = arr[1][0];
-
-	for (int i = 0; i < numCol; ++i) {
-		if ( arr[1][i] != clase ){
-			indexElegidos[0][index] = i;
-			clase = arr[1][i];			
-			++index;
-		}
-	}
-
-	/*fprintf(output, "indexElegidos: \n");
-	for (int i = 0; i < index; ++i)
-	{
-		fprintf(output, "%f\n",indexElegidos[0][i] );
-	}
-	fprintf(output, "\n\n");*/
-
-	/* 3. Elegir como umbral la media del par de valores que minimice la entropía */
-
-	for (int i = 0; i < index; ++i)
-	{
-
-		unsigned int numAtributosMenores;
-		unsigned int numAtributosMayores;
-
-		unsigned int numSiMenores = 0;
-		unsigned int numNoMenores = 0; 
-		unsigned int numSiMayores = 0;
-		unsigned int numNoMayores = 0;
-
-		numAtributosMenores = indexElegidos[0][i];
-		numAtributosMayores = numCol - indexElegidos[0][i];
-
-		for (int j = 0; j < numAtributosMenores; ++j){
-			if (arr[1][j] == 1)
-				++numSiMenores;
-		}
-
-		numNoMenores = numAtributosMenores - numSiMenores;
-
-		for (int j = numAtributosMenores; j < numCol; ++j){
-			if (arr[1][j] == 1)
-				++numSiMayores;
-		}
-
-		numNoMayores = numAtributosMayores - numSiMayores;
-
-		/*fprintf(output, "numAtributosMenores: %d\n", numAtributosMenores);
-		fprintf(output, "numAtributosMayores: %d\n", numAtributosMayores);
-		fprintf(output, "numSiMenores: %d\n", numSiMenores);
-		fprintf(output, "numNoMenores: %d\n", numNoMenores);
-		fprintf(output, "numSiMayores: %d\n", numSiMayores);
-		fprintf(output, "numNoMayores: %d\n\n", numNoMayores);*/
-
-		double entropiaMenorSi = 0;
-		double entropiaMenorNo = 0;
-		double entropiaMayorSi = 0;
-		double entropiaMayorNo = 0;
-		double entropia1 = 0;
-		double entropia2 = 0;
-
-
-		if ( (numSiMenores != 0) && (numSiMenores != numAtributosMenores) )
-			entropiaMenorSi = ( ( (double)numSiMenores / (double)numAtributosMenores ) * (- log( (double)numSiMenores / (double)numAtributosMenores) / log(2)) );
-
-		if ( (numNoMenores != 0) && (numNoMenores != numAtributosMenores) )
-			entropiaMenorNo = ( ( (double)numNoMenores / (double)numAtributosMenores) * (- log( (double)numNoMenores / (double)numAtributosMenores) / log(2) ) );
-
-		entropia1 = ( (double)numAtributosMenores / (double)numCol) * (entropiaMenorSi + entropiaMenorNo);
-
-		if ( (numSiMayores != 0) && (numSiMayores != numAtributosMayores) )
-			entropiaMayorSi = ( ( (double)numSiMayores / (double)numAtributosMayores) * (- log( (double)numSiMayores / (double)numAtributosMayores) / log(2)) );
-		
-		if ( (numNoMayores != 0) && (numNoMayores != numAtributosMayores) )
-			entropiaMayorNo = ( ( (double)numNoMayores / (double)numAtributosMayores) * (- log( (double)numNoMayores / (double)numAtributosMayores) / log(2)) );
-
-		entropia2 = ( (double)numAtributosMayores / (double)numCol) * (entropiaMayorSi + entropiaMayorNo); 
-
-		indexElegidos[1][i] = entropia1 + entropia2;
-
-		/*fprintf(output, "entropiaMenorSi: %f\n", entropiaMenorSi);
-		fprintf(output, "entropiaMenorNo: %f\n", entropiaMenorNo);
-		fprintf(output, "entropiaMayorSi: %f\n", entropiaMayorSi);
-		fprintf(output, "entropiaMayorNo: %f\n", entropiaMayorNo);
-		fprintf(output, "entropia1: %f\n", entropia1);
-		fprintf(output, "entropia2: %f\n", entropia2);
-		fprintf(output, "Entropia Total: %f\n\n", indexElegidos[1][i]);*/
-
-
-	}
-
-
-
-	/* Buscamos el atributo con menor entropia */
-	unsigned int indexMinEntropia;
-	float minEntropiaValue;
-	float minEntropia = 1;
-
-	//fprintf(output, "Entropias Elegidos: \n");
-	for (int i = 0; i < index; ++i) {
-		//fprintf(output, "%f ", indexElegidos[1][i]);
-		if ( indexElegidos[1][i] < minEntropia ) {
-			minEntropia = indexElegidos[1][i];
-			indexMinEntropia = indexElegidos[0][i];
-		}
-	}
-
-	minEntropiaValue = arr[0][indexMinEntropia];
-
-	float umbral1 = minEntropiaValue; /* Esto esta puesto por comprension */
-
-	/* Buscamos atributo de otra clase por la izquierda */	
-
-	float umbral2;
-
-	clase = arr[1][indexMinEntropia];
-
-	printf("Clase: %f\n", clase);
-
-	for (int i = indexMinEntropia; i > 0 ; --i) {
-		if (arr[1][i] != clase){
-			umbral2 = arr[0][i];
-			break;
-		}
-	}
-
-	/* Calculamos el humbral */
-	float umbral = (float) ( (umbral1 + umbral2) / 2);
-	printf("Umbral1: %f\n", umbral1);
-	printf("Umbral2: %f\n", umbral2);
-	printf("Umbral Final\n\n: %f\n", umbral);
-
-	return umbral;
-
-}

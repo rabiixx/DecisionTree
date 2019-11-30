@@ -22,58 +22,18 @@
 //  DEALINGS IN THE SOFTWARE.
 
 
-/**
-  * Compilador: GCC 
-  * Version compilador: 7.4.0
-  * Entorno: Ubuntu 18.04.3 LTS
-  * Kernel Version: 4.15.0-64-generic
-  * Autor: Ruben Cherif Narvaez
-  * Email: 99rubenche@gmail.com
-  * github: https://github.com/rabiixx
-  * Fecha: 
-  */
-
-
-
-
-
-
-/* Librerias estandares de C */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include "funciones_v2.h"
-
-
-//char *arrAtributos[] = {"Masculino", "Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Matrimonio", "Nobleza", "MuertesR", "Popularidad"};
-//char *arrClases[2] = {"Vivo", "Muerto"};
-
-
-/*string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
-{
-	string prediction;
-	while (!nodePtr->isLeaf && !nodePtr->children.empty()) {
-		/*int index = returnColumnIndex(nodePtr->splitOn, tableInfo);*/	/*dev atributo */
-		/*string value = singleLine[index];
-		int childIndex = returnIndexOfVector(nodePtr->childrenValues, value);
-		nodePtr = nodePtr->children[childIndex];
-		if (nodePtr == NULL) {
-			prediction = defaultClass;
-			break;
-		}
-		prediction = nodePtr->label;
-	}
-	return prediction;
-}*/
+#include "funciones_v1.h"
 
 /* Fase de testeo */
 int testDatosDT(float *linea, nodo *ptrNodo) {
 
 	int prediccion;
 
-	while ( !ptrNodo->hoja ) {
+	while ( !ptrNodo->hoja && ptrNodo->izq && ptrNodo->der) {
 		int valor = linea[ptrNodo->atributo];
 		if (valor == 0) {
 			ptrNodo = ptrNodo->izq;
@@ -143,7 +103,6 @@ int analizarResultados(float claseReales[], float clasesPredichas[]){
 	return EXIT_SUCCESS;
 
 }
-
 
 int main(int argc, char const *argv[]) {
 

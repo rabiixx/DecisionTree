@@ -55,13 +55,14 @@
 #define SI 213
 #define NO 564
 
-#define NUM_FILAS_TRAIN 50      /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TRAIN 20      /* Numero de filas del dataset de entrenamiento */
 #define NUM_FILAS_TEST 10       /* Numero de filas de los datos de entrenamiento */
 
-#define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
+#define NUM_ATRIBUTOS 8        /* Numero de atributos del problema */
 #define NUM_CLASES 2            /* Numero de clases */
 
 #define clasePorDefecto 1
+
 
 typedef struct _infoAtributo {
 	double entropia;
@@ -86,11 +87,12 @@ typedef struct _filtroInfo {
 	float **tabla;
 } filtroInfo;
 
+
 /* Calcula y devuelve la entropia, ganancia de informacion y ratio de ganancia */
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
+infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, FILE *);
 
 /* Elige el mejor atributo en base a la ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *);
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *);
 
 /* Lee y almacena los datos en una matriz de [numFil+1] x [numAtributos + 1] */
 float **readData(FILE *, unsigned int numFil, FILE *output);
@@ -118,16 +120,3 @@ void printGivenLevel(nodo* root, int level);
 int height(nodo* node); 
 
 void printLevelOrder(nodo* root);
-
-/* Recorre la tabla almacenando y ordenando los valores del atritubo continuo */
-float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *);
-
-/* Quicksort utilizado para ordenar los valores de los atributos continuos */
-void swap(float *a, float *b);
-
-int partition (int numCol, float arr[][numCol], int low, int high);
-
-void quickSort(int numCol, float arr[][numCol], int low, int high);
-
-/* Funcion de discretizacion que devulve un umbral del atributo coninuo */
-float discretizacion(int numCol, float arr[][numCol], FILE *output);

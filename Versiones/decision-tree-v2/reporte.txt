@@ -1,0 +1,17 @@
+| Clase Real -------------------- Clase Predicha |
+| ---------------------------------------------- |
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+| ---------------------------------------------- |
+RESULTADOS FINALES: 
+	[+] Numero de filas: 10
+	[+] Numero de Aciertos: 3
+	[+] Tasa De Acierto: 0.300000
