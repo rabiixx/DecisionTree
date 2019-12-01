@@ -55,7 +55,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
 
 
-	/* Varible continua */
+	/* Atributo continuo */
 	if (umbral != -1) {
 		for (int i = 1; i < numFilas + 1; ++i) {
 			if (tabla[i][indexAtributo] <= umbral) {
@@ -72,7 +72,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 					++numAtributoNoMuertos;
 			}
 		}
-	} else {
+	} else { 	/* Atributo categorico */
 		for (int i = 1; i < numFilas + 1; ++i) {
 			if (tabla[i][indexAtributo] == 1) {
 				++numAtributoSi;
@@ -217,7 +217,7 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 
 	for (int i = 0; i < numAtributos; ++i) {
 
-		/* Si es un artibuto continuo, le pasamos el umbral del atributo */
+		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
 		if (tabla[0][i] == 8) {
 			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral1, output);
 		} else if (tabla[0][i] == 9) {
@@ -226,6 +226,7 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, -1, i, output);	
 		}
 
+		/* Se escoge el atributo con mayor ganancia de informacion */
 		if (arrHeuristica[i].gainInfo > maxEnt) {
 			maxEnt = arrHeuristica[i].gainInfo;
 			a_best = tabla[0][i];
@@ -307,6 +308,8 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 
 	indexCol = 0;
 
+	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
+	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
 	for (int i = 1; i < numFil + 1; ++i) {
 
 		/* Hemos encontrado una fila que coincide con el valor del atributo */
@@ -363,7 +366,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		return ptrNodo;
 	} else {
 
-		/* Buscamos umbral del atributo Muertes y Popularidad */
+		/* Buscamos los umbrales del los atributos Muertes y Popularidad */
 		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
 
 		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
@@ -371,6 +374,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		printf("Umbral 1: %f\n", umbral1);
 		printf("Umbral 2: %f\n", umbral2);
 		
+		/* Se elige el atributo con mayor ganancia de informacion */
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
 
 		ptrNodo->atributo = atributoExp;
@@ -770,7 +774,7 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 
 
-	/* Buscamos el atributo con menor entropia */
+	/* Buscamos el valor del atributo con menor entropia */
 	unsigned int indexMinEntropia;
 	float minEntropiaValue;
 	float minEntropia = 1;

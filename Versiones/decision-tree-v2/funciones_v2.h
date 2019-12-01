@@ -63,6 +63,8 @@
 
 #define clasePorDefecto 1
 
+
+/** Estructura de datos para alamacenar la heuristica de cada atributo */
 typedef struct _infoAtributo {
 	double entropia;
 	double gainInfo;
@@ -119,10 +121,11 @@ int height(nodo* node);
 
 void printLevelOrder(nodo* root);
 
-/* Recorre la tabla almacenando y ordenando los valores del atritubo continuo */
+/** Recorre la tabla almacenando y ordenando los valores del atritubo continuo.
+  * Llama a la funcion discretizacion y devuelve el umbral del atributo */
 float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *);
 
-/* Quicksort utilizado para ordenar los valores de los atributos continuos */
+/* Quicksort: utilizado para ordenar los valores de los atributos continuos */
 void swap(float *a, float *b);
 
 int partition (int numCol, float arr[][numCol], int low, int high);
@@ -131,3 +134,8 @@ void quickSort(int numCol, float arr[][numCol], int low, int high);
 
 /* Funcion de discretizacion que devulve un umbral del atributo coninuo */
 float discretizacion(int numCol, float arr[][numCol], FILE *output);
+
+
+
+
+
