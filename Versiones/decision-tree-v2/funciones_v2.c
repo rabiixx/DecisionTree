@@ -348,6 +348,8 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output)
 {
 
+	printf("laksfjladsknfkjdsnfkjdsnkfjn\n");
+
 	/* La sub-tabla esta vacia */
 	if ( (numFil == 1) && (numAtributos == 0) ) {
 		return NULL;
@@ -363,6 +365,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		ptrNodo->hoja = true;
 		ptrNodo->clase = claseMasFrecuente(numFil, tabla);
 		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
+		printf("Numeron de atributos es igual a 0\n");
 		return ptrNodo;
 	} else {
 
@@ -376,6 +379,8 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		
 		/* Se elige el atributo con mayor ganancia de informacion */
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
+
+		printf("Atributo escogido: %d\n", atributoExp);
 
 		ptrNodo->atributo = atributoExp;
 
@@ -462,10 +467,10 @@ bool esHomojenea(int numFil, int numAtributos, float **tabla) {
 
 void mostrarPreorden(nodo *raiz, FILE *output) {
 	if (raiz) {
-        fprintf(output, "Atributo: %d\n", raiz->atributo);
-        fprintf(output, "Clase: %d\n", raiz->clase);
-        fprintf(output, "Es Hoja: %d\n", raiz->hoja);
-        fprintf(output, "\n");
+        printf(/*output, */"Atributo: %d\n", raiz->atributo);
+        printf(/*output, */"Clase: %d\n", raiz->clase);
+        printf(/*output, */"Es Hoja: %d\n", raiz->hoja);
+        printf(/*output, */"\n");
         mostrarPreorden(raiz->izq, output);
         mostrarPreorden(raiz->der, output);
     } else {

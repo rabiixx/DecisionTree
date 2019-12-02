@@ -73,11 +73,14 @@ int testDatosDT(float *linea, nodo *ptrNodo) {
 
 	int prediccion;
 
-	while ( !ptrNodo->hoja ) {
-		int valor = linea[ptrNodo->atributo];
-		if (valor == 0) {
+	while ( ptrNodo && ptrNodo->izq && ptrNodo->der) {
+
+		float valor = linea[ptrNodo->atributo];
+		printf("ptrNodo->atributo: %d\n", ptrNodo->atributo);
+		printf("Valor: %f\n", valor);
+		if (valor <= 0.5) {
 			ptrNodo = ptrNodo->izq;
-		} else if (valor == 1) {
+		} else if (valor > 0.5) {
 			ptrNodo = ptrNodo->der;
 		}
 		if (ptrNodo == NULL) {
@@ -85,7 +88,7 @@ int testDatosDT(float *linea, nodo *ptrNodo) {
 			break;
 		}
 		prediccion = ptrNodo->clase;
-
+		//printf("hola\n");
 	}
 
 	return prediccion;
@@ -159,12 +162,12 @@ int main(int argc, char const *argv[]) {
 	FILE *trainData, *testData;
 	FILE *output = fopen("output.txt", "w");
 
-	if ( (trainData = fopen("trainData.dat", "r")) == NULL ) {
+	if ( (trainData = fopen("trainData2.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
 
-	if ( (testData = fopen("testData.dat", "r")) == NULL ) {
+	if ( (testData = fopen("testData2.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
@@ -177,8 +180,15 @@ int main(int argc, char const *argv[]) {
 	/* Nodo raiz del arbol de deciciones */
 	nodo *raiz = (nodo*)malloc(sizeof(nodo));
 
+	printf("[+] Comienzo la fase de entrenamiento\n");
+
 	/* Fase de entrenamiento: construccion del arbol de decisiones */
 	raiz = construirArbolDecision(NUM_FILAS_TRAIN, NUM_ATRIBUTOS, tablaTrain, raiz, output);
+
+	printf("[+] Finalizada la fase de entrenamiento\n");
+
+	mostrarPreorden(raiz, output);
+
 
 	/* FASE DE TESTO */
 
@@ -196,19 +206,26 @@ int main(int argc, char const *argv[]) {
 	float clasesPredichas[NUM_FILAS_TEST];		/* Guarda las clases predecidas de los datos de testeo */
 
 
+	printf("[+] Comienzo la fase de testeo\n");
+
 	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
 		clasesReales[i] = tablaTest[i + 1][NUM_ATRIBUTOS];
 	}
 
 	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
+		printf("VAlor de I. %d\n", i);
 		clasesPredichas[i] = testDatosDT(tablaTest[i + 1], raiz);
 	}
 
 	free(tablaTrain);
 	free(tablaTest);
+
+	printf("[+] Finaliza la fase de testeo\n");
+
 	
 	/* Analizamos los resultados obtenidos */
 	analizarResultados(clasesReales, clasesPredichas);
+
 
 	return EXIT_SUCCESS;
 }

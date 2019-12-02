@@ -55,8 +55,8 @@
 #define SI 213
 #define NO 564
 
-#define NUM_FILAS_TRAIN 50      /* Numero de filas del dataset de entrenamiento */
-#define NUM_FILAS_TEST 10       /* Numero de filas de los datos de entrenamiento */
+#define NUM_FILAS_TRAIN 1000      /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TEST 948       /* Numero de filas de los datos de entrenamiento */
 
 #define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
 #define NUM_CLASES 2            /* Numero de clases */
