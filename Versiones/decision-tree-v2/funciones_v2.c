@@ -265,6 +265,8 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
 	}
 
+	//fprintf(output, "READDATA: \n");
+
 	/*for (int i = 0; i < numFil + 1; ++i)
 	{
 		for (int j = 0; j < NUM_ATRIBUTOS + 1; ++j)
@@ -369,10 +371,26 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		return ptrNodo;
 	} else {
 
+		for (int i = 0; i < numFil; ++i)
+		{
+			for (int j = 0; j < numAtributos + 1; ++j){
+				fprintf(output, "%f, ", tabla[i][j]);
+			}
+			fprintf(output, "\n");
+		}
+		fprintf(output, "\n\n" );
+
+		printf("3\n");
+
 		/* Buscamos los umbrales del los atributos Muertes y Popularidad */
 		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
 
+		printf("3.5\n");
+
 		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
+
+		printf("4\n");
+
 
 		printf("Umbral 1: %f\n", umbral1);
 		printf("Umbral 2: %f\n", umbral2);
@@ -557,17 +575,22 @@ float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, 
 	unsigned int indexAtributo;
 
 	/* Buscamos el indice del atributo */
-	for (int i = 0; i < numAtributos; ++i) {
+	int i;
+	for (i = 0; i < numAtributos; ++i) {
 		if (tabla[0][i] == atributo) {
 			indexAtributo = i;
 			break;
 		}
 	}
 
+	if (i == numAtributos) {
+		return (float) -1;
+	}
+
 	fprintf(output, "IndexAtributo: %d\n", indexAtributo);
 
 	/* Recorremos la tabla y almacenamos los valores del atributo en una nueva tabla*/
-	for (int i = 1; i < numFil + 1; ++i) {
+	for (i = 1; i < numFil + 1; ++i) {
 		arr[0][i - 1] = tabla[i][indexAtributo];
 		arr[1][i - 1] = tabla[i][numAtributos];
 	}

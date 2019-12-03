@@ -56,7 +56,7 @@
 #define NO 564
 
 #define NUM_FILAS_TRAIN 1000      /* Numero de filas del dataset de entrenamiento */
-#define NUM_FILAS_TEST 948       /* Numero de filas de los datos de entrenamiento */
+#define NUM_FILAS_TEST 1000       /* Numero de filas de los datos de entrenamiento */
 
 #define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
 #define NUM_CLASES 2            /* Numero de clases */
@@ -76,7 +76,7 @@ typedef struct _nodo {
 	unsigned int atributo;       /* Indica que atributo usar para dividir */
 	unsigned int clase;          /* Si es una hoja, indica la clase a la pertenece */
 	bool hoja;						       /* Indica si el nodo es una hoja */
-	int arrHijos[2];             /* Contiene el valor de los atributos de sus hijos */
+	float arrHijos[2];             /* Contiene el valor de los atributos de sus hijos */
 	struct _nodo *izq;           /* Direccion de memoria del hijo izquierdo */
 	struct _nodo *der;           /* Direccion de memoria del hijo derecho */
 } nodo;
