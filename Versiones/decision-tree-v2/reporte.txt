@@ -1,10 +1,13 @@
 | Clase Real -------------------- Clase Predicha |
 | ---------------------------------------------- |
-	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
+	Muerto	-------------	Muerto
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
@@ -12,25 +15,22 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -41,23 +41,33 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
+	Vivo	xxxxxxxxxxxxx	Muerto
+	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -65,50 +75,43 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -116,52 +119,44 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -172,63 +167,55 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -236,12 +223,12 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -249,10 +236,8 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -264,74 +249,79 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
-	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
+	Muerto	-------------	Muerto
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -340,21 +330,20 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -362,75 +351,70 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -439,6 +423,7 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -446,50 +431,56 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	-------------	Muerto
-	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
@@ -497,70 +488,54 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
@@ -575,12 +550,10 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -588,126 +561,139 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -715,19 +701,36 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -735,41 +738,87 @@
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -778,15 +827,22 @@
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -794,96 +850,84 @@
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
@@ -895,113 +939,69 @@
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
-	Muerto	-------------	Muerto
 	Muerto	xxxxxxxxxxxxx	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
-	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Vivo	xxxxxxxxxxxxx	Muerto
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Vivo	xxxxxxxxxxxxx	Muerto
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 	Muerto	xxxxxxxxxxxxx	Vivo
 	Vivo	-------------	Vivo
 	Vivo	-------------	Vivo
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
-	Muerto	-------------	Muerto
+	Vivo	-------------	Vivo
+	Vivo	-------------	Vivo
+	Muerto	xxxxxxxxxxxxx	Vivo
+	Vivo	-------------	Vivo
 | ---------------------------------------------- |
 RESULTADOS FINALES: 
 	[+] Numero de filas: 1000
-	[+] Numero de Aciertos: 705
-	[+] Tasa De Acierto: 0.705000
+	[+] Numero de Aciertos: 800
+	[+] Tasa De Acierto: 0.800000

@@ -77,18 +77,31 @@ int testDatosDT(float *linea, nodo *ptrNodo) {
 
 		float valor = linea[ptrNodo->atributo];
 		printf("ptrNodo->atributo: %d\n", ptrNodo->atributo);
-		printf("Valor: %f\n", valor);
-		if (valor <= 0.5) {
-			ptrNodo = ptrNodo->izq;
-		} else if (valor > 0.5) {
-			ptrNodo = ptrNodo->der;
+		//printf("Valor: %f\n", valor);
+		//printf("ptrNodo->atributo: %d\n", ptrNodo->atributo);
+		if (ptrNodo->atributo == 8 || ptrNodo->atributo == 9) {	
+		//	printf("ptrNodo->umbral: %f\n\n", ptrNodo->umbralA);
+			if (valor <= ptrNodo->umbralA) {
+				ptrNodo = ptrNodo->izq;	
+				//printf("hola1\n");
+			} else if (valor > ptrNodo->umbralA) {
+				ptrNodo = ptrNodo->der;
+				//printf("hola2\n");
+			}
+		} else {	
+			if (valor == 0)
+				ptrNodo = ptrNodo->izq;
+			else if (valor == 1)
+				ptrNodo = ptrNodo->der;
 		}
+
 		if (ptrNodo == NULL) {
 			prediccion = clasePorDefecto;
 			break;
 		}
+
 		prediccion = ptrNodo->clase;
-		//printf("hola\n");
+
 	}
 
 	return prediccion;
@@ -213,7 +226,6 @@ int main(int argc, char const *argv[]) {
 	}
 
 	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
-		printf("VAlor de I. %d\n", i);
 		clasesPredichas[i] = testDatosDT(tablaTest[i + 1], raiz);
 	}
 
