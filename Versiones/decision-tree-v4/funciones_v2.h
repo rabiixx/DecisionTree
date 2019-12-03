@@ -106,6 +106,12 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
   * Devuelve una matriz de M x numAtributos */
 filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int indexAtributo, float valorAtributo, FILE *output);
 
+/* Filtro de tabla para atributos continuos */
+filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output);
+
+/* Elimina una columna completa de un atributo continuo cuando el umbral = 0 */
+filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo);
+
 /* Comprueba si todas las filas de una tabla pertenecen a la misma clase */
 bool esHomojenea(int numFil, int numAtributos, float **tabla);
 

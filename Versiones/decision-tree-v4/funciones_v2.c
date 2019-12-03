@@ -223,7 +223,7 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 		} else if (tabla[0][i] == 9) {
 			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral2, output);
 		} else {	
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, -1, i, output);	
+			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, -1, output);	
 		}
 
 		/* Se escoge el atributo con mayor ganancia de informacion */
@@ -232,6 +232,16 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 			a_best = tabla[0][i];
 		}	
 	}
+
+	for (int i = 0; i < numAtributos; ++i)
+	{
+		fprintf(output, "\n Heuristica Atributo: %f\n", tabla[0][i]);
+		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].entropia);
+		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].gainInfo);
+	}
+
+	fprintf(output, "\nElegir Atributo: %d\n", a_best);
+	fprintf(output, "Entropia Atributo: %f\n", maxEnt);
 
 	return a_best;
 }
@@ -282,6 +292,150 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 }
 
 
+filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo) {
+	
+	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
+
+	for (int i = 0; i < numFil + 1; ++i) {
+		tablaFiltrada[i] = (float*)malloc( numAtributos * sizeof(float));
+	}
+
+	/* Buscamos el indice del atributo */
+	unsigned int indexAtributo; 
+	int indexCol = 0;
+
+	for (int i = 0; i < numAtributos + 1; ++i) {
+		if (tabla[0][i] == atributo) {
+			indexAtributo = i;
+		} else { 
+			tablaFiltrada[0][indexCol] = tabla[0][i];
+			++indexCol;
+		}
+	}
+
+	/*fprintf(output, "Index aTRIBUTO: %d \n", indexAtributo );
+	fprintf(output, "VAlor: %f\n", valorAtributo);*/
+
+	indexCol = 0;
+
+	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
+	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
+	for (int i = 1; i < numFil + 1; ++i) {
+	
+		indexCol = 0;
+		for (int j = 0; j < numAtributos + 1; ++j){
+			if (j != indexAtributo) {
+				tablaFiltrada[i][indexCol] = (float)tabla[i][j];
+				++indexCol;
+			}
+		}
+	}
+
+
+	/*fprintf(output, "IndexFil: %d\n", indexFil);
+	fprintf(output, "\n filtro SUB-TABLA: \n");
+	for (int i = 0; i < indexFil; ++i) {
+		for (int j = 0; j < numAtributos; ++j)
+		{
+			fprintf(output, "%f, ", tablaFiltrada[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");*/
+
+	filtroInfo tableInfo;
+
+	tableInfo.tabla = tablaFiltrada;
+	tableInfo.numFil = numFil;
+
+	return tableInfo;
+
+}
+
+
+
+
+filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output) {
+	
+	fprintf(output, "Umbral de filtro: %f \n", umbral);
+
+
+	fprintf(output, "\n Tabla antes de filtrar cont: \n");
+	for (int i = 0; i < numFil; ++i) {
+		for (int j = 0; j < numAtributos + 1; ++j)
+		{
+			fprintf(output, "%f, ", tabla[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");
+
+
+
+	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
+
+	for (int i = 0; i < numFil + 1; ++i) {
+		tablaFiltrada[i] = (float*)malloc( numAtributos * sizeof(float));
+	}
+
+	/* Buscamos el indice del atributo */
+	unsigned int indexAtributo;
+	int indexFil = 1; 
+	int indexCol = 0;
+
+	for (int i = 0; i < numAtributos + 1; ++i) {
+	
+		if (tabla[0][i] == atributo)
+			indexAtributo = i;
+
+		tablaFiltrada[0][i] = tabla[0][i];
+	}
+
+	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
+	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
+
+	
+
+	if (valorAtributo == 0){
+		for (int i = 1; i < numFil + 1; ++i) {
+			if (tabla[i][indexAtributo] <= umbral){
+				for (int j = 0; j < numAtributos + 1; ++j) {
+					tablaFiltrada[indexFil][j] = (float) tabla[i][j];
+				}
+				++indexFil;
+			}
+		}
+	} else if (valorAtributo == 1) {
+		for (int i = 1; i < numFil + 1; ++i) {
+			if (tabla[i][indexAtributo] > umbral){
+				for (int j = 0; j < numAtributos + 1; ++j) {
+					tablaFiltrada[indexFil][j] = (float) tabla[i][j];
+				}
+				++indexFil;
+			}
+		}
+	}
+
+
+	fprintf(output, "\n Tabla despues de filtrar cont: \n");
+	for (int i = 0; i < indexFil; ++i) {
+		for (int j = 0; j < numAtributos + 1; ++j)
+		{
+			fprintf(output, "%f, ", tablaFiltrada[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");
+
+	filtroInfo tableInfo;
+
+	tableInfo.tabla = tablaFiltrada;
+	tableInfo.numFil = indexFil - 1;
+
+	return tableInfo;
+
+}
+
 filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, FILE *output) {
 
 
@@ -315,7 +469,7 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 	for (int i = 1; i < numFil + 1; ++i) {
 
 		/* Hemos encontrado una fila que coincide con el valor del atributo */
-		if (tabla[i][indexAtributo] == valorAtributo){
+		if (tabla[i][indexAtributo] == valorAtributo) {
 			indexCol = 0;
 			for (int j = 0; j < numAtributos + 1; ++j){
 				if (j != indexAtributo) {
@@ -369,14 +523,14 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		return ptrNodo;
 	} else {
 
-		for (int i = 0; i < numFil; ++i)
+		/*for (int i = 0; i < numFil; ++i)
 		{
 			for (int j = 0; j < numAtributos + 1; ++j){
 				fprintf(output, "%f, ", tabla[i][j]);
 			}
 			fprintf(output, "\n");
 		}
-		fprintf(output, "\n\n" );
+		fprintf(output, "\n\n" );*/
 
 		/* Buscamos los umbrales del los atributos Muertes y Popularidad */
 		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
@@ -388,7 +542,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		/* Se elige el atributo con mayor ganancia de informacion */
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
 
-		printf("Atributo escogido: %d\n", atributoExp);
+		fprintf(output, "Atributo escogido: %d\n", atributoExp);
 
 		if ( atributoExp == 8 ) {
 			ptrNodo->umbralA = umbral1;
@@ -403,7 +557,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		/** Para la cantidad de valores que puede tomar el atributo, 
 		  * en nuestro caso todos los atrbutos pueden tomar solo dos
 		  * valores: SI/NO */
-		for (int i = 0; i < 2; ++i){
+		for (int i = 0; i < 2; ++i) {
 
 			int auxNumFil;
 
@@ -433,31 +587,65 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 
 			//fprintf(output, "Mejor Atributo: %d\n", atributoExp);
 
-			if ( (atributoExp != 8) && (atributoExp != 9) ) {
+			if ( (atributoExp == 8) && (umbral1 == 0) ) {
+				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp);
+				auxTabla = tableInfo.tabla;
+				auxNumFil = tableInfo.numFil;
+				if ( i == 0 ) {
+					//fprintf(output, "Izquierda\n");
+					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+				} else {
+					//fprintf(output, "derecha\n");
+					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+				}	
+
+			} else if ( (atributoExp == 9) && (umbral2 == 0) ) {
+
+				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp);
+				auxTabla = tableInfo.tabla;
+				auxNumFil = tableInfo.numFil;
+				if ( i == 0 ) {
+					//fprintf(output, "Izquierda\n");
+					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+				} else {
+					//fprintf(output, "derecha\n");
+					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+				}	
+
+			} else if ( (atributoExp != 8) && (atributoExp != 9) ) {
 				filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i, output);
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
-			} else {
-				auxTabla = tabla;
-				auxNumFil = numFil;
-			}
-
-			/*fprintf(output, "\nAUX SUB-TABLA: \n");
-			for (int j = 0; j < auxNumFil + 1; ++j) {
-				for (int z = 0; z < numAtributos; ++z)
-				{
-					fprintf(output, "%f, ", auxTabla[j][z]);
+				
+				if ( i == 0 ) {
+					//fprintf(output, "Izquierda\n");
+					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+				} else {
+					//fprintf(output, "derecha\n");
+					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 				}
-				fprintf(output, "\n");
-			}
-			fprintf(output, "\n");*/
 
-			if ( i == 0  ) {
-				//fprintf(output, "Izquierda\n");
-				ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 			} else {
-				//fprintf(output, "derecha\n");
-				ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
+
+				filtroInfo tableInfo;
+
+				if ( (atributoExp == 8) && (umbral1 == 0) )
+					tableInfo = 
+
+					tableInfo = filtrarTablaCont(numFil, numAtributos, tabla, atributoExp, i, umbral1, output);
+				else 
+					tableInfo = filtrarTablaCont(numFil, numAtributos, tabla, atributoExp, i, umbral2, output);
+				
+				auxTabla = tableInfo.tabla;
+				auxNumFil = tableInfo.numFil;
+
+				if ( i == 0 ) {
+					//fprintf(output, "Izquierda\n");
+					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos, auxTabla, nuevoNodo, output);
+				} else {
+					//fprintf(output, "derecha\n");
+					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos, auxTabla, nuevoNodo, output);
+				}
 			}
 		}
 		
