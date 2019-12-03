@@ -110,7 +110,7 @@ filtroInfo filtrarTabla(int numFilas, int numAtributos, float **tabla, int index
 filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output);
 
 /* Elimina una columna completa de un atributo continuo cuando el umbral = 0 */
-filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo);
+filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo, FILE *output);
 
 /* Comprueba si todas las filas de una tabla pertenecen a la misma clase */
 bool esHomojenea(int numFil, int numAtributos, float **tabla);

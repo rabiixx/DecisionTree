@@ -292,7 +292,18 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 }
 
 
-filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo) {
+filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo, FILE 	*output) {
+
+	
+	fprintf(output, "\n ELiminar Col 1: \n");
+	for (int i = 0; i < numFil + 1; ++i) {
+		for (int j = 0; j < numAtributos + 1; ++j)
+		{
+			fprintf(output, "%f, ", tabla[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");
 	
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
@@ -332,16 +343,15 @@ filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo
 	}
 
 
-	/*fprintf(output, "IndexFil: %d\n", indexFil);
-	fprintf(output, "\n filtro SUB-TABLA: \n");
-	for (int i = 0; i < indexFil; ++i) {
-		for (int j = 0; j < numAtributos; ++j)
+	fprintf(output, "\n ELiminar col 2:  \n");
+	for (int i = 0; i < numFil + 1; ++i) {
+		for (int j = 0; j < numAtributos + 1; ++j)
 		{
 			fprintf(output, "%f, ", tablaFiltrada[i][j]);
 		}
 		fprintf(output, "\n");
 	}
-	fprintf(output, "\n");*/
+	fprintf(output, "\n");
 
 	filtroInfo tableInfo;
 
@@ -588,7 +598,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 			//fprintf(output, "Mejor Atributo: %d\n", atributoExp);
 
 			if ( (atributoExp == 8) && (umbral1 == 0) ) {
-				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp);
+				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp, output);
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
 				if ( i == 0 ) {
@@ -601,7 +611,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 
 			} else if ( (atributoExp == 9) && (umbral2 == 0) ) {
 
-				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp);
+				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp, output);
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
 				if ( i == 0 ) {
