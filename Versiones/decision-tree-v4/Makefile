@@ -4,7 +4,7 @@ lib: funciones_v2.c
 main: main_v2.c funciones_v2.o
 	gcc main_v2.c -o main_v2 funciones_v2.o -Wall -pedantic -lm
 
-all: main
+all: lib main
 
 dbg_lib: funciones_v2.c
 	gcc -g -c funciones_v2.c -lm
