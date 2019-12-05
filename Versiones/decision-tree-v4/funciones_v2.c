@@ -26,6 +26,17 @@
 #include <math.h>
 #include "funciones_v2.h"
 
+
+
+double calcularEntropia(double num1, double num2) {
+
+	if ( num1 != 0 ) {
+		return ( (double)num1 / (double)num2) * ( log( ( (double)num2 / (double)num1) ) / log(2));
+	} else {
+		return 0;
+	}
+
+}
 /**
   * Funcion calcularEntropia
   * Calcula la entropia, ganancia de informacion y ratio de ganancia de un 
@@ -38,7 +49,7 @@
   * @see infoAtributo
   * @return entropia, ganancia de informacion y ratio de ganancia
    */ 
-infoAtributo calcularEntropia(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
+infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
 {
 
 	/* DECLARACION DE VARIABLES */

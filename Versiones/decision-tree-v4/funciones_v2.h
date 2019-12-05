@@ -92,7 +92,7 @@ typedef struct _filtroInfo {
 } filtroInfo;
 
 /* Calcula y devuelve la entropia, ganancia de informacion y ratio de ganancia */
-infoAtributo calcularEntropia(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
+infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
 
 /* Elige el mejor atributo en base a la ganancia de informacion normalizada */
 int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *);
