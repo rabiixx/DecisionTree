@@ -24,8 +24,19 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include "funciones_v2.h"
+#include <errno.h>
+#include <string.h>
 
+/** Estructura de datos para alamacenar la heuristica de cada atributo */
+typedef struct _infoAtributo {
+	double entropia;
+	double gainInfo;
+	double gainRatio;
+} infoAtributo;
+
+#define NUM_FILAS_TRAIN 1000      /* Numero de filas del dataset de entrenamiento */
+
+#define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
 
 
 double calcularEntropia(double num1, double num2) {
@@ -163,20 +174,20 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	double entropiaMuertos;
 	double entropiaC;
 
-	if ( ( (double)numVivos / (double)numFilas ) != 0){
+	/*if ( ( (double)numVivos / (double)numFilas ) != 0){
 		entropiaVivos = ( (double)numVivos / (double)numFilas ) * ( log( ( (double)numFilas / (double)numVivos) ) / log(2));
 	} else {
 		entropiaVivos = (double) 0;
-	}	
+	}*/
 
 	entropiaVivos = calcularEntropia(numVivos, numFilas);
 
 
-	if ( ( (double)numMuertos / (double)numFilas) != 0) {
+	/*if ( ( (double)numMuertos / (double)numFilas) != 0) {
 		entropiaMuertos = ( (double)numMuertos / (double)numFilas) * ( log( ( (double)numFilas / (double)numMuertos)) / log(2));
 	} else {
 		entropiaMuertos = (double) 0;
-	}
+	}*/
 
 	entropiaMuertos = calcularEntropia(numMuertos, numFilas);
 
@@ -192,25 +203,29 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	double splitInfo1;
 	double splitInfo2;
 
-	if (( (double)numAtributoSi / (double)numFilas) != 0) {
+	/*if (( (double)numAtributoSi / (double)numFilas) != 0) {
 		splitInfo1 = ( (double)numAtributoSi / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoSi ) ) / log(2) );	
 	} else {
 		splitInfo1 = (double) 0;
-	}
+	}*/
 
-	if ( ( (double)numAtributoNo / (double)numFilas) != 0) {
+	splitInfo1 = calcularEntropia(numAtributoSi, numFilas);
+
+	/*if ( ( (double)numAtributoNo / (double)numFilas) != 0) {
 		splitInfo2 = ( (double)numAtributoNo / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoNo ) ) / log(2) );	
 	} else {
 
 		splitInfo2 = (double) 0;
-	}
+	}*/
 
+
+	splitInfo2 = calcularEntropia(numAtributoNo, numFilas);
 	
 	splitInfoTotal = (double) (splitInfo1 + splitInfo2); 
 
 	double gainRatioA = (double) (gain / splitInfoTotal);
 
-	/*fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
+	fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
 	fprintf(output, "Numero AtributosSI: %d\n", numAtributoSi);
 	fprintf(output, "Numero AtributosNO: %d\n", numAtributoNo);
 	fprintf(output, "Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
@@ -227,7 +242,8 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	fprintf(output, "EntropiaNOMuertos: %f\n", entropiaNoMuertos);
 	fprintf(output, "Entropia Atributo: %f\n", entropiaAtributo);
 	fprintf(output, "Entropia Clase: %f\n", entropiaC);
-	fprintf(output, "Gananacia Informacion: %f\n\n", gain);*/
+	fprintf(output, "Gananacia Informacion: %f\n\n", gain);
+	fprintf(output, "Gain Ratio: %f\n", gainRatioA);
 
 	heuristica.entropia = entropiaAtributo;
 	heuristica.gainInfo = gain;
@@ -238,7 +254,7 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 
 
 /** Busca el atributo con mayor ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *output) {
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, FILE *output) {
 
 	infoAtributo arrHeuristica[numAtributos];
 
@@ -249,11 +265,11 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 
 		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
 		if (tabla[0][i] == 8) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral1, output);
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, 1, output);
 		} else if (tabla[0][i] == 9) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral2, output);
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, 0.5, output);
 		} else {	
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, -1, output);	
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, -1, output);	
 		}
 
 		/* Se escoge el atributo con mayor ganancia de informacion */
@@ -277,39 +293,12 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 	fprintf(output, "Entropia Atributo: %f\n", maxEnt);*/
 
 
-	return (maxEnt < UMBRAL_GAIN) ? -1 : a_best;
+	/*return (maxEnt < UMBRAL_GAIN) ? -1 : */a_best;
 }
 
 
 
-int main(int argc, char const *argv[])
-{
 
-
-	system("clear");
-
-	/* Declaracion de una matriz mediante punteros */
-	float **tablaTrain = (float**)malloc( (NUM_FILAS_TRAIN + 1) * sizeof(float*));
-
-	for (int i = 0; i < NUM_FILAS_TRAIN + 1; ++i) {
-		tablaTrain[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
-	}
-
-
-	if ( (trainData = fopen("trainData2.dat", "r")) == NULL ) {
-		printf("Error al abrir fichero: %s\n", strerror(errno));
-		return EXIT_FAILURE;
-	}
-
-	FILE *output = fopen("out.txt", "w");
-	
-	tablaTrain = readData();
-
-	elegirAtributo(10, 10, tablaTrain, output);
-
-
-	return 0;
-}
 
 
 /** Lee los datos del dataset y los almacena en una 
@@ -353,4 +342,33 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 
 
 	return arrMatrix;
+}
+
+
+int main(int argc, char const *argv[])
+{
+
+	system("clear");
+
+	FILE *trainData = fopen("trainData2.dat", "r");
+
+	/* Declaracion de una matriz mediante punteros */
+	float **tablaTrain = (float**)malloc( (NUM_FILAS_TRAIN + 1) * sizeof(float*));
+
+	for (int i = 0; i < NUM_FILAS_TRAIN + 1; ++i) {
+		tablaTrain[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
+	}
+
+	if ( (trainData = fopen("trainData2.dat", "r")) == NULL ) {
+		printf("Error al abrir fichero: %s\n", strerror(errno));
+		return EXIT_FAILURE;
+	}
+
+	FILE *output = fopen("out2.txt", "w");
+	
+	tablaTrain = readData(trainData, NUM_FILAS_TRAIN, output);
+
+	elegirAtributo(NUM_FILAS_TRAIN, NUM_ATRIBUTOS, tablaTrain, output);
+
+	return 0;
 }
