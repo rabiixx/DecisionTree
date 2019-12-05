@@ -27,16 +27,123 @@
 #include "funciones_v2.h"
 
 
+/** 
+  * funcion readData
+  * Lee los datos del dataset y los almacena en una 
+  * matriz de NUM_FILAS x NUM_ATRUBITOS + 1 y devuelve dicha matriz 
+  * @param dataset ficheor del cual leeera los datos
+  * @param numFil numero de filas que leera del fichero
+  * @return los datos almacenados en una matriz de [numFil + 1] x [numAtributos + 1]
+  */ 
+float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 
+	/** Declaracion de la matriz donde se guardaran los datos */
+	float **arrMatrix = (float**)malloc( (numFil + 1) * sizeof(float*));
+
+	for (int i = 0; i < numFil + 1; ++i) {
+		arrMatrix[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
+	}
+
+	/* En la primera fila almacenamos los atrubutos como numeros 1,..,NumAtributos */
+	for (int i = 0; i < NUM_ATRIBUTOS; ++i) {
+		arrMatrix[0][i] = i;
+	}
+
+	/* Para diferencias que no es una atributo */
+	arrMatrix[0][NUM_ATRIBUTOS] = 99;
+
+	char *str = (char*)malloc(500 * sizeof(char));
+
+	/* Leer primera linea */
+	fgets(str, 500, dataset);
+
+	for (int i = 1; i < numFil + 1; ++i) {
+		fgets(str, 500, dataset);
+		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
+	}
+
+	//fprintf(output, "READDATA: \n");
+
+	/*for (int i = 0; i < numFil + 1; ++i)
+	{
+		for (int j = 0; j < NUM_ATRIBUTOS + 1; ++j)
+		{
+			fprintf(output, "%f, ", arrMatrix[i][j]);
+		}
+		fprintf(output, "\n");
+	}
+	fprintf(output, "\n");*/
+
+
+	return arrMatrix;
+}
+
+
+/** 
+  * funcion elegirAtributo 
+  * Busca el atributo con mayor ganancia de informacion dentro del conjunto de datos.
+  * Si la mayor ganancia de informacion no supera el umbral establecido se devuelve -1.
+  * @param numFil numero de filas del sub-conjunto de datos (sub-tabla)
+  * @param numAtributos numero de atributos del sub-conjunto de datos (sub-tabla)
+  * @param tabla conjunto de datos 
+  * @param umbral1 umbral del primero atributo continuo (numero de muertes)
+  * @param umbral2 umbral del segundo atributo continuo (popularidad)
+  * @return el atributo con mayor ganancia de informacion 
+	 */
+int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *output) {
+
+	infoAtributo arrHeuristica[numAtributos];
+
+	double maxEnt = -1;				/* Contiene el maximo de ganancia de informacion */
+	unsigned int a_best = -1;		/* Contiene el atributo con mayor ganancia de informacion */
+
+
+	/* Se calcula la ganancia de informacion de todos los atributos del conjunto */
+	for (int i = 0; i < numAtributos; ++i) {
+
+		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
+		if (tabla[0][i] == 8) {
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral1, output);
+		} else if (tabla[0][i] == 9) {
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral2, output);
+		} else {	
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, -1, output);	
+		}
+
+		/* Se busca el atributo con mayor ganancia de informacion */
+		if (arrHeuristica[i].gainInfo > maxEnt) {
+			maxEnt = arrHeuristica[i].gainInfo;
+			a_best = tabla[0][i];
+		}	
+	}
+
+ 	/*for (int i = 0; i < numAtributos; ++i)
+	{
+		fprintf(output, "\n Heuristica Atributo: %f\n", tabla[0][i]);
+		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].entropia);
+		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].gainInfo);
+	}
+
+	fprintf(output, "\nElegir Atributo: %d\n", a_best);
+	fprintf(output, "Entropia Atributo: %f\n", maxEnt);*/
+
+	/** Si la ganancia de informacion esta por debajo de umbral de ganancia 
+	  * establecido por nosotros, se devuelve -1 */ 
+	return (maxEnt < UMBRAL_GAIN) ? -1 : a_best;
+}
+
+
+/** Calcula la entropia */
 double calcularEntropia(double num1, double num2) {
 
 	if ( num1 != 0 ) {
-		return ( (double)num1 / (double)num2) * ( log( ( (double)num2 / (double)num1) ) / log(2));
+		return ( num1 / num2 ) * ( log( num2 / num1 ) / log(2) );
 	} else {
 		return 0;
 	}
 
 }
+
 /**
   * Funcion calcularEntropia
   * Calcula la entropia, ganancia de informacion y ratio de ganancia de un 
@@ -48,7 +155,7 @@ double calcularEntropia(double num1, double num2) {
   * @param umbral de atributo continuo
   * @see infoAtributo
   * @return entropia, ganancia de informacion y ratio de ganancia
-   */ 
+  */ 
 infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
 {
 
@@ -65,9 +172,6 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	unsigned int numVivos;						/* Numero de peresonajes vivos */
 	unsigned int numMuertos;					/* Numero de peresonajes muertos */
 
-	double entropiaSi; 
-	double entropiaSiVivos;
-	double entropiaSiMuertos;
 
 	/* OBTENCION DATOS */
 
@@ -113,91 +217,34 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	/* CALCULO HEURISTICA */
 
 	/* Se calcula la entropia de SI  -  E_Atributo(SI) */
-	if ( numAtributoSiVivos != 0 ) {
-		entropiaSiVivos = ( (double)numAtributoSiVivos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiVivos) ) / log(2));
-	} else {
-		entropiaSiVivos = (double) 0;
-	}
-
-	if ( numAtributoSiMuertos != 0 ){
-		entropiaSiMuertos = ( (double)numAtributoSiMuertos / (double)numAtributoSi ) * ( log( ( (double)numAtributoSi / (double)numAtributoSiMuertos) ) / log(2));
-	} else {
-		entropiaSiMuertos = (double) 0;
-	}
-
-	entropiaSi = (double) (entropiaSiVivos + entropiaSiMuertos);
-
-	double entropiaNo; 
-	double entropiaNoVivos;
-	double entropiaNoMuertos;
+	double entropiaSiVivos = calcularEntropia(numAtributoSiVivos, numAtributoSi);
+	double entropiaSiMuertos = calcularEntropia(numAtributoSiMuertos, numAtributoSi);
+	double entropiaSi = entropiaSiVivos + entropiaSiMuertos;
 
 	/* Se calcula la entropia de NO  -  E_Atributo(NO) */
-
-	if ( numAtributoNoVivos != 0 ) {
-		entropiaNoVivos = ( (double)numAtributoNoVivos / (double)numAtributoNo) * ( log( ( (double)numAtributoNo / (double) numAtributoNoVivos) ) / log(2));
-	} else {
-		entropiaNoVivos = (double) 0;
-	}
-
-	if ( numAtributoNoMuertos != 0 ) {
-		entropiaNoMuertos = ( (double)numAtributoNoMuertos / (double)numAtributoNo) * ( log( ( (double) numAtributoNo / (double)numAtributoNoMuertos) ) / log(2));
-	} else {
-		entropiaNoMuertos = (double) 0;
-	}
-
-	entropiaNo = (double) (entropiaNoVivos + entropiaNoMuertos);
+	double entropiaNoVivos = calcularEntropia(numAtributoNoVivos, numAtributoNo);
+	double entropiaNoMuertos = calcularEntropia(numAtributoNoMuertos, numAtributoNo);
+	double entropiaNo = entropiaNoVivos + entropiaNoMuertos;
 
 	/* Calcula la entropia del atributo  -  E(Atributo) */
 	double entropiaAtributo = ( ( (double)numAtributoSi / (double)numFilas) * entropiaSi ) + ( ( (double)numAtributoNo / (double)numFilas) * entropiaNo );
 
 	/* Calcula E(C) */
-	double entropiaVivos;
-	double entropiaMuertos;
-	double entropiaC;
-
-	if ( ( (double)numVivos / (double)numFilas ) != 0){
-		entropiaVivos = ( (double)numVivos / (double)numFilas ) * ( log( ( (double)numFilas / (double)numVivos) ) / log(2));
-	} else {
-		entropiaVivos = (double) 0;
-	}	
-
-	if ( ( (double)numMuertos / (double)numFilas) != 0) {
-		entropiaMuertos = ( (double)numMuertos / (double)numFilas) * ( log( ( (double)numFilas / (double)numMuertos)) / log(2));
-	} else {
-		entropiaMuertos = (double) 0;
-	}
-
-	entropiaC = (double) (entropiaVivos + entropiaMuertos);
-
+	double entropiaVivos = calcularEntropia(numVivos, numFilas);
+	double entropiaMuertos = calcularEntropia(numMuertos, numFilas);
+	double entropiaC = (double) (entropiaVivos + entropiaMuertos);
 
 	/* Calcula la Ganancia de Informacion - Gain(Atributo) */
 	double gain = (double) (entropiaC - entropiaAtributo);
 
-
 	/* Ratio de Ganancia  -  GainRatio(A) = Gain(A) / SplitInfo(A) */
-	double splitInfoTotal;
-	double splitInfo1;
-	double splitInfo2;
-
-	if (( (double)numAtributoSi / (double)numFilas) != 0) {
-		splitInfo1 = ( (double)numAtributoSi / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoSi ) ) / log(2) );	
-	} else {
-		splitInfo1 = (double) 0;
-	}
-
-	if ( ( (double)numAtributoNo / (double)numFilas) != 0) {
-		splitInfo2 = ( (double)numAtributoNo / (double)numFilas) * ( log( ( (double)numFilas / (double)numAtributoNo ) ) / log(2) );	
-	} else {
-
-		splitInfo2 = (double) 0;
-	}
-
-	
-	splitInfoTotal = (double) (splitInfo1 + splitInfo2); 
+	double splitInfo1 = calcularEntropia(numAtributoSi, numFilas);
+	double splitInfo2 = calcularEntropia(numAtributoNo, numFilas);
+	double splitInfoTotal = splitInfo1 + splitInfo2;
 
 	double gainRatioA = (double) (gain / splitInfoTotal);
 
-	/*fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
+	fprintf(output, "Informacion Atributo %d: \n", indexAtributo);
 	fprintf(output, "Numero AtributosSI: %d\n", numAtributoSi);
 	fprintf(output, "Numero AtributosNO: %d\n", numAtributoNo);
 	fprintf(output, "Numero AtributosSIVivos: %d\n", numAtributoSiVivos);
@@ -214,7 +261,8 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 	fprintf(output, "EntropiaNOMuertos: %f\n", entropiaNoMuertos);
 	fprintf(output, "Entropia Atributo: %f\n", entropiaAtributo);
 	fprintf(output, "Entropia Clase: %f\n", entropiaC);
-	fprintf(output, "Gananacia Informacion: %f\n\n", gain);*/
+	fprintf(output, "Gananacia Informacion: %f\n\n", gain);
+	fprintf(output, "Gain Ratio: %f\n", gainRatioA);
 
 	heuristica.entropia = entropiaAtributo;
 	heuristica.gainInfo = gain;
@@ -224,170 +272,18 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
 }
 
 
-/** Busca el atributo con mayor ganancia de informacion normalizada */
-int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *output) {
-
-	infoAtributo arrHeuristica[numAtributos];
-
-	double maxEnt = -1;
-	unsigned int a_best = -1;
-
-	for (int i = 0; i < numAtributos; ++i) {
-
-		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
-		if (tabla[0][i] == 8) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral1, output);
-		} else if (tabla[0][i] == 9) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral2, output);
-		} else {	
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, -1, output);	
-		}
-
-		/* Se escoge el atributo con mayor ganancia de informacion */
-		if (arrHeuristica[i].gainInfo > maxEnt) {
-			maxEnt = arrHeuristica[i].gainInfo;
-			a_best = tabla[0][i];
-		}	
-	}
-
-	/** Si la ganancia de informacion esta por debajo de umbral de ganancia 
-	  * establecido por nosotros, se devuelve -1 */  
-
-	/*for (int i = 0; i < numAtributos; ++i)
-	{
-		fprintf(output, "\n Heuristica Atributo: %f\n", tabla[0][i]);
-		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].entropia);
-		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].gainInfo);
-	}
-
-	fprintf(output, "\nElegir Atributo: %d\n", a_best);
-	fprintf(output, "Entropia Atributo: %f\n", maxEnt);*/
-
-
-	return (maxEnt < UMBRAL_GAIN) ? -1 : a_best;
-}
-
-
-
-/** Lee los datos del dataset y los almacena en una 
-  * matriz de NUM_FILAS x NUM_ATRUBITOS + 1 y devuelve dicha matriz */ 
-float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
-
-	float **arrMatrix = (float**)malloc( (numFil + 1) * sizeof(float*));
-
-	for (int i = 0; i < numFil + 1; ++i) {
-		arrMatrix[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
-	}
-
-	/* En la primera fila almacenamos los atrubutos como numeros 1,..,NumAtributos */
-	for (int i = 0; i < NUM_ATRIBUTOS; ++i) {
-		arrMatrix[0][i] = i;
-	}
-
-	arrMatrix[0][NUM_ATRIBUTOS] = 99;
-
-	char *str = (char*)malloc(500 * sizeof(char));
-
-	/* Leer primera linea */
-	fgets(str, 500, dataset);
-
-	for (int i = 1; i < numFil + 1; ++i) {
-		fgets(str, 500, dataset);
-		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
-	}
-
-	//fprintf(output, "READDATA: \n");
-
-	/*for (int i = 0; i < numFil + 1; ++i)
-	{
-		for (int j = 0; j < NUM_ATRIBUTOS + 1; ++j)
-		{
-			fprintf(output, "%f, ", arrMatrix[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
-
-
-	return arrMatrix;
-}
-
-
-filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo, FILE 	*output) {
-
-	fprintf(output, "Filtrar Atributo: %d", atributo );
-	fprintf(output, "\n ELiminar Col 1: \n");
-	for (int i = 0; i < numFil + 1; ++i) {
-		for (int j = 0; j < numAtributos + 1; ++j)
-		{
-			fprintf(output, "%f, ", tabla[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");
-	
-	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
-
-	for (int i = 0; i < numFil + 1; ++i) {
-		tablaFiltrada[i] = (float*)malloc( numAtributos * sizeof(float));
-	}
-
-	/* Buscamos el indice del atributo */
-	unsigned int indexAtributo; 
-	int indexCol = 0;
-
-	for (int i = 0; i < numAtributos + 1; ++i) {
-		if (tabla[0][i] == atributo) {
-			indexAtributo = i;
-		} else { 
-			tablaFiltrada[0][indexCol] = tabla[0][i];
-			++indexCol;
-		}
-	}
-
-	fprintf(output, "Index aTRIBUTO: %d\n", indexAtributo );
-	fprintf(output, "Atributo: %d\n", atributo);
-	fprintf(output, "NumAtributos: %d\n", numAtributos);
-
-	indexCol = 0;
-
-	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
-	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
-	for (int i = 1; i < numFil + 1; ++i) {
-	
-		indexCol = 0;
-		for (int j = 0; j < numAtributos + 1; ++j){
-			if (j != indexAtributo) {
-				tablaFiltrada[i][indexCol] = (float)tabla[i][j];
-				++indexCol;
-			}
-		}
-	}
-
-
-	fprintf(output, "\n ELiminar col 2:  \n");
-	for (int i = 0; i < numFil + 1; ++i) {
-		for (int j = 0; j < numAtributos; ++j)
-		{
-			fprintf(output, "%f, ", tablaFiltrada[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");
-
-	filtroInfo tableInfo;
-
-	tableInfo.tabla = tablaFiltrada;
-	tableInfo.numFil = numFil;
-
-	return tableInfo;
-
-}
-
-
-/** Se eliminan aquellas filas que sean menores / mayores que el umbral recibido como paramentro.
+/** 
+  * funcion filtrarTabla 
+  *	Se eliminan aquellas filas que sean menores / mayores que el umbral recibido como paramentro.
   * Si i = 0, se eliminan todas aquellas filas que sean menores que el umbral del atributo continuo
-  * Si i = 1, se eliminan todas aquellas filas que sean mayores que el umbral del atributo continuo */
+  * Si i = 1, se eliminan todas aquellas filas que sean mayores que el umbral del atributo continuo 
+  * @param numFil numero de filas del sub-conjunto de datos (sub-tabla)
+  * @param numAtributos numero de atributos del sub-conjunto de datos (sub-tabla)
+  * @param tabla conjunto de datos 
+  * @param atributo a filtrar (eliminar)
+  * @param valor del atributo a eliminar 
+  * @param umbral si el atributo es continuo se le pasa el umbral para poder filtrar
+  */
 filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output) {
 	
 	fprintf(output, "Filtrar Atributo: %d", atributo );
