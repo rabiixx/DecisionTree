@@ -21,10 +21,6 @@
 //  DEALINGS IN THE SOFTWARE.
 
 /* Librerias estandar de C */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
 #include "funciones_v2.h"
 
 
@@ -104,11 +100,11 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 
 		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
 		if (tabla[0][i] == 8) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral1, output);
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, umbral1, output);
 		} else if (tabla[0][i] == 9) {
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral2, output);
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, umbral2, output);
 		} else {	
-			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, -1, output);	
+			arrHeuristica[i] = calcularHeuristica(numFilas, numAtributos, tabla, i, -1, output);	
 		}
 
 		/* Se busca el atributo con mayor ganancia de informacion */

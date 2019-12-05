@@ -48,21 +48,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
-#define VIVO -5
-#define MUERTO -10
-
-#define SI 213
-#define NO 564
 
 #define NUM_FILAS_TRAIN 1000      /* Numero de filas del dataset de entrenamiento */
-#define NUM_FILAS_TEST 1000       /* Numero de filas de los datos de entrenamiento */
-
 #define NUM_ATRIBUTOS 10        /* Numero de atributos del problema */
 #define NUM_CLASES 2            /* Numero de clases */
-
 #define clasePorDefecto 1
-
 #define UMBRAL_GAIN 0.01
 
 
