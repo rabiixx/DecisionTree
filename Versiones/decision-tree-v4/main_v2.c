@@ -180,7 +180,7 @@ int main(int argc, char const *argv[]) {
 		return EXIT_FAILURE;
 	}
 
-	if ( (testData = fopen("testData3.dat", "r")) == NULL ) {
+	if ( (testData = fopen("testData2.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}

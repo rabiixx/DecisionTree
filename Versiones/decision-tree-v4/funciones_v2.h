@@ -63,6 +63,8 @@
 
 #define clasePorDefecto 1
 
+#define UMBRAL_GAIN 0.01
+
 
 /** Estructura de datos para alamacenar la heuristica de cada atributo */
 typedef struct _infoAtributo {
@@ -90,7 +92,7 @@ typedef struct _filtroInfo {
 } filtroInfo;
 
 /* Calcula y devuelve la entropia, ganancia de informacion y ratio de ganancia */
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
+infoAtributo calcularEntropia(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *);
 
 /* Elige el mejor atributo en base a la ganancia de informacion normalizada */
 int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1, float umbral2, FILE *);
@@ -119,7 +121,7 @@ bool esHomojenea(int numFil, int numAtributos, float **tabla);
 void mostrarPreorden(nodo *raiz, FILE *output);
 
 /* Si nos quedamos sin atributos pero con datos(filas), calcula el atributo mas frecuente de los datos */
-int claseMasFrecuente(int numFil, float **tabla);
+int claseMasFrecuente(int numFil, int numAtributos, float **tabla);
 
 /* Imprime el arbol en anchura */
 void printGivenLevel(nodo* root, int level); 

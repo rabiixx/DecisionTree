@@ -27,10 +27,18 @@
 #include "funciones_v2.h"
 
 /**
-  * Calcula la entropia y la ganancia de informacion y la de un atributo categorico 
-  * con una clase binaria
-  */ 
-infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
+  * Funcion calcularEntropia
+  * Calcula la entropia, ganancia de informacion y ratio de ganancia de un 
+  * atributo continuo o discreto.
+  * @param numFilas de datos de la tabla
+  * @param numero de atributos de la tabla
+  * @param tabla que contien todos los datos
+  * @param indice del atributo del que se desea calcular la entropia
+  * @param umbral de atributo continuo
+  * @see infoAtributo
+  * @return entropia, ganancia de informacion y ratio de ganancia
+   */ 
+infoAtributo calcularEntropia(int numFilas, int numAtributos, float **tabla, int indexAtributo, float umbral, FILE *output)
 {
 
 	/* DECLARACION DE VARIABLES */
@@ -52,11 +60,9 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 
 	/* OBTENCION DATOS */
 
-	/* Se recorre la tabla con el fin de obtener los datos que nos interesan para el calculo de la heuristica */
-
-
-	/* Atributo continuo */
-	if (umbral != -1) {
+	/** Se recorre la tabla con el fin de obtener los datos 
+	  * que nos interesan para el calculo de la heuristica */
+	if (umbral != -1) {				/* Atributo continuo */
 		for (int i = 1; i < numFilas + 1; ++i) {
 			if (tabla[i][indexAtributo] <= umbral) {
 				++numAtributoSi;
@@ -72,7 +78,7 @@ infoAtributo calculoEntropiaCat(int numFilas, int numAtributos, float **tabla, i
 					++numAtributoNoMuertos;
 			}
 		}
-	} else { 	/* Atributo categorico */
+	} else { 						/* Atributo categorico */
 		for (int i = 1; i < numFilas + 1; ++i) {
 			if (tabla[i][indexAtributo] == 1) {
 				++numAtributoSi;
@@ -219,11 +225,11 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 
 		/* Si es un artibuto continuo, le pasamos el umbral del atributo, si no, pasamos -1 */
 		if (tabla[0][i] == 8) {
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral1, output);
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral1, output);
 		} else if (tabla[0][i] == 9) {
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, umbral2, output);
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, umbral2, output);
 		} else {	
-			arrHeuristica[i] = calculoEntropiaCat(numFilas, numAtributos, tabla, i, -1, output);	
+			arrHeuristica[i] = calcularEntropia(numFilas, numAtributos, tabla, i, -1, output);	
 		}
 
 		/* Se escoge el atributo con mayor ganancia de informacion */
@@ -368,8 +374,9 @@ filtroInfo eliminarCol(int numFil, int numAtributos, float **tabla, int atributo
 }
 
 
-
-
+/** Se eliminan aquellas filas que sean menores / mayores que el umbral recibido como paramentro.
+  * Si i = 0, se eliminan todas aquellas filas que sean menores que el umbral del atributo continuo
+  * Si i = 1, se eliminan todas aquellas filas que sean mayores que el umbral del atributo continuo */
 filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output) {
 	
 	fprintf(output, "Filtrar Atributo: %d", atributo );
@@ -388,19 +395,19 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 	fprintf(output, "\n");
 
 
-
+	/* Creamos matriz auxiliar */
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
 	for (int i = 0; i < numFil + 1; ++i) {
 		tablaFiltrada[i] = (float*)malloc( numAtributos * sizeof(float));
 	}
 
-	/* Buscamos el indice del atributo */
+	/* Buscamos el indice del atributo continuo */
 	unsigned int indexAtributo;
 	int indexFil = 1; 
 	int indexCol = 0;
 
-	for (int i = 0; i < numAtributos + 1; ++i) {
+	for (int i = 0; i < numAtributos; ++i) {
 	
 		if (tabla[0][i] == atributo)
 			indexAtributo = i;
@@ -408,11 +415,7 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 		tablaFiltrada[0][i] = tabla[0][i];
 	}
 
-	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
-	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
-
-	
-
+	/* Se eliminan aquellas filas cuyo valor del atributo sea menor que umbral del atributo */
 	if (valorAtributo == 0){
 		for (int i = 1; i < numFil + 1; ++i) {
 			if (tabla[i][indexAtributo] <= umbral){
@@ -422,6 +425,8 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 				++indexFil;
 			}
 		}
+
+	/* Se eliminan aquellas filas cuyo valor del atributo sea mayor que umbral del atributo */
 	} else if (valorAtributo == 1) {
 		for (int i = 1; i < numFil + 1; ++i) {
 			if (tabla[i][indexAtributo] > umbral){
@@ -434,7 +439,7 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 	}
 
 
-	fprintf(output, "\n Tabla despues de filtrar cont: \n");
+	/*fprintf(output, "\n Tabla despues de filtrar cont: \n");
 	for (int i = 0; i < indexFil; ++i) {
 		for (int j = 0; j < numAtributos + 1; ++j)
 		{
@@ -442,7 +447,7 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 		}
 		fprintf(output, "\n");
 	}
-	fprintf(output, "\n");
+	fprintf(output, "\n");*/
 
 	filtroInfo tableInfo;
 
@@ -453,6 +458,11 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 
 }
 
+/** Elimina todas aquellas filas cuyo valor del atributo discreto no coincida con el
+  * valor pasado como parametro. 
+  * Elimna la columna completa del atributo 
+  * Devuelve una matriz de numero de filas que coincidian con el valor del atributo 
+  * por el numero de atributo - 1 */
 filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, FILE *output) {
 
 
@@ -533,62 +543,52 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output)
 {
 
-	/* La sub-tabla esta vacia */
-	if ( (numFil == 1) && (numAtributos == 0) ) {
+	/* La sub-tabla esta vacia (conjunto de datos vacio) */
+	if ( numFil == 0 ) {
 		return NULL;
 	}
 
-	/* Comprobamos si hemos llegado a una hoja y podemos tomar una decision */
+	/** Si en el conjunto de datos son todos de la misma clase, se pone el nodo como 
+	 * hoja y se elige la clase */
 	if ( esHomojenea(numFil, numAtributos, tabla) ) {/* || calcHeuristica(tabla) < UMBRAL_H )*/
+		
 		ptrNodo->hoja = true;
 		ptrNodo->clase = tabla[1][numAtributos];
 		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
 		return ptrNodo;
-	} else if (numAtributos == 0) {
-H:		ptrNodo->hoja = true;
-		ptrNodo->clase = claseMasFrecuente(numFil, numAtributos, tabla);
-		fprintf(output, "Hoja: %d\n", ptrNodo->clase);
-		printf("Numeron de atributos es igual a 0\n");
-		return ptrNodo;
+	
 	} else {
 
-		/*for (int i = 0; i < numFil; ++i)
-		{
-			for (int j = 0; j < numAtributos + 1; ++j){
-				fprintf(output, "%f, ", tabla[i][j]);
-			}
-			fprintf(output, "\n");
-		}
-		fprintf(output, "\n\n" );*/
-
 		/* Buscamos los umbrales del los atributos Muertes y Popularidad */
-		float umbral1;
-		float umbral2;
-		
-		if ( estaAtributo(numAtributos, tabla, 8) )
-			umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
-		else 
-			umbral1 = -1;
-
-		if ( estaAtributo(numAtributos, tabla, 9) )
-			umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
-		else 
-			umbral2 = -1;
+		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
+		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
 
 		printf("Umbral Muertes: %f\n", umbral1);
 		printf("Umbral Popularidad: %f\n", umbral2);
 		
-		/** Se elige el atributo con mayor ganancia de informacion, si el
-		   * atributo con mayor ganancia de informaciuon esta por debajo del
-		   * umbral de ganancia, el nodo se pone como hoja y se elige la clase
-		   * mas frecuente como decision */
+
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
-		if (atributoExp == -1)
-			goto H;
+	
+
+		/** Se elige el atributo con mayor ganancia de informacion, si el
+		  * atributo con mayor ganancia de informaciuon esta por debajo del
+		  * umbral de ganancia, el nodo se pone como hoja y se elige la clase
+		  * mas frecuente como decision */
+		if (atributoExp == -1) {
+			ptrNodo->hoja = true;
+			ptrNodo->clase = claseMasFrecuente(numFil, numAtributos, tabla);
+			fprintf(output, "Hoja: %d\n", ptrNodo->clase);
+			printf("Numeron de atributos es igual a 0\n");
+			return ptrNodo;
+		}
 
 
 		fprintf(output, "Atributo escogido: %d\n", atributoExp);
 
+
+		/** Si el atributo escogido es continuo guardamos el umbral 
+		  * para luego en la fase de testeo sabes en que rama se 
+		  * debe buscar */
 		if ( atributoExp == 8 ) {
 			ptrNodo->umbralA = umbral1;
 		} else if (atributoExp == 9 ) {
@@ -633,61 +633,39 @@ H:		ptrNodo->hoja = true;
 			fprintf(output, "Mejor Atributo: %d\n", atributoExp);
 			fprintf(output, "Umbral1: %f", umbral1 );
 			fprintf(output, "Umbral2: %f", umbral2 );
-			if ( (atributoExp == 8) && (umbral1 <= 0.0) ){
-				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp, output);
-				auxTabla = tableInfo.tabla;
-				auxNumFil = tableInfo.numFil;
-				if ( i == 0 ) {
-					//fprintf(output, "Izquierda\n");
-					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
-				} else {
-					//fprintf(output, "derecha\n");
-					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
-				}	
 
-			} else if ( (atributoExp == 9) && (umbral2 < 0.025) ) {
-
-				filtroInfo tableInfo = eliminarCol(numFil, numAtributos, tabla, atributoExp, output);
-				auxTabla = tableInfo.tabla;
-				auxNumFil = tableInfo.numFil;
-				if ( i == 0 ) {
-					//fprintf(output, "Izquierda\n");
-					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
-				} else {
-					//fprintf(output, "derecha\n");
-					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
-				}	
-
-			} else if ( (atributoExp != 8) && (atributoExp != 9) ) {
+			
+			/* Si el atributo escogido no es continuo, eliminamos el atributo de la tabla */
+			if ( (atributoExp != 8) && (atributoExp != 9) ) {
+				
 				filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i, output);
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
 				
 				if ( i == 0 ) {
-					//fprintf(output, "Izquierda\n");
 					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 				} else {
-					//fprintf(output, "derecha\n");
 					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos - 1, auxTabla, nuevoNodo, output);
 				}
 
+			/** Si el atributo escogido es continuo, solamente eliminamos aquellas filas que sean
+			  * menores / mayores que el umbral del atributo, pero no eliminamos el atributo de la 
+			  * tabla puesto que puede volver a ser utilizado  */
 			} else {
 
 				filtroInfo tableInfo;
 
 				if ( atributoExp == 8 )
 					tableInfo = filtrarTablaCont(numFil, numAtributos, tabla, atributoExp, i, umbral1, output);
-				else 
+				else if ( atributoExp == 9 )
 					tableInfo = filtrarTablaCont(numFil, numAtributos, tabla, atributoExp, i, umbral2, output);
 				
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
 
 				if ( i == 0 ) {
-					//fprintf(output, "Izquierda\n");
 					ptrNodo->izq = construirArbolDecision(auxNumFil, numAtributos, auxTabla, nuevoNodo, output);
 				} else {
-					//fprintf(output, "derecha\n");
 					ptrNodo->der = construirArbolDecision(auxNumFil, numAtributos, auxTabla, nuevoNodo, output);
 				}
 			}
