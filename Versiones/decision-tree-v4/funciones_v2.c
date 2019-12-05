@@ -20,6 +20,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 //  DEALINGS IN THE SOFTWARE.
 
+/* Librerias estandar de C */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -283,10 +284,11 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
   * @param atributo a filtrar (eliminar)
   * @param valor del atributo a eliminar 
   * @param umbral si el atributo es continuo se le pasa el umbral para poder filtrar
+  * @return la nueva tabla filtrada y el numero de filas que contiene
   */
 filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output) {
 	
-	fprintf(output, "Filtrar Atributo: %d", atributo );
+	/*fprintf(output, "Filtrar Atributo: %d", atributo );
 
 	fprintf(output, "Umbral de filtro: %f \n", umbral);
 
@@ -299,10 +301,10 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 		}
 		fprintf(output, "\n");
 	}
-	fprintf(output, "\n");
+	fprintf(output, "\n");*/
 
 
-	/* Creamos matriz auxiliar */
+	/* Creamos matriz auxiliar donde se guarda el sub-conjunto de datos */
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
 	for (int i = 0; i < numFil + 1; ++i) {
@@ -365,15 +367,23 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 
 }
 
-/** Elimina todas aquellas filas cuyo valor del atributo discreto no coincida con el
+/** 
+  * Funcion filtrarTabla 
+  * Elimina todas aquellas filas cuyo valor del atributo discreto no coincida con el
   * valor pasado como parametro. 
   * Elimna la columna completa del atributo 
-  * Devuelve una matriz de numero de filas que coincidian con el valor del atributo 
-  * por el numero de atributo - 1 */
+  * @param numFil numero de filas del sub-conjunto de datos (sub-tabla)
+  * @param numAtributos numero de atributos del sub-conjunto de datos (sub-tabla)
+  * @param tabla conjunto de datos 
+  * @param atributo a filtrar (eliminar)
+  * @param valor del atributo a eliminar 
+  * @param umbral si el atributo es continuo se le pasa el umbral para poder filtrar
+  * @return la nueva tabla filtrada y el numero de filas que contiene
+  */
 filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, FILE *output) {
 
 
-	fprintf(output, "Filtrar Atributo: %d", atributo );
+	/*fprintf(output, "Filtrar Atributo: %d", atributo );
 
 	fprintf(output, "\n filtrar tabla 1: \n");
 	for (int i = 0; i < numFil + 1; ++i) {
@@ -383,9 +393,9 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 		}
 		fprintf(output, "\n");
 	}
-	fprintf(output, "\n");
+	fprintf(output, "\n");*/
 
-
+	/* Creamos matriz auxiliar donde se guarda el sub-conjunto de datos */
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
 	for (int i = 0; i < numFil + 1; ++i) {
@@ -411,8 +421,8 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 
 	indexCol = 0;
 
-	/** Se recorre la tabla y se añaden las filas que contengan el valor del atributo y las columas distintas de dicho atributo.
-	  * Es decir, se eliminan todas aquellas filas que no contengan el mismo valor del atributo, y la columna del atributo */
+	/** Se añaden a la nueva matriz todas aquellas filas cuyo valor coincida con el valor del atributo pasado
+	  * como parametro */
 	for (int i = 1; i < numFil + 1; ++i) {
 
 		/* Hemos encontrado una fila que coincide con el valor del atributo */
@@ -429,7 +439,7 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 	}
 
 
-	fprintf(output, "\n filtrar Tabla 2: \n");
+	/*fprintf(output, "\n filtrar Tabla 2: \n");
 	for (int i = 0; i < indexFil; ++i) {
 		for (int j = 0; j < numAtributos; ++j)
 		{
@@ -437,7 +447,7 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 		}
 		fprintf(output, "\n");
 	}
-	fprintf(output, "\n");
+	fprintf(output, "\n");*/
 
 	filtroInfo tableInfo;
 
@@ -447,6 +457,15 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 	return tableInfo;
 }
 
+/**
+  * funcion recursiva construirArbol 
+  * @param numFil numero de filas del conjunto de datos (sub-tabla)
+  * @param numAtributos numero de atributos del conjunto (sub-tabla)
+  * @param tabla conjunto de datos
+  * @param ptrNodo nodo del arbol en el que nos encontramos
+  * @return NULL conjunto vacio
+  * @return ptrNodo si hemos llegado a tomar una decision (es hoja)
+  */
 nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* ptrNodo, FILE *output)
 {
 
@@ -457,7 +476,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 
 	/** Si en el conjunto de datos son todos de la misma clase, se pone el nodo como 
 	 * hoja y se elige la clase */
-	if ( esHomojenea(numFil, numAtributos, tabla) ) {/* || calcHeuristica(tabla) < UMBRAL_H )*/
+	if ( esHomojenea(numFil, numAtributos, tabla) ) {
 		
 		ptrNodo->hoja = true;
 		ptrNodo->clase = tabla[1][numAtributos];
@@ -466,31 +485,29 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 	
 	} else {
 
-		/* Buscamos los umbrales del los atributos Muertes y Popularidad */
+		/* Calculamos los umbrales del los atributos Muertes y Popularidad respectivamente */
 		float umbral1 = elegirUmbral(numFil, numAtributos, tabla, 8, output);
 		float umbral2 = elegirUmbral(numFil, numAtributos, tabla, 9, output);
 
-		printf("Umbral Muertes: %f\n", umbral1);
-		printf("Umbral Popularidad: %f\n", umbral2);
+		/*printf("Umbral Muertes: %f\n", umbral1);
+		printf("Umbral Popularidad: %f\n", umbral2);*/
 		
 
+		/* Calculamos cual es el atributo con mayor ganancia de informacion */
 		unsigned int atributoExp = elegirAtributo(numFil, numAtributos, tabla, umbral1, umbral2, output);
 	
 
-		/** Se elige el atributo con mayor ganancia de informacion, si el
-		  * atributo con mayor ganancia de informaciuon esta por debajo del
+		/** Si el atributo con mayor ganancia de informaciuon esta por debajo del
 		  * umbral de ganancia, el nodo se pone como hoja y se elige la clase
 		  * mas frecuente como decision */
 		if (atributoExp == -1) {
 			ptrNodo->hoja = true;
 			ptrNodo->clase = claseMasFrecuente(numFil, numAtributos, tabla);
-			fprintf(output, "Hoja: %d\n", ptrNodo->clase);
-			printf("Numeron de atributos es igual a 0\n");
 			return ptrNodo;
 		}
 
 
-		fprintf(output, "Atributo escogido: %d\n", atributoExp);
+		//fprintf(output, "Atributo escogido: %d\n", atributoExp);
 
 
 		/** Si el atributo escogido es continuo guardamos el umbral 
@@ -511,15 +528,17 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		  * valores: SI/NO */
 		for (int i = 0; i < 2; ++i) {
 
-			int auxNumFil;
+			int auxNumFil;		/* Nuevo numero de filas del conjunto despues de filtrar */
 
-			nodo *nuevoNodo = (nodo*)malloc(sizeof(nodo)); 
-			nuevoNodo->clase = i;
-			ptrNodo->arrHijos[i] = i;
+			nodo *nuevoNodo = (nodo*)malloc(sizeof(nodo)); 		/* Creamos un nuevo nodo */
+			nuevoNodo->clase = i;								/* Asignamos la clase del nuevo nodo 0/1 */
+			ptrNodo->arrHijos[i] = i;						
 			nuevoNodo->hoja = false;
 			nuevoNodo->atributo = atributoExp;
 			//nuevoNodo->izq = nuevoNodo->der = NULL;
 
+		
+			/* Nueva tabla auxiliar que almacenara el conjunto de datos filtrado */
 			float **auxTabla = (float**)malloc(numFil * sizeof(float*));
 
 			for (int j = 0; j < numFil; ++j) {
@@ -537,14 +556,15 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 			fprintf(output, "\n");*/
 
 
-			fprintf(output, "Mejor Atributo: %d\n", atributoExp);
+			/*fprintf(output, "Mejor Atributo: %d\n", atributoExp);
 			fprintf(output, "Umbral1: %f", umbral1 );
-			fprintf(output, "Umbral2: %f", umbral2 );
+			fprintf(output, "Umbral2: %f", umbral2 );*/
 
 			
 			/* Si el atributo escogido no es continuo, eliminamos el atributo de la tabla */
 			if ( (atributoExp != 8) && (atributoExp != 9) ) {
 				
+				/* Filtramos la nueva tabla */
 				filtroInfo tableInfo = filtrarTabla(numFil, numAtributos, tabla, atributoExp, i, output);
 				auxTabla = tableInfo.tabla;
 				auxNumFil = tableInfo.numFil;
@@ -585,8 +605,14 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 
 
 
-/** Calcula si todas las filas de una sub-tabla perteneces a la misma clase.
-  * En ese caso, llegamos al final de la rama y sabamos la decision */
+/** 
+  * Funcion esHomojenea
+  * Comprueba si todas las filas de una sub-tabla perteneces a la misma clase.
+  * @param numFil numero de filas del conjunto 
+  * @param numAtributos numero de atributos del conjunto
+  * @param tabla conjunto de datos
+  * @return true si todos los datos pertenecen a la misma clase, si no, false.
+  */
 bool esHomojenea(int numFil, int numAtributos, float **tabla) {
 
 	int clase = tabla[1][numAtributos];
@@ -616,7 +642,10 @@ void mostrarPreorden(nodo *raiz, FILE *output) {
 
 
 
-/** Busca la clase mas frecuente dentro de una tabla de datos y la devuelve */
+/** 
+  * Funcion claseMasFrecuente 
+
+Busca la clase mas frecuente dentro de una tabla de datos y la devuelve */
 int claseMasFrecuente(int numFil, int numAtributos, float **tabla) {
 
 	const int claseVivo = 1;
