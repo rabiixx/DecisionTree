@@ -33,26 +33,34 @@ En la ultima columna de cada fila se almacena (excepto de la primera) la clase a
 Y en la filas (exvepto la primera) se almacenan el valor de los atributos de cada dato.
 Ejemplo: numero de atributo = 3 y numero de datos = 10
 
-	--------------------------------------------
-	|					TABLA					   |
-	--------------------------------------------
-	| i\j |   0    |    1     |    2   |   3   |
-	--------------------------------------------
-	|     | Male   |  Book1   | Noble  | Clase |
-	|-------------------------------------------
-	| 0   |   0    |     1    |    2   |  NULL |
-	| 1   --------------------------------------
-	| 2   | 	1   |    1    |   0    |  0    |
-	| 3   | 	1   |    1    |   0    | 	0  |
-	| 4   | 	1   |    1    |   0    | 	0  |
-	| 5   | 	1   |    1    |   0    | 	0  |
-	| 6   | 	1   |    1    |   0    | 	0  |
-	| 7   | 	1   |    1    |   0    | 	0  |
-	| 8   | 	1   |    1    |   0    | 	0  |
-	| 9   | 	1   |    1    |   0    | 	0  |
-	| 10  | 	1   |    1    |   0    | 	0  |
-	| 11  | 	1   |    1    |   0    | 	0  |
-	--------------------------------------------
+	-------------------------------------------------
+	|			TABLA			|
+	-------------------------------------------------
+	| i\j |   0	|    1    |    2   |   3   	|
+	-------------------------------------------------
+	|     | Male	|  Book1  | Noble  | Clase 	|
+	|------------------------------------------------
+	| 0   |   0	|     1   |    2   |  NULL 	|
+	| 1   -------------------------------------------
+	| 1   |   1   	|    1	  |   0    |    0  	|
+	| 2   |   1   	|    1	  |   0    |    0  	|
+	| 3   |   1  	|    1    |   0    |    0  	|
+	| 4   |   1   	|    1    |   0    |    0  	|
+	| 5   |   1   	|    1    |   0    |    0  	|
+	| 6   |   1   	|    1    |   0    |    0  	|
+	| 7   |   1   	|    1    |   0    |    0  	|
+	| 8   |   1   	|    1    |   0    |    0  	|
+	| 9   |   1   	|    1    |   0    |    0  	|
+	| 10  |   1   	|    1    |   0    |    0  	|
+	-------------------------------------------------
+
+## Como afrontar el problema
+
+* Los atributos discretos (0 o 1) una vez son utilizados, son eliminados de la tabla
+* Los atributos continuos sin embargo, no son nunca eliminados. Para evitar ramas infinitas
+se establece un umbral de ganancia de informacion y por tanto, si la maxima ganancia de informacion
+de un atributo continuo no supera dicho umbral, ese nodo se combierte en hoja y se escoge como clase
+la clase mas frecuente dentro de ese conjunto de datos (sub-tabla).
 
 
 ### Prerequisitos
@@ -110,3 +118,4 @@ file ejecutable
 ## Autores
 
 * **Ruben Cherif Narvaez** - 99rubenche@gmail.com - [rabiixx](https://github.com/rabiixx)
+
