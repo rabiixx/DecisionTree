@@ -2,13 +2,13 @@ libTrain: funcionesTrain.c
 	gcc -c funcionesTrain.c -lm
 
 libTest: funcionesTesteo.c
-	gcc -c funcionesTesteo.c
+	gcc -c funcionesTesteo.c -lm
 
 libUtil: DT_utilities.c
-	gcc -c DT_utilities.c
+	gcc -c DT_utilities.c -lm
 
 main: mainDT.c funcionesTrain.o funcionesTesteo.o DT_utilities.o
-	gcc mainDT.c -o mainDT funcionesTrain.o funcionesTesteo.o DT_utilities.o -Wall -pedantic
+	gcc mainDT.c -o mainDT funcionesTrain.o funcionesTesteo.o DT_utilities.o -Wall -pedantic -lm
 
 all: libTrain libTest libUtil main
 

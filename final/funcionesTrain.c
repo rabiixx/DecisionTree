@@ -21,59 +21,9 @@
 //  DEALINGS IN THE SOFTWARE.
 
 /* Librerias estandar de C */
-#include "funciones_v2.h"
+#include "funciones.h"
 
 
-/** 
-  * funcion readData
-  * Lee los datos del dataset y los almacena en una 
-  * matriz de NUM_FILAS x NUM_ATRUBITOS + 1 y devuelve dicha matriz 
-  * @param dataset ficheor del cual leeera los datos
-  * @param numFil numero de filas que leera del fichero
-  * @return los datos almacenados en una matriz de [numFil + 1] x [numAtributos + 1]
-  */ 
-float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
-
-	/** Declaracion de la matriz donde se guardaran los datos */
-	float **arrMatrix = (float**)malloc( (numFil + 1) * sizeof(float*));
-
-	for (int i = 0; i < numFil + 1; ++i) {
-		arrMatrix[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
-	}
-
-	/* En la primera fila almacenamos los atrubutos como numeros 1,..,NumAtributos */
-	for (int i = 0; i < NUM_ATRIBUTOS; ++i) {
-		arrMatrix[0][i] = i;
-	}
-
-	/* Para diferencias que no es una atributo */
-	arrMatrix[0][NUM_ATRIBUTOS] = 99;
-
-	char *str = (char*)malloc(500 * sizeof(char));
-
-	/* Leer primera linea */
-	fgets(str, 500, dataset);
-
-	for (int i = 1; i < numFil + 1; ++i) {
-		fgets(str, 500, dataset);
-		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
-	}
-
-	//fprintf(output, "READDATA: \n");
-
-	/*for (int i = 0; i < numFil + 1; ++i)
-	{
-		for (int j = 0; j < NUM_ATRIBUTOS + 1; ++j)
-		{
-			fprintf(output, "%f, ", arrMatrix[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
-
-
-	return arrMatrix;
-}
 
 
 /** 
@@ -623,25 +573,13 @@ bool esHomojenea(int numFil, int numAtributos, float **tabla) {
 }
 
 
-void mostrarPreorden(nodo *raiz, FILE *output) {
-	if (raiz) {
-        printf(/*output, */"Atributo: %d\n", raiz->atributo);
-        printf(/*output, */"Clase: %d\n", raiz->clase);
-        printf(/*output, */"Es Hoja: %d\n", raiz->hoja);
-        printf(/*output, */"\n");
-        mostrarPreorden(raiz->izq, output);
-        mostrarPreorden(raiz->der, output);
-    } else {
-        return;
-    }
-}
+
 
 
 
 /** 
   * Funcion claseMasFrecuente 
-
-Busca la clase mas frecuente dentro de una tabla de datos y la devuelve */
+  * Busca la clase mas frecuente dentro de una tabla de datos y la devuelve */
 int claseMasFrecuente(int numFil, int numAtributos, float **tabla) {
 
 	const int claseVivo = 1;
@@ -662,108 +600,29 @@ int claseMasFrecuente(int numFil, int numAtributos, float **tabla) {
 }
 
 
-/* Function to print level 
-order traversal a tree*/
-void printLevelOrder(nodo* root) 
-{ 
-	int h = height(root); 
-	int i; 
-	for (i = 1; i <= h; i++) 
-		printGivenLevel(root, i); 
-} 
-
-/* Print nodes at a given level */
-void printGivenLevel(nodo* root, int level) 
-{ 
-	if (root == NULL) 
-		return; 
-	if (level == 1) {
-		printf("Atributo: %d\n", root->atributo);
-        printf("Clase: %d\n", root->clase);
-        printf("Es Hoja: %d\n", root->hoja);
-        printf("\n");
-	} else if (level > 1) { 
-		printGivenLevel(root->izq, level-1); 
-		printGivenLevel(root->der, level-1); 
-	} 
-} 
-
-/* Compute the "height" of a tree -- the number of 
-	nodes along the longest path from the root node 
-	down to the farthest leaf node.*/
-int height(nodo* node) 
-{ 
-	if (node == NULL) 
-		return 0; 
-	else
-	{ 
-		/* compute the height of each subtree */
-		int lheight = height(node->izq); 
-		int rheight = height(node->der); 
-
-		/* use the larger one */
-		if (lheight > rheight) 
-			return(lheight + 1); 
-		else return(rheight + 1); 
-	} 
-} 
 
 
-
+/**
+  * Funcion eligeUmbral 
+  * 
+  */
 float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, FILE *output) {
 
 
-	float arr[2][numFil];		/* 1.Fila: valor atributo, 2.Fila: Clase */
-	unsigned int indexAtributo;
+	float arr[2][numFil];			/* 1.Fila: valor atributo, 2.Fila: Clase */
+	unsigned int indexAtributo;		/* Indice en el que se encuentra el atributo */
 
-	/* Buscamos el indice del atributo */
-	int i;
-	for (i = 0; i < numAtributos; ++i) {
-		if (tabla[0][i] == atributo) {
-			indexAtributo = i;
-			break;
-		}
-	}
+	/* Se busca el indice del atributo */
+	indexAtributo = buscarAtributo(numAtributos, tabla[0], atributo);
 
-	if (i == numAtributos) {
-		return (float) -1;
-	}
-
-	//fprintf(output, "IndexAtributo: %d\n", indexAtributo);
-
-	/* Recorremos la tabla y almacenamos los valores del atributo en una nueva tabla*/
-	for (i = 1; i < numFil + 1; ++i) {
+	/* Se recorre la tabla almacenando los valores del atributo y la clase a la que pertenece */
+	for (int i = 1; i < numFil + 1; ++i) {
 		arr[0][i - 1] = tabla[i][indexAtributo];
 		arr[1][i - 1] = tabla[i][numAtributos];
 	}
 
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
-
-	/* Ordenamos el arr y llamamos a la funcion de discretizacion */
+	/* Ordenamos el arr que contiene los valores y clase del atributo  */
 	quickSort(numFil, arr, 0, numFil - 1);
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numFil; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
 
 	
 	return discretizacion(numFil, arr, output);
@@ -771,62 +630,13 @@ float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, 
 }
 
 
-void swap(float *a, float *b)  
-{  
-    float t = *a;  
-    *a = *b;  
-    *b = t;  
-}  
-  
-/* This function takes last element as pivot, places  
-the pivot element at its correct position in sorted  
-array, and places all smaller (smaller than pivot)  
-to left of pivot and all greater elements to right  
-of pivot */
-int partition (int numCol, float arr[][numCol], int low, int high)  
-{  
-    float pivot = arr[0][high]; // pivot  
-    int i = (low - 1); // Index of smaller element  
-  
-    for (int j = low; j <= high - 1; j++)  
-    {  
-        // If current element is smaller than the pivot  
-        if (arr[0][j] < pivot)  
-        {  
-            i++; // increment index of smaller element  
-            swap(&arr[0][i], &arr[0][j]);
-            swap(&arr[1][i], &arr[1][j]);  
-  
-        }  
-    }  
-    swap(&arr[0][i + 1], &arr[0][high]);
-    swap(&arr[1][i + 1], &arr[1][high]);  
-    return (i + 1);  
-}  
-  
-/* The main function that implements QuickSort  
-arr[] --> Array to be sorted,  
-low --> Starting index,  
-high --> Ending index */
-void quickSort(int numCol, float arr[][numCol], int low, int high)  
-{  
-    if (low < high)  
-    {  
-        /* pi is partitioning index, arr[p] is now  
-        at right place */
-        int pi = partition(numCol, arr, low, high);  
-  
-        // Separately sort elements before  
-        // partition and after partition  
-        quickSort(numCol, arr, low, pi - 1);  
-        quickSort(numCol, arr, pi + 1, high);  
-    }  
-}
-
-/* Calculo humbral atributo continuo */
 /**
-  * input: array[2][N] que contiene en la priemra fila los valores del atributo
-  * y en la segunda fila la clase a la que pertence: Vivo / Muerto */
+  * Funcion discretizacion 
+  * Calcula el umbral de un atributo
+  * @param numCol numero de columnas de
+  * @param 
+  * 
+  *  */
 float discretizacion(int numCol, float arr[][numCol], FILE *output) 
 {
 
@@ -986,15 +796,24 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 	return umbral;
 }
 
+/**
+  * Funcion buscarAtributo
+  * Busca el indice del atributo en arrAtributos
+  * @param numAtributos numero de atributos del conjunto
+  * @param arrAtributos contiene los atributos del conjunto
+  * @param atributo el atributo que se busca
+  * @return i indice del atributo buscado
+  */
+int buscarAtributo(int numAtributos, float arrAtributos[], float atributo) {
 
-
-bool estaAtrbibuto(int numAtributos, float **tabla, float atributo) {
-	
-	for (int i = 0; i < numAtributos; ++i){
-		if (tabla[0][i] == atributo)
-			return true;	
+	for (int i = 0; i < numAtributos; ++i) {
+		if (arrAtributos[i] == atributo)
+			return i;
 	}
 
-	return false;
+	/* return -1 */
 
 }
+
+
+

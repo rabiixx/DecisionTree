@@ -1,4 +1,3 @@
-
 // The MIT License (MIT)
 
 // Copyright (c) 2019 Ruben Cherif Narvaez
@@ -37,17 +36,13 @@
 
 /* Librerias estandares de C */
 #include <errno.h>
-#include "funciones_v2.h"
-#include "funcionesEntrenamiento.h"
-#include <funcionesTesteo.h>
+#include "funciones.h"
 
 
-
-
-
+/* Main Program */
 int main(int argc, char const *argv[]) {
 
-	system("clear");
+	system("clear");		/* Clear Linux STDOUT */
 
 	/* Declaracion de una matriz mediante punteros */
 	float **tablaTrain = (float**)malloc( (NUM_FILAS_TRAIN + 1) * sizeof(float*));
@@ -57,7 +52,7 @@ int main(int argc, char const *argv[]) {
 	}
 
 	FILE *trainData, *testData;						/* Dataset de entrenamiento y de testeo */
-	FILE *output = fopen("output.txt", "w");		/* Fichero traza */
+	FILE *output = fopen("traza.txt", "w");			/* Fichero traza */
 
 	if ( (trainData = fopen("trainData2.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
@@ -79,15 +74,21 @@ int main(int argc, char const *argv[]) {
 
 	printf("[+] Comienzo la fase de entrenamiento\n");
 
-	/* Fase de entrenamiento: construccion del arbol de decisiones */
+	/*** FASE DE ENTRENAMIENTO ***/
+
+	/* Se construye del arbol de decisiones */
 	raiz = construirArbolDecision(NUM_FILAS_TRAIN, NUM_ATRIBUTOS, tablaTrain, raiz, output);
 
 	printf("[+] Finalizada la fase de entrenamiento\n");
 
-	mostrarPreorden(raiz, output);
+	//mostrarPreorden(raiz, output);
 
 
-	/* FASE DE TESTO */
+	/*** FASE DE TESTO ***/
+
+
+	float clasesReales[NUM_FILAS_TEST];			/* Guarda las clase de los datos de testeo */
+	float clasesPredichas[NUM_FILAS_TEST];		/* Guarda las clases predecidas de los datos de testeo */
 
 	/* Declaracion de una matriz mediante punteros */
 	float **tablaTest = (float**)malloc( (NUM_FILAS_TEST + 1) * sizeof(float*));
@@ -96,32 +97,31 @@ int main(int argc, char const *argv[]) {
 		tablaTest[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
+	/* Se leen los datos de testeo */
 	tablaTest = readData(testData, NUM_FILAS_TEST, output);
+	
 	fclose(testData);
-
-	float clasesReales[NUM_FILAS_TEST];			/* Guarda las clase de los datos de testeo */
-	float clasesPredichas[NUM_FILAS_TEST];		/* Guarda las clases predecidas de los datos de testeo */
-
 
 	printf("[+] Comienzo la fase de testeo\n");
 
+	/* Se guardan las clases reales de los datos de testeo */
 	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
 		clasesReales[i] = tablaTest[i + 1][NUM_ATRIBUTOS];
 	}
 
+	/* Se guardan las clase predichas de los datos de testeo */
 	for (int i = 0; i < NUM_FILAS_TEST; ++i) {
 		clasesPredichas[i] = testDatosDT(tablaTest[i + 1], raiz);
 	}
 
+	/* Liberacion de memoria final */
 	free(tablaTrain);
 	free(tablaTest);
 
 	printf("[+] Finaliza la fase de testeo\n");
-
 	
-	/* Analizamos los resultados obtenidos */
+	/* Se analizan los resultados obtenidos */
 	analizarResultados(clasesReales, clasesPredichas);
-
 
 	return EXIT_SUCCESS;
 }

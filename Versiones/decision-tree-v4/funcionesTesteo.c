@@ -20,6 +20,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 //  DEALINGS IN THE SOFTWARE.
 
+#include "funcionesTesteo.h"
 
 /**
   * Funcion testDatosDT
@@ -107,13 +108,13 @@ int analizarResultados(float claseReales[], float clasesPredichas[]){
 	}
 
 	fprintf(reporte, "| ---------------------------------------------- |\n");
-	fprintf(reporte, "RESULTADOS FINALES: \n");
+	fprintf(reporte, "\tRESULTADOS FINALES: \n");
 	tasaAciertos = (double) numAciertos / (double) NUM_FILAS_TEST;
 
 
 	fprintf(reporte, "\t[+] Numero de filas: %d\n", NUM_FILAS_TEST);
 	fprintf(reporte, "\t[+] Numero de Aciertos: %d\n", numAciertos);
-	fprintf(reporte, "\t[+] Tasa De Acierto: %f", tasaAciertos);
+	fprintf(reporte, "\t[+] Tasa De Acierto: %f %", tasaAciertos);
 
 	fclose(reporte);
 
