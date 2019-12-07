@@ -33,14 +33,14 @@ typedef struct _filtroInfo {
 
 
 
-#define NUM_FILAS_TRAIN 1000      /* Numero de filas del dataset de entrenamiento */
+#define NUM_FILAS_TRAIN 1500      /* Numero de filas del dataset de entrenamiento */
 #define NUM_ATRIBUTOS 10          /* Numero de atributos del problema */
 #define NUM_CLASES 2              /* Numero de clases */
-#define UMBRAL_GAIN 0.01
+#define UMBRAL_GAIN 0.001
 
 
 #define clasePorDefecto 1           /* Clase por defecto */
-#define NUM_FILAS_TEST 1000         /* Numero de filas del dataset de testeo */
+#define NUM_FILAS_TEST 448         /* Numero de filas del dataset de testeo */
 
 
 

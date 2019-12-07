@@ -24,8 +24,6 @@
 #include "funciones.h"
 
 
-
-
 /** 
   * funcion elegirAtributo 
   * Busca el atributo con mayor ganancia de informacion dentro del conjunto de datos.
@@ -453,9 +451,6 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 		}
 
 
-		//fprintf(output, "Atributo escogido: %d\n", atributoExp);
-
-
 		/** Si el atributo escogido es continuo guardamos el umbral 
 		  * para luego en la fase de testeo sabes en que rama se 
 		  * debe buscar */
@@ -490,22 +485,6 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 			for (int j = 0; j < numFil; ++j) {
 				auxTabla[j] = (float*)malloc( (numAtributos) * sizeof(float));
 			}
-
-			/*fprintf(output, "\nEstado Tabla Principal: \n");
-			for (int j = 0; j < numFil + 1; ++j) {
-				for (int z = 0; z < numAtributos + 1; ++z)
-				{
-					fprintf(output, "%f, ", tabla[j][z]);
-				}
-				fprintf(output, "\n");
-			}
-			fprintf(output, "\n");*/
-
-
-			/*fprintf(output, "Mejor Atributo: %d\n", atributoExp);
-			fprintf(output, "Umbral1: %f", umbral1 );
-			fprintf(output, "Umbral2: %f", umbral2 );*/
-
 			
 			/* Si el atributo escogido no es continuo, eliminamos el atributo de la tabla */
 			if ( (atributoExp != 8) && (atributoExp != 9) ) {
@@ -534,6 +513,7 @@ nodo* construirArbolDecision(int numFil, int numAtributos, float **tabla, nodo* 
 					tableInfo = filtrarTablaCont(numFil, numAtributos, tabla, atributoExp, i, umbral2, output);
 				
 				auxTabla = tableInfo.tabla;
+
 				auxNumFil = tableInfo.numFil;
 
 				if ( i == 0 ) {

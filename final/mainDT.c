@@ -54,12 +54,12 @@ int main(int argc, char const *argv[]) {
 	FILE *trainData, *testData;						/* Dataset de entrenamiento y de testeo */
 	FILE *output = fopen("traza.txt", "w");			/* Fichero traza */
 
-	if ( (trainData = fopen("trainData2.dat", "r")) == NULL ) {
+	if ( (trainData = fopen("Datasets/train1500.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
 
-	if ( (testData = fopen("testData2.dat", "r")) == NULL ) {
+	if ( (testData = fopen("Datasets/test448.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
