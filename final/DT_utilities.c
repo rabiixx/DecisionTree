@@ -70,9 +70,6 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 			++numMuertos;
 	}
 
-	printf("[+] Numero de vivos: %d\n", numVivos);
-	printf("[+] Numero de muertos: %d\n", numMuertos);
-
 	return arrMatrix;
 }
 

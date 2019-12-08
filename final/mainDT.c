@@ -54,7 +54,7 @@ int main(int argc, char const *argv[]) {
 	FILE *output;						/* Fichero traza */
 
 
-	if ( (trainData = fopen("traza.txt", "w")) == NULL ) {
+	if ( (output = fopen("traza.txt", "w")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
