@@ -20,9 +20,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 //  DEALINGS IN THE SOFTWARE.
 
-/* Librerias estandar de C */
 #include "funciones.h"
-
 
 /** 
   * funcion elegirAtributo 
@@ -61,16 +59,6 @@ int elegirAtributo(int numFilas, int numAtributos, float **tabla, float umbral1,
 			a_best = tabla[0][i];
 		}	
 	}
-
- 	/*for (int i = 0; i < numAtributos; ++i)
-	{
-		fprintf(output, "\n Heuristica Atributo: %f\n", tabla[0][i]);
-		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].entropia);
-		fprintf(output, "Heuristica: %f\n", arrHeuristica[i].gainInfo);
-	}
-
-	fprintf(output, "\nElegir Atributo: %d\n", a_best);
-	fprintf(output, "Entropia Atributo: %f\n", maxEnt);*/
 
 	/** Si la ganancia de informacion esta por debajo de umbral de ganancia 
 	  * establecido por nosotros, se devuelve -1 */ 
@@ -231,22 +219,6 @@ infoAtributo calcularHeuristica(int numFilas, int numAtributos, float **tabla, i
   * @return la nueva tabla filtrada y el numero de filas que contiene
   */
 filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, float umbral, FILE *output) {
-	
-	/*fprintf(output, "Filtrar Atributo: %d", atributo );
-
-	fprintf(output, "Umbral de filtro: %f \n", umbral);
-
-
-	fprintf(output, "\n Tabla antes de filtrar cont: \n");
-	for (int i = 0; i < numFil; ++i) {
-		for (int j = 0; j < numAtributos + 1; ++j)
-		{
-			fprintf(output, "%f, ", tabla[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
-
 
 	/* Creamos matriz auxiliar donde se guarda el sub-conjunto de datos */
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
@@ -291,17 +263,6 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
 		}
 	}
 
-
-	/*fprintf(output, "\n Tabla despues de filtrar cont: \n");
-	for (int i = 0; i < indexFil; ++i) {
-		for (int j = 0; j < numAtributos + 1; ++j)
-		{
-			fprintf(output, "%f, ", tablaFiltrada[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
-
 	filtroInfo tableInfo;
 
 	tableInfo.tabla = tablaFiltrada;
@@ -326,19 +287,6 @@ filtroInfo filtrarTablaCont(int numFil, int numAtributos, float **tabla, int atr
   */
 filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atributo, float valorAtributo, FILE *output) {
 
-
-	/*fprintf(output, "Filtrar Atributo: %d", atributo );
-
-	fprintf(output, "\n filtrar tabla 1: \n");
-	for (int i = 0; i < numFil + 1; ++i) {
-		for (int j = 0; j < numAtributos + 1; ++j)
-		{
-			fprintf(output, "%f, ", tabla[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
-
 	/* Creamos matriz auxiliar donde se guarda el sub-conjunto de datos */
 	float **tablaFiltrada = (float**)malloc( (numFil + 1) * sizeof(float*));
 
@@ -360,9 +308,6 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 		}
 	}
 
-	/*fprintf(output, "Index aTRIBUTO: %d \n", indexAtributo );
-	fprintf(output, "VAlor: %f\n", valorAtributo);*/
-
 	indexCol = 0;
 
 	/** Se añaden a la nueva matriz todas aquellas filas cuyo valor coincida con el valor del atributo pasado
@@ -381,17 +326,6 @@ filtroInfo filtrarTabla(int numFil, int numAtributos, float **tabla, int atribut
 			++indexFil;
 		}
 	}
-
-
-	/*fprintf(output, "\n filtrar Tabla 2: \n");
-	for (int i = 0; i < indexFil; ++i) {
-		for (int j = 0; j < numAtributos; ++j)
-		{
-			fprintf(output, "%f, ", tablaFiltrada[i][j]);
-		}
-		fprintf(output, "\n");
-	}
-	fprintf(output, "\n");*/
 
 	filtroInfo tableInfo;
 
@@ -612,30 +546,12 @@ float elegirUmbral(int numFil, int numAtributos, float **tabla, float atributo, 
 
 /**
   * Funcion discretizacion 
-  * Calcula el umbral de un atributo
+  * Calcula el umbral de un atributo mediante discretizacion 
   * @param numCol numero de columnas de
-  * @param 
-  * 
-  *  */
+  * @param arr que contiene los valores y clases del atributo a discretizar
+  */
 float discretizacion(int numCol, float arr[][numCol], FILE *output) 
 {
-
-
-	/*fprintf(output, "discretizacion 1: \n");
-	for (int i = 0; i < numCol; ++i)
-	{
-		fprintf(output, "%f, ", arr[0][i]);
-	}
-	fprintf(output, "\n\ndiscretizacion 2: \n");
-	for (int i = 0; i < numCol; ++i)
-	{
-		fprintf(output, "%f, ", arr[1][i]);
-	}
-	fprintf(output, "\n\n");*/
-
-
-	/* Numero de columnas de la matriz */
-	// size_t N = ( sizeof(arr[0]) / sizeof(arr[0][0]) );
 
  	/* 2. Calcular la entropía para cada pareja de valores en los que la clase cambie */
 	float indexElegidos[2][numCol];			/* 1. Fila--> Indice, 2. Fila-->Entropia */
@@ -650,13 +566,6 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 			++index;
 		}
 	}
-
-	/*fprintf(output, "indexElegidos: \n");
-	for (int i = 0; i < index; ++i)
-	{
-		fprintf(output, "%f\n",indexElegidos[0][i] );
-	}
-	fprintf(output, "\n\n");*/
 
 	/* 3. Elegir como umbral la media del par de valores que minimice la entropía */
 
@@ -688,13 +597,6 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 		numNoMayores = numAtributosMayores - numSiMayores;
 
-		/*fprintf(output, "numAtributosMenores: %d\n", numAtributosMenores);
-		fprintf(output, "numAtributosMayores: %d\n", numAtributosMayores);
-		fprintf(output, "numSiMenores: %d\n", numSiMenores);
-		fprintf(output, "numNoMenores: %d\n", numNoMenores);
-		fprintf(output, "numSiMayores: %d\n", numSiMayores);
-		fprintf(output, "numNoMayores: %d\n\n", numNoMayores);*/
-
 		double entropiaMenorSi = 0;
 		double entropiaMenorNo = 0;
 		double entropiaMayorSi = 0;
@@ -720,15 +622,6 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 		entropia2 = ( (double)numAtributosMayores / (double)numCol) * (entropiaMayorSi + entropiaMayorNo); 
 
 		indexElegidos[1][i] = entropia1 + entropia2;
-
-		/*fprintf(output, "entropiaMenorSi: %f\n", entropiaMenorSi);
-		fprintf(output, "entropiaMenorNo: %f\n", entropiaMenorNo);
-		fprintf(output, "entropiaMayorSi: %f\n", entropiaMayorSi);
-		fprintf(output, "entropiaMayorNo: %f\n", entropiaMayorNo);
-		fprintf(output, "entropia1: %f\n", entropia1);
-		fprintf(output, "entropia2: %f\n", entropia2);
-		fprintf(output, "Entropia Total: %f\n\n", indexElegidos[1][i]);*/
-
 
 	}
 
@@ -758,8 +651,6 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 	clase = arr[1][indexMinEntropia];
 
-	//printf("Clase: %f\n", clase);
-
 	for (int i = indexMinEntropia; i > 0 ; --i) {
 		if (arr[1][i] != clase){
 			umbral2 = arr[0][i];
@@ -769,9 +660,6 @@ float discretizacion(int numCol, float arr[][numCol], FILE *output)
 
 	/* Calculamos el humbral */
 	float umbral = (float) ( (umbral1 + umbral2) / 2);
-	/*printf("Umbral1: %f\n", umbral1);
-	printf("Umbral2: %f\n", umbral2);
-	printf("Umbral Final\n\n: %f\n", umbral);*/
 
 	return umbral;
 }

@@ -59,22 +59,85 @@ float **readData(FILE *dataset, unsigned int numFil, FILE *output) {
 		sscanf(str, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &arrMatrix[i][0], &arrMatrix[i][1], &arrMatrix[i][2], &arrMatrix[i][3], &arrMatrix[i][4], &arrMatrix[i][5], &arrMatrix[i][6], &arrMatrix[i][7], &arrMatrix[i][8], &arrMatrix[i][9], &arrMatrix[i][10]);
 	}
 
-	//fprintf(output, "READDATA: \n");
 
-	/*for (int i = 0; i < numFil + 1; ++i)
+	int numVivos = 0;
+	int numMuertos = 0;
+	for (int i = 1; i < numFil + 1; ++i)
 	{
-		for (int j = 0; j < NUM_ATRIBUTOS + 1; ++j)
-		{
-			fprintf(output, "%f, ", arrMatrix[i][j]);
-		}
-		fprintf(output, "\n");
+		if (arrMatrix[i][NUM_ATRIBUTOS] == 1)
+			++numVivos;
+		else
+			++numMuertos;
 	}
-	fprintf(output, "\n");*/
 
+	printf("[+] Numero de vivos: %d\n", numVivos);
+	printf("[+] Numero de muertos: %d\n", numMuertos);
 
 	return arrMatrix;
 }
 
+
+/** Funcion QuickSort 
+  * Ordena los valores de un array de [2, N] 
+  * por columnas en base a los valores de la primera fila
+  * @param numCol numero de elementos del array
+  * @param arr array a ordenar  
+  * @param indice inicial del array
+  * @param indice final del array
+  */
+void quickSort(int numCol, float arr[][numCol], int ini, int fin) {  
+    
+    if (ini < fin) {  
+        
+        int part = particion(numCol, arr, ini, fin);  
+  
+        quickSort(numCol, arr, ini, part - 1);  
+        quickSort(numCol, arr, part + 1, fin);  
+    }  
+}
+  
+int particion(int numCol, float arr[][numCol], int ini, int fin)  
+{  
+    float pivote = arr[0][fin]; 
+    int i = (ini - 1);
+  
+    for (int j = ini; j <= fin - 1; j++)  
+    {  
+        // If current element is smaller than the pivot  
+        if (arr[0][j] < pivote)  
+        {  
+            i++; // increment index of smaller element  
+            swap(&arr[0][i], &arr[0][j]);
+            swap(&arr[1][i], &arr[1][j]);  
+  
+        }  
+    }  
+    swap(&arr[0][i + 1], &arr[0][fin]);
+    swap(&arr[1][i + 1], &arr[1][fin]);  
+    return (i + 1);  
+}  
+
+/** Funcion utilitaria para intercambiar el valor de dos variables */ 
+void swap(float *a, float *b)  
+{  
+    float t = *a;  
+    *a = *b;  
+    *b = t;  
+} 
+
+
+/** 
+  *	Las funciones que se muestran a continuacion no son utilizadas en el algortimo
+  * se han incluido por motivos de debug, si no es asi, carecen de sentido. 
+  */
+
+
+/**
+  * Funcion mostrarPreorden
+  * Muestra el arbol en preorden, esta funcion esta incluida
+  * por motivos de degugeo
+  * @param raiz direccion de memoria del nodo actual del arbol
+  */
 void mostrarPreorden(nodo *raiz, FILE *output) {
 	if (raiz) {
         printf(/*output, */"Atributo: %d\n", raiz->atributo);
@@ -89,8 +152,11 @@ void mostrarPreorden(nodo *raiz, FILE *output) {
 }
 
 
-/* Function to print level 
-order traversal a tree*/
+/**
+  * @author Geeksforgeeks.com 
+  *	Imprime el arbol en anchur, esta funcion esta incluida
+  * por motivos de debugeo 
+  */
 void printLevelOrder(nodo* root) 
 { 
 	int h = height(root); 
@@ -136,54 +202,5 @@ int height(nodo* node)
 } 
 
 
-void swap(float *a, float *b)  
-{  
-    float t = *a;  
-    *a = *b;  
-    *b = t;  
-}  
+
   
-/* This function takes last element as pivot, places  
-the pivot element at its correct position in sorted  
-array, and places all smaller (smaller than pivot)  
-to left of pivot and all greater elements to right  
-of pivot */
-int partition (int numCol, float arr[][numCol], int low, int high)  
-{  
-    float pivot = arr[0][high]; // pivot  
-    int i = (low - 1); // Index of smaller element  
-  
-    for (int j = low; j <= high - 1; j++)  
-    {  
-        // If current element is smaller than the pivot  
-        if (arr[0][j] < pivot)  
-        {  
-            i++; // increment index of smaller element  
-            swap(&arr[0][i], &arr[0][j]);
-            swap(&arr[1][i], &arr[1][j]);  
-  
-        }  
-    }  
-    swap(&arr[0][i + 1], &arr[0][high]);
-    swap(&arr[1][i + 1], &arr[1][high]);  
-    return (i + 1);  
-}  
-  
-/* The main function that implements QuickSort  
-arr[] --> Array to be sorted,  
-low --> Starting index,  
-high --> Ending index */
-void quickSort(int numCol, float arr[][numCol], int low, int high)  
-{  
-    if (low < high)  
-    {  
-        /* pi is partitioning index, arr[p] is now  
-        at right place */
-        int pi = partition(numCol, arr, low, high);  
-  
-        // Separately sort elements before  
-        // partition and after partition  
-        quickSort(numCol, arr, low, pi - 1);  
-        quickSort(numCol, arr, pi + 1, high);  
-    }  
-}

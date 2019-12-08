@@ -33,7 +33,6 @@
   */
 
 
-
 /* Librerias estandares de C */
 #include <errno.h>
 #include "funciones.h"
@@ -51,15 +50,21 @@ int main(int argc, char const *argv[]) {
 		tablaTrain[i] = (float*)malloc( (NUM_ATRIBUTOS + 1) * sizeof(float));
 	}
 
-	FILE *trainData, *testData;						/* Dataset de entrenamiento y de testeo */
-	FILE *output = fopen("traza.txt", "w");			/* Fichero traza */
+	FILE *trainData, *testData;			/* Dataset de entrenamiento y de testeo */
+	FILE *output;						/* Fichero traza */
 
-	if ( (trainData = fopen("Datasets/train1500.dat", "r")) == NULL ) {
+
+	if ( (trainData = fopen("traza.txt", "w")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
 
-	if ( (testData = fopen("Datasets/test448.dat", "r")) == NULL ) {
+	if ( (trainData = fopen("Datasets/trainData2.dat", "r")) == NULL ) {
+		printf("Error al abrir fichero: %s\n", strerror(errno));
+		return EXIT_FAILURE;
+	}
+
+	if ( (testData = fopen("Datasets/testData2.dat", "r")) == NULL ) {
 		printf("Error al abrir fichero: %s\n", strerror(errno));
 		return EXIT_FAILURE;
 	}
@@ -122,6 +127,8 @@ int main(int argc, char const *argv[]) {
 	
 	/* Se analizan los resultados obtenidos */
 	analizarResultados(clasesReales, clasesPredichas);
+
+	fclose(output);
 
 	return EXIT_SUCCESS;
 }
